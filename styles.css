@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F2F2F2;
+    color: #595859;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #D9C1B8;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #595859;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #595859;
+    font-size: 1.2em;
+}
+
+section {
+    margin: 40px 20px;
+}
+
+.user-selection {
+    display: flex;
+    justify-content: space-around;
+}
+
+.user-card {
+    background-color: #F2DFDF;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 150px;
+}
+
+.sensor-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.sensor-item {
+    background-color: #D9B1AD;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    text-align: center;
+}
+
+.room-controls {
+    margin-top: 20px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-top: 10px;
+}
