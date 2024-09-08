@@ -4,55 +4,74 @@ body {
     color: #595859;
     margin: 0;
     padding: 0;
-}
-
-header {
-    background-color: #D9C1B8;
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    color: #595859;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #595859;
-    font-size: 1.2em;
-}
-
-section {
-    margin: 40px 20px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #D9B1AD;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-}
-
-.user-list, .status {
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    height: 100vh;
+}
+
+header h1 {
+    text-align: center;
+    color: #D9B1AD;
+}
+
+#cadastro {
+    background-color: #F2DFDF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+h2 {
+    text-align: center;
+    color: #D9C1B8;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.form-group {
+    width: 48%;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #D9B1AD;
+    border-radius: 5px;
+    background-color: #F2F2F2;
+}
+
+button.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #D9B1AD;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.btn:hover {
+    background-color: #D9C1B8;
 }
 
 footer {
     text-align: center;
-    padding: 20px;
-    background-color: #D9C1B8;
+    margin-top: 20px;
+    color: #595859;
 }
