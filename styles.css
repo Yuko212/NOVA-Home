@@ -24,10 +24,6 @@ nav ul {
     gap: 20px;
 }
 
-nav ul li {
-    display: inline;
-}
-
 nav ul li a {
     text-decoration: none;
     color: #595859;
@@ -38,38 +34,25 @@ section {
     margin: 40px 20px;
 }
 
-.user-selection {
-    display: flex;
-    justify-content: space-around;
-}
-
-.user-card {
-    background-color: #F2DFDF;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 150px;
-}
-
-.sensor-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.sensor-item {
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
     background-color: #D9B1AD;
-    padding: 20px;
-    border-radius: 10px;
-    flex: 1;
+    color: white;
+    border: none;
+    border-radius: 5px;
     text-align: center;
+    text-decoration: none;
 }
 
-.room-controls {
-    margin-top: 20px;
+.user-list, .status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-input[type="range"] {
-    width: 100%;
-    margin-top: 10px;
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #D9C1B8;
 }

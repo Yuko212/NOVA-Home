@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA Home - Gerenciar Casa</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gerenciar Casa</h1>
+    </header>
+
+    <section id="add-comodo">
+        <h2>Adicionar Cômodo</h2>
+        <form>
+            <label for="comodo">Nome do Cômodo:</label>
+            <input type="text" id="comodo" name="comodo" required>
+            
+            <label for="tipo">Tipo de Cômodo:</label>
+            <select id="tipo" name="tipo">
+                <option value="quarto">Quarto</option>
+                <option value="banheiro">Banheiro</option>
+                <option value="sala">Sala</option>
+                <option value="cozinha">Cozinha</option>
+                <option value="lavanderia">Lavanderia</option>
+                <option value="outro">Outro (especificar)</option>
+            </select>
+            
+            <label for="dimensoes">Dimensões do Cômodo (em metros):</label>
+            <input type="text" id="dimensoes" name="dimensoes" placeholder="Ex: 5x7x3.5" required>
+            
+            <button type="submit" class="btn">Adicionar Cômodo</button>
+        </form>
+    </section>
+
+    <section id="house-plan">
+        <h2>Planta da Casa</h2>
+        <img src="images/floorplan.png" alt="Planta da Casa">
+    </section>
+
+    <footer>
+        <p>NOVA Home &copy; 2024</p>
+    </footer>
+</body>
+</html>

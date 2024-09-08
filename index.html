@@ -3,65 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVA Home</title>
+    <title>NOVA Home - Central de Usuário</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
         <h1>NOVA Home</h1>
-        <nav>
-            <ul>
-                <li><a href="#profile">Usuários</a></li>
-                <li><a href="#sensors">Sensores</a></li>
-                <li><a href="#floorplan">Planta da Casa</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section id="profile">
-        <h2>Quem está controlando?</h2>
-        <div class="user-selection">
+    <section id="user-selection">
+        <h2>Quem está conectando?</h2>
+        <div class="user-list">
             <div class="user-card">
                 <img src="images/user1.png" alt="User 1">
                 <p>Usuário 1</p>
             </div>
-            <div class="user-card">
-                <img src="images/user2.png" alt="User 2">
-                <p>Usuário 2</p>
-            </div>
-            <!-- Adicione mais usuários se necessário -->
+            <!-- Adicionar mais usuários -->
+        </div>
+        <div class="add-user">
+            <a href="cadastro.html" class="btn">Adicionar Habitante</a>
         </div>
     </section>
 
-    <section id="sensors">
-        <h2>Sensores da Casa</h2>
-        <div class="sensor-list">
-            <div class="sensor-item">
-                <h3>Sensor de Luz 1</h3>
-                <p>Status: <span id="sensor-light-1">Ativo</span></p>
-            </div>
-            <div class="sensor-item">
-                <h3>Sensor de Temperatura 1</h3>
-                <p>Status: <span id="sensor-temp-1">22°C</span></p>
-            </div>
-            <!-- Simule mais sensores aqui -->
-        </div>
-    </section>
-
-    <section id="floorplan">
-        <h2>Planta da Casa</h2>
-        <img src="images/floorplan.png" alt="Planta da Casa">
-        <div class="room-controls">
-            <h3>Meu Quarto</h3>
-            <label>Luz: 
-                <input type="range" min="0" max="100" value="50" id="light-control">
-            </label>
-            <label>Temperatura: 
-                <input type="range" min="16" max="30" value="22" id="temp-control">
-            </label>
-        </div>
-    </section>
-
-    <script src="js/script.js"></script>
+    <footer>
+        <p>NOVA Home &copy; 2024</p>
+    </footer>
 </body>
 </html>
