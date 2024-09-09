@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const nascimentoInput = document.getElementById('nascimento');
     const responsavelGroup = document.getElementById('responsavel-group');
 
+document.getElementById('adicionarHabitanteBtn').addEventListener('click', function() {
+        alert('Habitante adicionado!');
+    });
+    
     function calcularIdade(dataNascimento) {
         const hoje = new Date();
         let idade = hoje.getFullYear() - dataNascimento.getFullYear();
