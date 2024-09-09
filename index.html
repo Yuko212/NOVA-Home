@@ -8,6 +8,7 @@
 </head>
 <body>
     <header>
+        <div id="header"></div>
         <h1>NOVA Home</h1>
     </header>
 
@@ -22,7 +23,12 @@
     </section>
 
     <footer>
-        <p>NOVA Home &copy; 2024</p>
+        <div id="footer"></div>
     </footer>
+
+    <script>
+        document.getElementById('header').innerHTML = '<object type="text/html" data="header.html" ></object>';
+        document.getElementById('footer').innerHTML = '<object type="text/html" data="footer.html" ></object>';
+    </script>
 </body>
 </html>

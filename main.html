@@ -8,6 +8,7 @@
 </head>
 <body>
     <header>
+        <div id="header"></div>
         <h1>Casa de [Sobrenome da Família]</h1>
         <nav>
             <ul>
@@ -22,13 +23,17 @@
         <h2>Quem está na casa?</h2>
         <div class="status">
             <p>Usuário 1 - Em Casa</p>
-            <p>Usuário 2 - Fora de Casa</p>
-            <!-- Simulação dos usuários logados e suas localizações -->
+            <p>Usuário 2 - Fora de Casa</p> 
         </div>
     </section>
 
     <footer>
-        <p>NOVA Home &copy; 2024</p>
+        <div id="footer"></div>
     </footer>
+
+    <script>
+        document.getElementById('header').innerHTML = '<object type="text/html" data="header.html" ></object>';
+        document.getElementById('footer').innerHTML = '<object type="text/html" data="footer.html" ></object>';
+    </script>
 </body>
 </html>

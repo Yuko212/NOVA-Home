@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return idade;
     }
 
-    // Exibir campo de responsável para menores de idade
     nascimentoInput.addEventListener('change', function () {
         const dataNascimento = new Date(nascimentoInput.value);
         const idade = calcularIdade(dataNascimento);
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Simula o cadastro de usuário e redireciona para a página principal
     form.addEventListener('submit', function (event) {
         event.preventDefault(); 
         alert('Cadastro realizado com sucesso!');
