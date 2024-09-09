@@ -3,9 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const nascimentoInput = document.getElementById('nascimento');
     const responsavelGroup = document.getElementById('responsavel-group');
 
-document.getElementById('adicionarHabitanteBtn').addEventListener('click', function() {
-        alert('Habitante adicionado!');
+    document.getElementById("add-habitants").addEventListener("click", function() {
+        // Ação ao clicar no botão
+        alert("Adicionar Habitantes clicado!");
     });
+    
     
     function calcularIdade(dataNascimento) {
         const hoje = new Date();

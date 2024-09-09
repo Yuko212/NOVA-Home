@@ -24,17 +24,22 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar o header */
 }
 
+/* Estilo da imagem do logo */
 header img {
     max-height: 100%; 
     max-width: 100%; 
     height: auto; 
     width: auto; 
     object-fit: contain; 
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
+/* Tamanho fixo para a logo */
 .logo {
-    width:100px ;
-    height:100px ;
+    width: 100px;
+    height: 100px;
 }
 
 header h1 {
@@ -42,6 +47,14 @@ header h1 {
     color: #D9B1AD;
     margin-left: 20px;
     font-size: 1.5rem;
+}
+
+/* Estilo do título "Quem está conectando?" */
+#main-title {
+    margin-top: 20vh; /* Aumentar a distância entre o header e o título */
+    text-align: center;
+    font-size: 24px;
+    color: #333;
 }
 
 main {
@@ -52,7 +65,6 @@ main {
     padding-top: 140px; /* Ajuste para compensar a altura do header fixo */
     padding-bottom: 60px;
 }
-
 
 #cadastro {
     background-color: #F2DFDF;
@@ -135,4 +147,20 @@ footer {
     color: #595859;
     z-index: 1000;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar o footer */
+}
+
+/* Estilo do botão de adicionar habitantes */
+button#add-habitants {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #e6a6a6;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button#add-habitants:hover {
+    background-color: #d88b8b;
 }
