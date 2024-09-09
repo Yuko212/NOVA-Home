@@ -3,6 +3,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const nascimentoInput = document.getElementById('nascimento');
     const responsavelGroup = document.getElementById('responsavel-group');
 
+    // Função para calcular idade
+    function calcularIdade(dataNascimento) {
+        const hoje = new Date();
+        let idade = hoje.getFullYear() - dataNascimento.getFullYear();
+        const mes = hoje.getMonth() - dataNascimento.getMonth();
+        if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+            idade--;
+        }
+        return idade;
+    }
+
+    // Exibir campo de responsável para menores de idade
     nascimentoInput.addEventListener('change', function () {
         const dataNascimento = new Date(nascimentoInput.value);
         const idade = calcularIdade(dataNascimento);
@@ -14,23 +26,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Simula o cadastro de usuário e redireciona para a página principal
     form.addEventListener('submit', function (event) {
         event.preventDefault(); // Previne o envio real do formulário
 
-        // Simula o cadastro de usuário
+        // Simula o cadastro
         alert('Cadastro realizado com sucesso!');
 
-        // Redireciona para a página principal
-        window.location.href = 'main.html';
+        // Redireciona para a página principal após o cadastro
+        window.location.href = 'main.html'; // Verifique se o arquivo main.html existe
     });
-
-    function calcularIdade(dataNascimento) {
-        const hoje = new Date();
-        let idade = hoje.getFullYear() - dataNascimento.getFullYear();
-        const mes = hoje.getMonth() - dataNascimento.getMonth();
-        if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
-            idade--;
-        }
-        return idade;
-    }
 });
