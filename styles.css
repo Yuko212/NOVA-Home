@@ -4,36 +4,30 @@ body {
     color: #595859;
     margin: 0;
     padding: 0;
-    height: 100vh; /* Usando viewport height para ocupar a altura total da tela */
+    min-height: 100vh; /* Ajuste para altura mínima */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo horizontalmente */
 }
 
 header {
     width: 100%;
-    position: fixed; /* Fixa o header no topo da página */
+    position: fixed; 
     top: 0;
     left: 0;
     background-color: #F2DFDF;
-    padding: 10px;
-    z-index: 1000; /* Garante que o header esteja acima de outros elementos */
+    padding: 15px 20px; /* Melhor padding para espaçamento */
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-header img {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar o header */
 }
 
 header h1 {
     text-align: center;
     color: #D9B1AD;
     margin-left: 20px;
+    font-size: 1.5rem;
 }
 
 main {
@@ -41,8 +35,8 @@ main {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    padding-top: 120px; /* Espaço para o header fixo */
-    padding-bottom: 60px; /* Espaço para o footer fixo */
+    padding-top: 100px; /* Ajustando para compensar o header fixo */
+    padding-bottom: 60px;
 }
 
 #cadastro {
@@ -52,7 +46,7 @@ main {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
-    margin: 0 auto; /* Centraliza horizontalmente */
+    margin: 20px auto; /* Margem ajustada para centralização */
 }
 
 h2 {
@@ -68,7 +62,7 @@ form {
 }
 
 .form-group {
-    width: 48%;
+    width: 100%; /* Mudança para garantir melhor usabilidade em telas menores */
 }
 
 .form-group label {
@@ -80,35 +74,50 @@ form {
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #D9B1AD;
     border-radius: 5px;
     background-color: #F2F2F2;
+    box-sizing: border-box; /* Garantindo que o padding seja considerado na largura */
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #D9C1B8; /* Mudança de cor ao focar */
+    box-shadow: 0 0 5px rgba(217, 177, 173, 0.5); /* Efeito de foco */
 }
 
 button.btn {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #D9B1AD;
     border: none;
     color: white;
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s ease; /* Suavizando a transição de hover */
 }
 
 button.btn:hover {
     background-color: #D9C1B8;
 }
 
+button.btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(217, 177, 173, 0.5); /* Efeito de foco no botão */
+}
+
 footer {
     width: 100%;
-    position: fixed; /* Fixa o footer na parte inferior da página */
+    position: fixed; 
     bottom: 0;
     left: 0;
     background-color: #F2DFDF;
     padding: 10px;
     text-align: center;
     color: #595859;
-    z-index: 1000; /* Garante que o footer esteja acima de outros elementos */
+    z-index: 1000;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar o footer */
 }

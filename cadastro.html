@@ -7,53 +7,108 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div id="header"></div>
+    <header id="header">
     </header>
 
-    <section id="cadastro">
-        <h2>Cadastro de Habitante</h2>
-        <form id="cadastroForm">
-            <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-            </div>
-            <div class="form-group">
-                <label for="nascimento">Data de Nascimento:</label>
-                <input type="date" id="nascimento" name="nascimento" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone" required>
-            </div>
+    <main>
+        <section id="cadastro">
+            <h2>Cadastro de Habitante</h2>
+            <form id="cadastroForm">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="nascimento">Data de Nascimento:</label>
+                    <input type="date" id="nascimento" name="nascimento" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
 
-            <!-- Campo de Responsável aparecerá condicionalmente -->
-            <div class="form-group" id="responsavel-group" style="display: none;">
-                <label for="adulto">Responsável (se menor de idade):</label>
-                <select id="adulto" name="adulto">
-                    <option value="">Selecione um responsável</option>
-                    <!-- Adicionar responsáveis cadastrados aqui -->
-                </select>
-            </div>
+                <!-- Campo de Responsável aparecerá condicionalmente -->
+                <div class="form-group" id="responsavel-group" style="display: none;">
+                    <label for="adulto">Responsável (se menor de idade):</label>
+                    <select id="adulto" name="adulto">
+                        <option value="">Selecione um responsável</option>
+                        <!-- Adicionar responsáveis cadastrados aqui -->
+                    </select>
+                </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn">Cadastrar</button>
-            </div>
-        </form>
-    </section>
+                <div class="form-group">
+                    <button type="submit" class="btn">Cadastrar</button>
+                </div>
+            </form>
+        </section>
+    </main>
 
-    <footer>
-        <div id="footer"></div>
+    <footer id="footer">
+        <!-- Conteúdo do footer será carregado dinamicamente -->
     </footer>
 
-    <script src="script.js"></script>
     <script>
-        document.getElementById('header').innerHTML = '<object type="text/html" data="header.html" ></object>';
-        document.getElementById('footer').innerHTML = '<object type="text/html" data="footer.html" ></object>';
+        // Função para carregar HTML externo em um elemento
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar ' + filePath);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(elementId).innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o conteúdo: ', error);
+                });
+        }
+
+        // Carregar header e footer dinamicamente
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
+
+        // Função para verificar se o usuário é menor de idade
+        function verificarIdade() {
+            const nascimento = document.getElementById('nascimento').value;
+            const dataNascimento = new Date(nascimento);
+            const hoje = new Date();
+            const idade = hoje.getFullYear() - dataNascimento.getFullYear();
+            const mes = hoje.getMonth() - dataNascimento.getMonth();
+
+            // Ajustar idade caso o mês atual seja antes do mês de nascimento
+            if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+                idade--;
+            }
+
+            // Mostrar campo de responsável se menor de 18 anos
+            const responsavelGroup = document.getElementById('responsavel-group');
+            if (idade < 18) {
+                responsavelGroup.style.display = 'block';
+            } else {
+                responsavelGroup.style.display = 'none';
+            }
+        }
+
+        // Adicionar evento para verificar idade ao mudar a data de nascimento
+        document.getElementById('nascimento').addEventListener('change', verificarIdade);
+
+        // Validação básica do formulário
+        document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+
+            if (!nome || !email || !telefone) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                event.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>

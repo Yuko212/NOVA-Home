@@ -7,46 +7,74 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div id="header"></div>
-        <h1>Gerenciar Casa</h1>
+    <header id="header">
+        <!-- O conteúdo do header será carregado dinamicamente -->
     </header>
 
-    <section id="add-comodo">
-        <h2>Adicionar Cômodo</h2>
-        <form>
-            <label for="comodo">Nome do Cômodo:</label>
-            <input type="text" id="comodo" name="comodo" required>
-            
-            <label for="tipo">Tipo de Cômodo:</label>
-            <select id="tipo" name="tipo">
-                <option value="quarto">Quarto</option>
-                <option value="banheiro">Banheiro</option>
-                <option value="sala">Sala</option>
-                <option value="cozinha">Cozinha</option>
-                <option value="lavanderia">Lavanderia</option>
-                <option value="outro">Outro (especificar)</option>
-            </select>
-            
-            <label for="dimensoes">Dimensões do Cômodo (em metros):</label>
-            <input type="text" id="dimensoes" name="dimensoes" placeholder="Ex: 5x7x3.5" required>
-            
-            <button type="submit" class="btn">Adicionar Cômodo</button>
-        </form>
-    </section>
+    <main>
+        <h1>Gerenciar Casa</h1>
 
-    <section id="house-plan">
-        <h2>Planta da Casa</h2>
-        <img src="images/floorplan.png" alt="Planta da Casa">
-    </section>
+        <section id="add-comodo">
+            <h2>Adicionar Cômodo</h2>
+            <form action="cadastrar_comodo.php" method="POST">
+                <div class="form-group">
+                    <label for="comodo">Nome do Cômodo:</label>
+                    <input type="text" id="comodo" name="comodo" required>
+                </div>
 
-    <footer>
-        <div id="footer"></div>
+                <div class="form-group">
+                    <label for="tipo">Tipo de Cômodo:</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="quarto">Quarto</option>
+                        <option value="banheiro">Banheiro</option>
+                        <option value="sala">Sala</option>
+                        <option value="cozinha">Cozinha</option>
+                        <option value="lavanderia">Lavanderia</option>
+                        <option value="outro">Outro (especificar)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dimensoes">Dimensões do Cômodo (em metros):</label>
+                    <input type="text" id="dimensoes" name="dimensoes" pattern="\d+(\.\d+)?x\d+(\.\d+)?x\d+(\.\d+)?" placeholder="Ex: 5x7x3.5" required>
+                    <small>Formato: largura x comprimento x altura</small>
+                </div>
+                
+                <button type="submit" class="btn">Adicionar Cômodo</button>
+            </form>
+        </section>
+
+        <section id="house-plan">
+            <h2>Planta da Casa</h2>
+            <img src="PLANTA.png" alt="Planta da Casa" width="600">
+        </section>
+    </main>
+
+    <footer id="footer">
+        <!-- O conteúdo do footer será carregado dinamicamente -->
     </footer>
 
     <script>
-        document.getElementById('header').innerHTML = '<object type="text/html" data="header.html" ></object>';
-        document.getElementById('footer').innerHTML = '<object type="text/html" data="footer.html" ></object>';
+        // Função para carregar HTML externo em um elemento
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar ' + filePath);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(elementId).innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o conteúdo: ', error);
+                });
+        }
+
+        // Carregar header e footer dinamicamente
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
     </script>
 </body>
 </html>

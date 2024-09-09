@@ -7,28 +7,47 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div id="header"></div>
-        <h1>NOVA Home</h1>
+    <header id="header">
+        <!-- O conteúdo do header será carregado dinamicamente -->
     </header>
 
-    <section id="user-selection">
-        <h2>Quem está conectando?</h2>
-        <div class="user-list">
-            <!-- Lista de usuários será preenchida quando houver habitantes cadastrados -->
-        </div>
-        <div class="add-user">
-            <a href="cadastro.html" class="btn">Adicionar Habitante</a>
-        </div>
-    </section>
+    <main>
+        <section id="user-selection">
+            <h2>Quem está conectando?</h2>
+            <div class="user-list">
+                <!-- Lista de usuários será preenchida quando houver habitantes cadastrados -->
+            </div>
+            <div class="add-user">
+                <a href="cadastro.html" class="btn">Adicionar Habitante</a>
+            </div>
+        </section>
+    </main>
 
-    <footer>
-        <div id="footer"></div>
+    <footer id="footer">
+        <!-- O conteúdo do footer será carregado dinamicamente -->
     </footer>
 
     <script>
-        document.getElementById('header').innerHTML = '<object type="text/html" data="header.html" ></object>';
-        document.getElementById('footer').innerHTML = '<object type="text/html" data="footer.html" ></object>';
+        // Função para carregar HTML externo em um elemento
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar ' + filePath);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(elementId).innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o conteúdo: ', error);
+                });
+        }
+
+        // Carregando header e footer dinamicamente
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
     </script>
 </body>
 </html>
