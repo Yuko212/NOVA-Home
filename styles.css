@@ -4,16 +4,32 @@ body {
     color: #595859;
     margin: 0;
     padding: 0;
-    /* Remova os seguintes itens para não centralizar o conteúdo no centro da página */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* height: 100vh; */
+    height: 100%; /* Garante que o body ocupe 100% da altura da página */
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+    position: fixed; /* Fixa o header no topo */
+    top: 0;
+    left: 0;
+    background-color: #F2DFDF;
+    z-index: 1000;
+    padding: 10px;
+}
+
+header img {
+    width: 150px; /* Ajuste o tamanho da logo */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block;
+    margin: 0 auto; /* Centraliza a logo no header */
 }
 
 header h1 {
     text-align: center;
     color: #D9B1AD;
+    margin-top: 10px;
 }
 
 #cadastro {
@@ -23,7 +39,7 @@ header h1 {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
-    margin: 0 auto; /* Centralizar horizontalmente */
+    margin: 150px auto 20px auto; /* Centraliza o formulário horizontalmente e adiciona espaço acima para o header fixo */
 }
 
 h2 {
@@ -73,7 +89,19 @@ button.btn:hover {
 }
 
 footer {
+    width: 100%;
+    position: fixed; /* Fixa o footer na parte inferior */
+    bottom: 0;
+    left: 0;
+    background-color: #F2DFDF;
+    padding: 10px;
     text-align: center;
-    margin-top: 20px;
     color: #595859;
+    z-index: 1000;
+}
+
+main {
+    flex: 1; /* Garante que o conteúdo ocupe o espaço entre o header e o footer */
+    padding-top: 120px; /* Espaço para o header fixo */
+    padding-bottom: 60px; /* Espaço para o footer fixo */
 }
