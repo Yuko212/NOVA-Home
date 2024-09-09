@@ -4,10 +4,11 @@ body {
     color: #595859;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    /* Remova os seguintes itens para não centralizar o conteúdo no centro da página */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* height: 100vh; */
 }
 
 header h1 {
@@ -22,6 +23,7 @@ header h1 {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
+    margin: 0 auto; /* Centralizar horizontalmente */
 }
 
 h2 {
