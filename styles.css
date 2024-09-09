@@ -11,13 +11,15 @@ body {
 }
 
 header {
-    width: 100%;
-    position: fixed; /* Fixa o header no topo da página */
+    width: 800px;
+    position: relative;
     top: 0;
     left: 0;
     background-color: #F2DFDF;
     padding: 10px;
-    z-index: 1000; /* Garante que o header esteja acima de outros elementos */
+    z-index: 1000;
+    margin: 0 auto;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
