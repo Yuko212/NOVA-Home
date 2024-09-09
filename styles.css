@@ -11,23 +11,23 @@ body {
 }
 
 header {
-    width: 800px;
-    position: relative;
+    width: 100%;
+    position: fixed; /* Fixa o header no topo da página */
     top: 0;
     left: 0;
     background-color: #F2DFDF;
     padding: 10px;
-    z-index: 1000;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    z-index: 1000; /* Garante que o header esteja acima de outros elementos */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 header img {
-    max-width: 150px; /* Define um tamanho máximo para a logo */
-    height: auto; /* Mantém a proporção da logo */
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 header h1 {
