@@ -32,6 +32,11 @@ header img {
     object-fit: contain; 
 }
 
+.logo {
+    width:10px ;
+    height:10px ;
+}
+
 header h1 {
     text-align: center;
     color: #D9B1AD;
@@ -96,11 +101,6 @@ form {
     outline: none;
     border-color: #D9C1B8; /* Mudança de cor ao focar */
     box-shadow: 0 0 5px rgba(217, 177, 173, 0.5); /* Efeito de foco */
-}
-
-.logo {
-    width:10px;
-    height:10px;
 }
 
 button.btn {
