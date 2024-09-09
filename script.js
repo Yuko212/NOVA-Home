@@ -28,12 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Simula o cadastro de usuário e redireciona para a página principal
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Previne o envio real do formulário
-
-        // Simula o cadastro
+        event.preventDefault(); 
         alert('Cadastro realizado com sucesso!');
-
-        // Redireciona para a página principal após o cadastro
-        window.location.href = 'main.html'; // Verifique se o arquivo main.html existe
+        window.location.href = 'main.html'; 
     });
 });
