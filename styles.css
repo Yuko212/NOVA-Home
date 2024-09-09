@@ -35,9 +35,10 @@ main {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    padding-top: 100px; /* Ajustando para compensar o header fixo */
+    padding-top: 140px; /* Ajuste para compensar a altura do header fixo */
     padding-bottom: 60px;
 }
+
 
 #cadastro {
     background-color: #F2DFDF;
