@@ -11,7 +11,7 @@ body {
 
 header {
     width: 100%;
-    height: 20%; /* Defina a altura que o header terá */
+    height: 15%; /* Defina a altura que o header terá */
     position: fixed;
     top: 0;
     left: 0;
@@ -22,6 +22,14 @@ header {
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar o header */
+}
+
+header img {
+    max-height: 100%; 
+    max-width: 100%; 
+    height: auto; 
+    width: auto; 
+    object-fit: contain; 
 }
 
 header h1 {
