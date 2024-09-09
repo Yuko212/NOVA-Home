@@ -11,11 +11,12 @@ body {
 
 header {
     width: 100%;
-    position: fixed; 
+    height: 20%; /* Defina a altura que o header terá */
+    position: fixed;
     top: 0;
     left: 0;
     background-color: #F2DFDF;
-    padding: 15px 20px; /* Melhor padding para espaçamento */
+    padding: 10px;
     z-index: 1000;
     display: flex;
     justify-content: center;
