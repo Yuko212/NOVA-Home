@@ -7,29 +7,26 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Estilo para garantir que a foto do perfil tenha no máximo 120x120px */
-        .profile-pic {
+        #profile-pic {
             max-width: 120px;
             max-height: 120px;
             object-fit: cover;
             border-radius: 50%; /* Opcional: para deixar a foto redonda */
             display: block; /* Para garantir que a imagem seja exibida como bloco */
-            margin: 10px; /* Margem entre as fotos */
+            margin: 10px auto; /* Centralizar a imagem horizontalmente */
         }
 
-        /* Estilo adicional para o container das fotos do perfil */
+        /* Estilo adicional para o container da foto do perfil */
         #profile-section {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap; /* Permite que as fotos se ajustem à largura disponível */
-            gap: 20px; /* Espaçamento entre as fotos */
+            text-align: center; /* Centraliza o conteúdo do container */
             margin: 20px 0; /* Adiciona margem superior e inferior ao container */
         }
 
         /* Estilo para o nome do usuário */
-        .user-name {
+        #user-name {
             font-size: 1.2rem;
             color: #595859;
-            text-align: center; /* Centraliza o texto abaixo da foto */
+            margin-top: 10px;
         }
 
         /* Estilo para o container dos botões */
@@ -79,7 +76,9 @@
         <section id="user-selection">
             <h1 id="main-title">Quem está conectando?</h1>
             <div id="profile-section">
-                <!-- As fotos dos usuários serão exibidas aqui -->
+                <!-- A foto do usuário será exibida aqui -->
+                <img id="profile-pic" src="" alt="Foto de Perfil" style="display: none; cursor: pointer;">
+                <div id="user-name"></div> <!-- Exibição do nome do usuário -->
             </div>
             <div id="button-container">
                 <button id="add-habitants" class="btn">Adicionar Habitantes</button>
@@ -92,9 +91,6 @@
         <!-- O conteúdo do footer será carregado dinamicamente -->
     </footer>
 
-    <!-- Carregando o script para manipulação de usuários e fotos -->
-    <script src="script.js"></script>
-    <script src="foto.js"></script>
     <script>
         // Função para carregar HTML externo em um elemento
         function loadHTML(elementId, filePath) {
@@ -116,6 +112,49 @@
         // Carregando header e footer dinamicamente
         loadHTML('header', 'header.html');
         loadHTML('footer', 'footer.html');
+
+        // Exibindo a foto do perfil e o nome do usuário se estiver disponível no localStorage
+        document.addEventListener('DOMContentLoaded', function () {
+            const profilePic = document.getElementById('profile-pic');
+            const userName = document.getElementById('user-name');
+            const photo = localStorage.getItem('foto');
+            const name = localStorage.getItem('apelido');
+
+            if (photo) {
+                profilePic.src = photo;
+                profilePic.style.display = 'block';
+                profilePic.addEventListener('click', function() {
+                    window.location.href = 'login.html';
+                });
+            }
+
+            if (name) {
+                userName.textContent = name;
+            }
+
+            // Evento para remover um habitante
+            const removeHabitantsButton = document.getElementById('remove-habitants');
+            if (removeHabitantsButton) {
+                removeHabitantsButton.addEventListener('click', function() {
+                    const userToRemove = prompt('Digite o nome do usuário para remover:');
+                    if (userToRemove) {
+                        // Remover usuário do localStorage
+                        if (localStorage.getItem('apelido') === userToRemove) {
+                            localStorage.removeItem('apelido');
+                            localStorage.removeItem('foto');
+                            // Limpar o conteúdo da página
+                            profilePic.src = '';
+                            profilePic.style.display = 'none';
+                            userName.textContent = '';
+                            alert('Usuário removido com sucesso!');
+                        } else {
+                            alert('Usuário não encontrado.');
+                        }
+                    }
+                });
+            }
+        });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
