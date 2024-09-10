@@ -21,6 +21,26 @@
             text-align: center; /* Centraliza o conteúdo do container */
             margin: 20px 0; /* Adiciona margem superior e inferior ao container */
         }
+
+        /* Estilo do botão de remover habitantes */
+        button#remove-habitants {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #e6a6a6;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            font-family: 'Georgia', serif; /* Fonte ajustada */
+            text-align: center; /* Centraliza o texto */
+            display: inline-block; /* Faz o botão ficar ao lado do botão de adicionar habitantes */
+            margin-left: 10px; /* Adiciona margem entre os botões */
+        }
+
+        button#remove-habitants:hover {
+            background-color: #d88b8b;
+        }
     </style>
 </head>
 <body>
@@ -37,6 +57,7 @@
             </div>
             <div id="main-content">
                 <button id="add-habitants">Adicionar Habitantes</button>
+                <button id="remove-habitants">Remover Habitantes</button>
             </div>
         </section>
     </main>
@@ -76,6 +97,35 @@
                 profilePic.style.display = 'block';
                 profilePic.addEventListener('click', function() {
                     window.location.href = 'login.html';
+                });
+            }
+
+            // Evento para remover um habitante
+            const removeHabitantsButton = document.getElementById('remove-habitants');
+            if (removeHabitantsButton) {
+                removeHabitantsButton.addEventListener('click', function() {
+                    // Obtém a lista de usuários no localStorage
+                    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+                    
+                    // Cria um menu para seleção de usuário
+                    const selecionado = prompt("Digite o nome do usuário que deseja remover:", usuarios.join(", "));
+                    
+                    if (selecionado && usuarios.includes(selecionado)) {
+                        // Remove o usuário da lista
+                        usuarios = usuarios.filter(usuario => usuario !== selecionado);
+                        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+                        // Remove a foto do localStorage
+                        localStorage.removeItem('foto');
+
+                        // Remove a foto da página
+                        profilePic.src = '';
+                        profilePic.style.display = 'none';
+                        
+                        alert(`Usuário "${selecionado}" removido com sucesso.`);
+                    } else {
+                        alert("Usuário não encontrado.");
+                    }
                 });
             }
         });
