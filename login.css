@@ -7,13 +7,13 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Cor de fundo leve */
-    color: #333; /* Cor do texto */
+    background-color: #F2F2F2; /* Cor de fundo leve */
+    color: #595859; /* Cor do texto principal */
 }
 
 header, footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #595859;
+    color: #F2DFDF;
     text-align: center;
     padding: 1rem;
 }
@@ -23,11 +23,10 @@ main {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 160px); /* Ajustar para não sobrepor o header e footer */
-    background-color: #fff;
 }
 
 #login-section {
-    background: #fff;
+    background: #F2DFDF;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -38,7 +37,7 @@ main {
 #login-section h1 {
     margin-bottom: 1rem;
     font-size: 2rem;
-    color: #333;
+    color: #595859;
 }
 
 #loginForm {
@@ -49,27 +48,29 @@ main {
 #loginForm label {
     margin-bottom: 0.5rem;
     font-weight: bold;
+    color: #595859;
 }
 
 #loginForm input[type="password"] {
-    padding: 0.5rem;
-    border: 1px solid #ddd;
+    padding: 0.75rem;
+    border: 1px solid #D9B1AD;
     border-radius: 4px;
     margin-bottom: 1rem;
     font-size: 1rem;
+    background-color: #F2F2F2;
 }
 
 #loginForm button {
     padding: 0.75rem;
     border: none;
     border-radius: 4px;
-    background-color: #333;
-    color: #fff;
+    background-color: #D9B1AD;
+    color: #F2DFDF;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 #loginForm button:hover {
-    background-color: #555;
+    background-color: #D9C1B8;
 }
