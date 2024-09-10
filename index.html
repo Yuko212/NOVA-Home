@@ -12,6 +12,14 @@
             max-height: 120px;
             object-fit: cover;
             border-radius: 50%; /* Opcional: para deixar a foto redonda */
+            display: block; /* Para garantir que a imagem seja exibida como bloco */
+            margin: 10px auto; /* Centralizar a imagem horizontalmente */
+        }
+
+        /* Estilo adicional para o container da foto do perfil */
+        #profile-section {
+            text-align: center; /* Centraliza o conteúdo do container */
+            margin: 20px 0; /* Adiciona margem superior e inferior ao container */
         }
     </style>
 </head>
@@ -23,12 +31,12 @@
     <main>
         <section id="user-selection">
             <h1 id="main-title">Quem está conectando?</h1>
+            <div id="profile-section">
+                <!-- A foto do usuário será exibida aqui -->
+                <img id="profile-pic" src="" alt="Foto de Perfil" style="display: none; cursor: pointer;">
+            </div>
             <div id="main-content">
                 <button id="add-habitants">Adicionar Habitantes</button>
-                <div id="profile-section">
-                    <!-- A foto do usuário será exibida aqui -->
-                    <img id="profile-pic" src="" alt="Foto de Perfil" style="display: none; cursor: pointer;">
-                </div>
             </div>
         </section>
     </main>
