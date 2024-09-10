@@ -11,7 +11,7 @@ body {
 
 header {
     width: 100%;
-    height: 15%; /* Defina a altura que o header terá */
+    height: 10%; /* Defina a altura que o header terá */
     position: fixed;
     top: 0;
     left: 0;
