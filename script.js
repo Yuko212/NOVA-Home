@@ -65,9 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // Remover o alerta de sucesso
-            // alert('Cadastro realizado com sucesso!');
-
             // Redirecionamento após o cadastro ser finalizado
             window.location.href = 'persona.html';
         });
@@ -101,5 +98,25 @@ document.addEventListener('DOMContentLoaded', function () {
             };
             reader.readAsDataURL(foto);
         });
+    }
+
+    // Função para verificar e mostrar a foto de perfil no index.html
+    function mostrarPerfil() {
+        const perfilImg = document.getElementById('perfil-img');
+        const apelido = localStorage.getItem('apelido');
+        const foto = localStorage.getItem('foto');
+
+        if (apelido && foto) {
+            perfilImg.src = foto;
+            perfilImg.alt = apelido;
+            perfilImg.style.display = 'block';
+        } else {
+            perfilImg.style.display = 'none';
+        }
+    }
+
+    // Chamar a função quando a página for carregada
+    if (document.getElementById('perfil-img')) {
+        mostrarPerfil();
     }
 });
