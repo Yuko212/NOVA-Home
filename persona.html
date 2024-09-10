@@ -41,29 +41,39 @@
     <script src="script.js"></script>
     <script>
         document.getElementById('personalizacaoForm').addEventListener('submit', function (event) {
-            event.preventDefault();
+    event.preventDefault();
 
-            const apelido = document.getElementById('apelido').value.trim();
-            const fotoInput = document.getElementById('foto');
-            const senha = document.getElementById('senha').value;
+    const apelido = document.getElementById('apelido').value.trim();
+    const fotoInput = document.getElementById('foto');
+    const senha = document.getElementById('senha').value;
 
-            // Verifica se todos os campos obrigatórios estão preenchidos
-            if (!apelido || !fotoInput.files.length || !senha) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                return;
-            }
+    // Verifica se todos os campos obrigatórios estão preenchidos
+    if (!apelido || !fotoInput.files.length || !senha) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+    }
 
-            // Armazena a foto como URL de dados (base64)
-            const foto = URL.createObjectURL(fotoInput.files[0]);
+    // Converte a imagem para base64
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const fotoBase64 = e.target.result;
 
-            // Recupera os dados do localStorage
-            let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+        // Recupera os habitantes já cadastrados
+        let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
 
-            // Adiciona a foto ao último habitante
-            if (habitantes.length > 0) {
-                habitantes[habitantes.length - 1].foto = foto;
-                localStorage.setItem('habitantes', JSON.stringify(habitantes));
-            }
+        // Atualiza o último habitante com o apelido e a foto
+        habitantes[habitantes.length - 1].foto = fotoBase64;
+        habitantes[habitantes.length - 1].apelido = apelido;
+
+        // Atualiza o localStorage
+        localStorage.setItem('habitantes', JSON.stringify(habitantes));
+
+        // Redireciona para a página principal
+        window.location.href = 'main.html';
+    };
+
+    // Lê a imagem escolhida pelo usuário
+    reader.readAsDataURL(fotoInput.files[0]);
 
             // Redireciona para main.html
             window.location.href = 'main.html'; // Redireciona para main.html
