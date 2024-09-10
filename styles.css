@@ -31,13 +31,16 @@ header img {
     height: auto; 
     width: auto; 
     object-fit: contain; 
-    position: absolute;
+    position: relative;
     top: 10px;
     left: 10px;
 }
 
 /* Tamanho fixo para a logo */
 .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100px;
     height: 100px;
 }
