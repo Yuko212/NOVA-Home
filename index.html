@@ -129,32 +129,28 @@
             }
 
             if (name) {
-                userName.textContent = name;
+                const nascimento = document.getElementById('nascimento').value;
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmar-senha').value;
+
+            // Verifica se as senhas coincidem
+            if (senha !== confirmarSenha) {
+                alert('As senhas não coincidem.');
+                return; // Impede o envio do formulário
             }
 
-            // Evento para remover um habitante
-            const removeHabitantsButton = document.getElementById('remove-habitants');
-            if (removeHabitantsButton) {
-                removeHabitantsButton.addEventListener('click', function() {
-                    const userToRemove = prompt('Digite o nome do usuário para remover:');
-                    if (userToRemove) {
-                        // Remover usuário do localStorage
-                        if (localStorage.getItem('apelido') === userToRemove) {
-                            localStorage.removeItem('apelido');
-                            localStorage.removeItem('foto');
-                            // Limpar o conteúdo da página
-                            profilePic.src = '';
-                            profilePic.style.display = 'none';
-                            userName.textContent = '';
-                            alert('Usuário removido com sucesso!');
-                        } else {
-                            alert('Usuário não encontrado.');
-                        }
-                    }
-                });
-            }
+            // Salva os dados no localStorage
+            localStorage.setItem('apelido', nome);
+            localStorage.setItem('nascimento', nascimento);
+            localStorage.setItem('email', email);
+            localStorage.setItem('telefone', telefone);
+            localStorage.setItem('senha', senha);
+
+            // Redireciona para a página inicial
+            window.location.href = 'index.html';
         });
-    </script>
-    <script src="script.js"></script>
-</body>
-</html>
+    }
+});
+

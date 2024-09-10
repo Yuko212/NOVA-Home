@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Código existente para cadastro.html
     const cadastroForm = document.getElementById('cadastroForm');
     const nascimentoInput = document.getElementById('nascimento');
     const responsavelGroup = document.getElementById('responsavel-group');
@@ -65,45 +64,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
+            // Salvando dados no localStorage
+            let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+            habitantes.push({ nome, email, telefone });
+            localStorage.setItem('habitantes', JSON.stringify(habitantes));
+
             // Redirecionamento após o cadastro ser finalizado
-            window.location.href = 'persona.html';
+            window.location.href = 'index.html';
         });
     }
 
-    // Código para persona.html
-    const personaForm = document.getElementById('personalizacaoForm');
+    // Código para index.html
+    const profilePic = document.getElementById('profile-pic');
+    const userName = document.getElementById('user-name');
 
-    if (personaForm) {
-        personaForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Previne o comportamento padrão do envio
-
-            const apelido = document.getElementById('apelido').value.trim();
-            const fotoInput = document.getElementById('foto');
-            const foto = fotoInput.files[0];
-            const senhaInput = document.getElementById('senha'); // Novo campo de senha
-            const senha = senhaInput ? senhaInput.value.trim() : ''; // Novo campo de senha (opcional)
-
-            if (!apelido || !foto || !senha) {
-                alert('Por favor, preencha todos os campos obrigatórios e selecione uma foto.');
-                return;
-            }
-
-            // Salvando dados no localStorage
-            localStorage.setItem('apelido', apelido);
-            localStorage.setItem('senha', senha); // Salvando a senha
-
-            // Para salvar a foto, você pode converter a foto em uma URL de dados e salvar no localStorage
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                localStorage.setItem('foto', e.target.result);
-                console.log('Foto salva no localStorage e redirecionando para main.html');
-                // Redirecionamento para main.html após salvar
-                window.location.href = 'main.html';
-            };
-            reader.onerror = function(e) {
-                console.error('Erro ao ler o arquivo de imagem:', e);
-            };
-            reader.readAsDataURL(foto);
+    // Exibir a lista de habitantes
+    const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+    if (habitantes.length > 0) {
+        userName.textContent = 'Habitantes Cadastrados:';
+        let habitantesList = '<ul>';
+        habitantes.forEach(habitante => {
+            habitantesList += `<li>${habitante.nome} (${habitante.email}, ${habitante.telefone})</li>`;
         });
+        habitantesList += '</ul>';
+        userName.innerHTML = habitantesList;
+    } else {
+        userName.textContent = 'Nenhum habitante cadastrado.';
     }
 });
