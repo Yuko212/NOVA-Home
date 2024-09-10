@@ -31,19 +31,15 @@ header img {
     height: auto; 
     width: auto; 
     object-fit: contain; 
-    position: relative;
+    position: absolute;
     top: 10px;
     left: 10px;
 }
 
 /* Tamanho fixo para a logo */
 .logo {
-    position: absolute;
-    top: 10px; 
-    left: 10px; 
-    width: 120px; 
-    height: 120px; 
-    
+    width: 100px;
+    height: 100px;
 }
 
 header h1 {
@@ -57,8 +53,9 @@ header h1 {
 #main-title {
     margin-top: 20vh; /* Aumentar a distância entre o header e o título */
     text-align: center;
-    font-size: 24px;
-    color: #333;
+    font-size: 2rem; /* Tamanho da fonte ajustado */
+    color: #D9C1B8; /* Cor ajustada */
+    font-family: 'Georgia', serif; /* Fonte estilosa */
 }
 
 main {
