@@ -39,11 +39,11 @@ header img {
 /* Tamanho fixo para a logo */
 .logo {
     position: absolute;
-    top: 10px; /* Margem do topo */
-    left: 10px; /* Margem da esquerda */
-    width: auto; /* Mantém a proporção do logo */
-    height: auto; /* Mantém a proporção do logo */
-    /* Outras propriedades do logo, se necessário */
+    top: 10px; 
+    left: 10px; 
+    width: 350px; 
+    height: 350px; 
+    
 }
 
 header h1 {
