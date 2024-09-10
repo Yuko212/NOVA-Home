@@ -11,8 +11,8 @@
             max-width: 120px;
             max-height: 120px;
             object-fit: cover;
-            border-radius: 50%; /* Opcional: para deixar a foto redonda */
-            display: block; /* Para garantir que a imagem seja exibida como bloco */
+            border-radius: 50%; /* Deixa a foto redonda */
+            display: block; /* Garante que a imagem seja exibida como bloco */
             margin: 10px auto; /* Centralizar a imagem horizontalmente */
         }
 
@@ -129,28 +129,22 @@
             }
 
             if (name) {
-                const nascimento = document.getElementById('nascimento').value;
-            const email = document.getElementById('email').value.trim();
-            const telefone = document.getElementById('telefone').value.trim();
-            const senha = document.getElementById('senha').value;
-            const confirmarSenha = document.getElementById('confirmar-senha').value;
-
-            // Verifica se as senhas coincidem
-            if (senha !== confirmarSenha) {
-                alert('As senhas não coincidem.');
-                return; // Impede o envio do formulário
+                userName.textContent = name;
+            } else {
+                userName.textContent = 'Nenhum habitante cadastrado.';
             }
 
-            // Salva os dados no localStorage
-            localStorage.setItem('apelido', nome);
-            localStorage.setItem('nascimento', nascimento);
-            localStorage.setItem('email', email);
-            localStorage.setItem('telefone', telefone);
-            localStorage.setItem('senha', senha);
-
-            // Redireciona para a página inicial
-            window.location.href = 'index.html';
+            // Exibir a lista de habitantes cadastrados
+            const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+            if (habitantes.length > 0) {
+                let habitantesList = '<ul>';
+                habitantes.forEach(habitante => {
+                    habitantesList += `<li>${habitante.nome} (${habitante.email}, ${habitante.telefone})</li>`;
+                });
+                habitantesList += '</ul>';
+                userName.innerHTML = habitantesList;
+            }
         });
-    }
-});
-
+    </script>
+</body>
+</html>
