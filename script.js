@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const cadastroForm = document.getElementById('cadastroForm');
     const nascimentoInput = document.getElementById('nascimento');
     const responsavelGroup = document.getElementById('responsavel-group');
+    const adultoSelect = document.getElementById('adulto');
 
     // Função para redirecionar do index.html para cadastro.html
     const addHabitantsButton = document.getElementById('add-habitants');
@@ -33,9 +34,29 @@ document.addEventListener('DOMContentLoaded', function () {
         // Mostrar campo de responsável se menor de 18 anos
         if (idade < 18) {
             responsavelGroup.style.display = 'block';
+            carregarResponsaveis(); // Carregar responsáveis quando necessário
         } else {
             responsavelGroup.style.display = 'none';
         }
+    }
+
+    // Função para carregar responsáveis
+    function carregarResponsaveis() {
+        // Simular uma lista de responsáveis
+        const responsaveis = [
+            { id: '1', nome: 'Responsável 1' },
+            { id: '2', nome: 'Responsável 2' },
+            { id: '3', nome: 'Responsável 3' }
+        ];
+
+        // Adicionar opções ao select
+        adultoSelect.innerHTML = '<option value="">Selecione um responsável</option>'; // Resetar opções
+        responsaveis.forEach(responsavel => {
+            const option = document.createElement('option');
+            option.value = responsavel.id;
+            option.textContent = responsavel.nome;
+            adultoSelect.appendChild(option);
+        });
     }
 
     // Adicionar evento para verificar idade ao mudar a data de nascimento
