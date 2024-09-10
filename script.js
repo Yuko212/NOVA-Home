@@ -103,7 +103,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     const reader = new FileReader();
                     reader.onload = function (e) {
                         localStorage.setItem(`foto${i}`, e.target.result);
-                        window.location.href = 'index.html'; // Redireciona para a página inicial após salvar
+                        // Redireciona para main.html após salvar
+                        window.location.href = 'main.html';
                     }
                     reader.readAsDataURL(foto);
                     break;
