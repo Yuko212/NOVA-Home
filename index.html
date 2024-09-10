@@ -15,25 +15,10 @@
         <section id="user-selection">
             <h1 id="main-title">Quem está conectando?</h1>
             <div id="main-content">
-                <!-- Espaço para a foto de perfil -->
-                <div id="perfil-container" style="display: none; margin-bottom: 20px;">
-                    <img id="perfil-img" src="" alt="Foto de Perfil" style="width: 120px; height: 120px; object-fit: cover;">
-                </div>
-                
                 <button id="add-habitants">Adicionar Habitantes</button>
-                
-                <!-- Formulário de login -->
-                <div id="login-form" style="display: none;">
-                    <h2>Entrar</h2>
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="senha">Senha:</label>
-                            <input type="password" id="senha" name="senha" required>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn">Entrar</button>
-                        </div>
-                    </form>
+                <div id="profile-section">
+                    <!-- A foto do usuário será exibida aqui -->
+                    <img id="profile-pic" src="" alt="Foto de Perfil" style="display: none; cursor: pointer;">
                 </div>
             </div>
         </section>
@@ -65,38 +50,19 @@
         loadHTML('header', 'header.html');
         loadHTML('footer', 'footer.html');
 
-        // Exibir foto de perfil e formulário de login se usuário estiver salvo
-        document.addEventListener('DOMContentLoaded', function() {
-            const perfilImg = document.getElementById('perfil-img');
-            const perfilContainer = document.getElementById('perfil-container');
-            const loginForm = document.getElementById('login-form');
-
-            // Recuperar a foto e apelido do localStorage
-            const foto = localStorage.getItem('foto');
-            const apelido = localStorage.getItem('apelido');
-
-            if (foto) {
-                perfilImg.src = foto;
-                perfilContainer.style.display = 'block';
-                loginForm.style.display = 'block';
-            }
-
-            // Evento de envio do formulário de login
-            const loginFormElement = document.getElementById('loginForm');
-            if (loginFormElement) {
-                loginFormElement.addEventListener('submit', function(event) {
-                    event.preventDefault(); // Previne o comportamento padrão do envio
-                    const senha = document.getElementById('senha').value.trim();
-                    
-                    // Verificar a senha (supondo uma senha padrão 'senha123')
-                    if (senha === 'senha123') {
-                        window.location.href = 'main.html';
-                    } else {
-                        alert('Senha incorreta!');
-                    }
+        // Exibindo a foto do perfil se estiver disponível no localStorage
+        document.addEventListener('DOMContentLoaded', function () {
+            const profilePic = document.getElementById('profile-pic');
+            const photo = localStorage.getItem('foto');
+            if (photo) {
+                profilePic.src = photo;
+                profilePic.style.display = 'block';
+                profilePic.addEventListener('click', function() {
+                    window.location.href = 'login.html';
                 });
             }
         });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>

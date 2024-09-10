@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
+            // Remover o alerta de sucesso
+            // alert('Cadastro realizado com sucesso!');
+
             // Redirecionamento após o cadastro ser finalizado
             window.location.href = 'persona.html';
         });
@@ -80,14 +83,17 @@ document.addEventListener('DOMContentLoaded', function () {
             const apelido = document.getElementById('apelido').value.trim();
             const fotoInput = document.getElementById('foto');
             const foto = fotoInput.files[0];
+            const senhaInput = document.getElementById('senha'); // Novo campo de senha
+            const senha = senhaInput.value.trim(); // Novo campo de senha
 
-            if (!apelido || !foto) {
+            if (!apelido || !foto || !senha) {
                 alert('Por favor, preencha todos os campos obrigatórios e selecione uma foto.');
                 return;
             }
 
             // Salvando dados no localStorage
             localStorage.setItem('apelido', apelido);
+            localStorage.setItem('senha', senha); // Salvando a senha
 
             // Para salvar a foto, você pode converter a foto em uma URL de dados e salvar no localStorage
             const reader = new FileReader();
@@ -98,25 +104,5 @@ document.addEventListener('DOMContentLoaded', function () {
             };
             reader.readAsDataURL(foto);
         });
-    }
-
-    // Função para verificar e mostrar a foto de perfil no index.html
-    function mostrarPerfil() {
-        const perfilImg = document.getElementById('perfil-img');
-        const apelido = localStorage.getItem('apelido');
-        const foto = localStorage.getItem('foto');
-
-        if (apelido && foto) {
-            perfilImg.src = foto;
-            perfilImg.alt = apelido;
-            perfilImg.style.display = 'block';
-        } else {
-            perfilImg.style.display = 'none';
-        }
-    }
-
-    // Chamar a função quando a página for carregada
-    if (document.getElementById('perfil-img')) {
-        mostrarPerfil();
     }
 });
