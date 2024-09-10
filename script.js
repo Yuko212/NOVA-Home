@@ -64,13 +64,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // Validação adicional pode ser adicionada aqui
-
             // Remover o alerta de sucesso
             // alert('Cadastro realizado com sucesso!');
 
             // Redirecionamento após o cadastro ser finalizado
-            window.location.href = 'main.html';
+            window.location.href = 'persona.html';
         });
     }
 });
