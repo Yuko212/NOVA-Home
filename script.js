@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const cadastroForm = document.getElementById('cadastroForm');
     const nascimentoInput = document.getElementById('nascimento');
-    const personalizacaoForm = document.getElementById('personalizacaoForm'); // Formulário de personalização
 
     // Função para redirecionar do index.html para cadastro.html
     const addHabitantsButton = document.getElementById('add-habitants');
@@ -85,11 +84,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Exibir a lista de habitantes no index.html
+    // Código para index.html
     const profilesContainer = document.getElementById('profiles-container');
-    const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
 
-    if (profilesContainer && habitantes.length > 0) {
+    // Exibir a lista de habitantes
+    const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+    if (habitantes.length > 0) {
         habitantes.forEach((habitante, index) => {
             const profileSection = document.createElement('div');
             profileSection.classList.add('profile-section');
@@ -121,45 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             profilesContainer.appendChild(profileSection);
         });
-    } else if (profilesContainer) {
+    } else {
         profilesContainer.innerHTML = 'Nenhum habitante cadastrado.';
-    }
-
-    // Evento de envio do formulário de personalização (persona.html)
-    if (personalizacaoForm) {
-        personalizacaoForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const apelido = document.getElementById('apelido').value.trim();
-            const fotoFile = document.getElementById('foto').files[0];
-            const senha = document.getElementById('senha').value.trim();
-
-            if (!apelido || !fotoFile || !senha) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function () {
-                const fotoUrl = reader.result; // Converte a imagem para URL base64
-
-                // Atualizando o perfil no localStorage
-                let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-                if (habitantes.length > 0) {
-                    // Atualizando o último habitante cadastrado
-                    habitantes[habitantes.length - 1].foto = fotoUrl;
-                    habitantes[habitantes.length - 1].apelido = apelido; // Salva o apelido
-
-                    localStorage.setItem('habitantes', JSON.stringify(habitantes));
-                }
-
-                // Redireciona para index.html
-                setTimeout(function () {
-                    window.location.href = 'index.html';
-                }, 100); // Pequeno atraso para garantir o salvamento no localStorage
-            };
-
-            reader.readAsDataURL(fotoFile); // Lê o arquivo de imagem
-        });
     }
 });
