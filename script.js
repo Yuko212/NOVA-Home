@@ -81,10 +81,8 @@ if (cadastroForm) {
     });
 }
 
-
-
-    // Código para index.html
-    const profilesContainer = document.getElementById('profiles-container');
+// Código para index.html
+const profilesContainer = document.getElementById('profiles-container');
 
     // Exibir a lista de habitantes
     const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
@@ -94,7 +92,7 @@ if (cadastroForm) {
             profileSection.classList.add('profile-section');
 
             const img = document.createElement('img');
-            img.src = habitante.foto;
+            img.src = habitante.foto || 'default-profile.png'; // Usar uma imagem padrão caso não haja foto
             img.alt = `Foto de ${habitante.nome}`;
             img.classList.add('profile-pic');
             img.addEventListener('click', function () {
@@ -123,4 +121,49 @@ if (cadastroForm) {
     } else {
         profilesContainer.innerHTML = 'Nenhum habitante cadastrado.';
     }
+});
+
+    // Adicionando a função para carregar a foto corretamente em persona.html
+document.addEventListener('DOMContentLoaded', function () {
+    const cadastroForm = document.getElementById('cadastroForm');
+    const nascimentoInput = document.getElementById('nascimento');
+
+    // Função para redirecionar do index.html para cadastro.html
+    const addHabitantsButton = document.getElementById('add-habitants');
+    if (addHabitantsButton) {
+        addHabitantsButton.addEventListener('click', function () {
+            window.location.href = 'cadastro.html';
+        });
+    }
+
+    // Função para remover um habitante específico
+    function removerHabitante(index) {
+        let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+        if (habitantes.length > index) {
+            habitantes.splice(index, 1); // Remove o habitante pelo índice
+            localStorage.setItem('habitantes', JSON.stringify(habitantes)); // Atualiza o localStorage
+            window.location.reload(); // Recarrega a página para refletir as alterações
+        }
+    }
+
+    const removeButton = document.getElementById('remove-habitants');
+if (removeButton) {
+    removeButton.addEventListener('click', function () {
+        const senha = prompt('Digite a senha para confirmar a remoção:');
+        const senhaCerta = localStorage.getItem('senha'); // Recuperar a senha armazenada
+
+        if (senha === senhaCerta) {
+            const selectedIndex = localStorage.getItem('selectedIndex');
+            if (selectedIndex !== null) {
+                let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+                habitantes.splice(selectedIndex, 1);
+                localStorage.setItem('habitantes', JSON.stringify(habitantes));
+                window.location.reload(); // Recarrega a página para atualizar a lista
+            }
+        } else {
+            alert('Senha incorreta.');
+        }
+    });
+}
+
 });
