@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
         nascimentoInput.addEventListener('change', verificarIdade);
     }
 
-    // Evento de envio do formulário de cadastro
+// Evento de envio do formulário de cadastro
 if (cadastroForm) {
     cadastroForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -65,22 +65,22 @@ if (cadastroForm) {
         const nome = document.getElementById('nome').value.trim();
         const email = document.getElementById('email').value.trim();
         const telefone = document.getElementById('telefone').value.trim();
-        const foto = document.getElementById('foto').value.trim(); // Assume que o usuário insere um URL de foto
 
-        if (!nome || !email || !telefone || !foto) {
+        if (!nome || !email || !telefone) {
             alert('Por favor, preencha todos os campos obrigatórios.');
             return;
         }
 
         // Salvando dados no localStorage
         let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-        habitantes.push({ nome, email, telefone, foto });
+        habitantes.push({ nome, email, telefone });
         localStorage.setItem('habitantes', JSON.stringify(habitantes));
 
         // Redireciona diretamente para persona.html após salvar os dados
         window.location.href = 'persona.html'; // Redireciona para persona.html
     });
 }
+
 
 
     // Código para index.html
