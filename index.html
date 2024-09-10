@@ -98,48 +98,44 @@
 
     <script>
         window.onload = function () {
-    const profilesContainer = document.getElementById('profiles-container');
-    const removeButton = document.getElementById('remove-habitants');
-    const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+            const profilesContainer = document.getElementById('profiles-container');
+            const removeButton = document.getElementById('remove-habitants');
+            const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
 
-    // Limpar o container antes de adicionar perfis
-    profilesContainer.innerHTML = '';
+            // Exibe perfis
+            habitantes.forEach((habitante, index) => {
+                const div = document.createElement('div');
+                div.className = 'profile-section';
+                div.innerHTML = `
+                    <img src="${habitante.foto}" alt="Foto de ${habitante.nome}" class="profile-pic">
+                    <p class="user-name">${habitante.nome}</p>
+                    <button onclick="selectProfile(${index})">Selecionar Perfil</button>
+                `;
+                profilesContainer.appendChild(div);
+            });
 
-    // Exibe perfis
-    habitantes.forEach((habitante, index) => {
-        const div = document.createElement('div');
-        div.className = 'profile-section';
-        div.innerHTML = `
-            <img src="${habitante.foto || 'default-profile.png'}" alt="Foto de ${habitante.nome}" class="profile-pic">
-            <p class="user-name">${habitante.nome}</p>
-            <button onclick="selectProfile(${index})">Selecionar Perfil</button>
-        `;
-        profilesContainer.appendChild(div);
-    });
+            // Adiciona funcionalidade ao botão "Remover Habitantes"
+            removeButton.addEventListener('click', function () {
+                const senha = prompt('Digite a senha para confirmar a remoção:');
+                // Aqui você deve verificar a senha correta. Substitua 'senhaCerta' pela senha real.
+                if (senha === 'senhaCerta') { // Troque 'senhaCerta' pela senha real ou outro método de validação
+                    const selectedIndex = localStorage.getItem('selectedIndex');
+                    if (selectedIndex !== null) {
+                        let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+                        habitantes.splice(selectedIndex, 1);
+                        localStorage.setItem('habitantes', JSON.stringify(habitantes));
+                        window.location.reload(); // Recarrega a página para atualizar a lista
+                    }
+                } else {
+                    alert('Senha incorreta.');
+                }
+            });
+        };
 
-    // Adiciona funcionalidade ao botão "Remover Habitantes"
-    removeButton.addEventListener('click', function () {
-        const senha = prompt('Digite a senha para confirmar a remoção:');
-        const senhaCerta = localStorage.getItem('senha'); // Verifica a senha armazenada
-
-        if (senha === senhaCerta) {
-            const selectedIndex = localStorage.getItem('selectedIndex');
-            if (selectedIndex !== null) {
-                let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-                habitantes.splice(selectedIndex, 1);
-                localStorage.setItem('habitantes', JSON.stringify(habitantes));
-                window.location.reload(); // Recarrega a página para atualizar a lista
-            }
-        } else {
-            alert('Senha incorreta.');
+        function selectProfile(index) {
+            localStorage.setItem('selectedIndex', index);
+            document.getElementById('remove-habitants').style.display = 'block'; // Mostra o botão de remover
         }
-    });
-};
-
-function selectProfile(index) {
-    localStorage.setItem('selectedIndex', index);
-    document.getElementById('remove-habitants').style.display = 'block'; // Mostra o botão de remover
-}
     </script>
 </body>
 </html>
