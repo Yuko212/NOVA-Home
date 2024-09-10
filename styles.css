@@ -24,7 +24,6 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar o header */
 }
 
-/* Estilo da imagem do logo */
 header img {
     max-height: 100%; 
     max-width: 100%; 
@@ -36,7 +35,6 @@ header img {
     left: 10px;
 }
 
-/* Tamanho fixo para a logo */
 .logo {
     width: 100px;
     height: 100px;
@@ -49,12 +47,11 @@ header h1 {
     font-size: 1.5rem;
 }
 
-/* Estilo do título "Quem está conectando?" */
 #main-title {
-    margin-top: 20vh; /* Aumentar a distância entre o header e o título */
+    margin-top: 20vh;
     text-align: center;
     font-size: 24px;
-    color: #333;
+    color: #3B2C35; /* Cor extraída da imagem */
 }
 
 main {
@@ -62,7 +59,7 @@ main {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    padding-top: 140px; /* Ajuste para compensar a altura do header fixo */
+    padding-top: 140px;
     padding-bottom: 60px;
 }
 
@@ -73,7 +70,7 @@ main {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
-    margin: 20px auto; /* Margem ajustada para centralização */
+    margin: 20px auto;
 }
 
 h2 {
@@ -89,7 +86,7 @@ form {
 }
 
 .form-group {
-    width: 100%; /* Mudança para garantir melhor usabilidade em telas menores */
+    width: 100%; 
 }
 
 .form-group label {
@@ -105,14 +102,14 @@ form {
     border: 1px solid #D9B1AD;
     border-radius: 5px;
     background-color: #F2F2F2;
-    box-sizing: border-box; /* Garantindo que o padding seja considerado na largura */
+    box-sizing: border-box;
 }
 
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #D9C1B8; /* Mudança de cor ao focar */
-    box-shadow: 0 0 5px rgba(217, 177, 173, 0.5); /* Efeito de foco */
+    border-color: #D9C1B8;
+    box-shadow: 0 0 5px rgba(217, 177, 173, 0.5);
 }
 
 button.btn {
@@ -124,7 +121,7 @@ button.btn {
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s ease; /* Suavizando a transição de hover */
+    transition: background-color 0.3s ease;
 }
 
 button.btn:hover {
@@ -133,12 +130,12 @@ button.btn:hover {
 
 button.btn:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(217, 177, 173, 0.5); /* Efeito de foco no botão */
+    box-shadow: 0 0 5px rgba(217, 177, 173, 0.5);
 }
 
 footer {
     width: 100%;
-    position: fixed; 
+    position: fixed;
     bottom: 0;
     left: 0;
     background-color: #F2DFDF;
@@ -146,10 +143,9 @@ footer {
     text-align: center;
     color: #595859;
     z-index: 1000;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar o footer */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo do botão de adicionar habitantes */
 button#add-habitants {
     padding: 10px 20px;
     font-size: 16px;
