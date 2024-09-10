@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Código existente para cadastro.html
+    // Código para cadastro.html
     const cadastroForm = document.getElementById('cadastroForm');
     const nascimentoInput = document.getElementById('nascimento');
     const responsavelGroup = document.getElementById('responsavel-group');
@@ -29,16 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const nascimento = document.getElementById('nascimento').value;
         const dataNascimento = new Date(nascimento);
         const hoje = new Date();
-        const idade = hoje.getFullYear() - dataNascimento.getFullYear();
-        const mes = hoje.getMonth() - dataNascimento.getMonth();
-
-        // Ajustar idade caso o mês atual seja antes do mês de nascimento
-        if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
-            idade--;
-        }
+        const idade = calcularIdade(dataNascimento);
 
         // Mostrar campo de responsável se menor de 18 anos
-        const responsavelGroup = document.getElementById('responsavel-group');
         if (idade < 18) {
             responsavelGroup.style.display = 'block';
         } else {
