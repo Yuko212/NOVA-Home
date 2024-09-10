@@ -41,8 +41,8 @@ header img {
     position: absolute;
     top: 10px; 
     left: 10px; 
-    width: 350px; 
-    height: 350px; 
+    width: auto; 
+    height: auto; 
     
 }
 
