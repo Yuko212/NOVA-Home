@@ -151,9 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     reader.readAsDataURL(foto);
                 }
             }
-
-            alert('Personalização concluída!');
-            window.location.href = 'index.html';
+            window.location.href = 'main.html';
         });
     }
 });
