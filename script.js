@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('cadastroForm');
+    // Código existente para cadastro.html
+    const cadastroForm = document.getElementById('cadastroForm');
     const nascimentoInput = document.getElementById('nascimento');
     const responsavelGroup = document.getElementById('responsavel-group');
 
@@ -50,9 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
         nascimentoInput.addEventListener('change', verificarIdade);
     }
 
-    // Evento de envio do formulário
-    if (form) {
-        form.addEventListener('submit', function (event) {
+    // Evento de envio do formulário de cadastro
+    if (cadastroForm) {
+        cadastroForm.addEventListener('submit', function (event) {
             event.preventDefault(); // Previne o comportamento padrão do envio
 
             const nome = document.getElementById('nome').value.trim();
@@ -69,6 +70,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Redirecionamento após o cadastro ser finalizado
             window.location.href = 'persona.html';
+        });
+    }
+
+    // Código para persona.html
+    const personaForm = document.getElementById('personalizacaoForm');
+
+    if (personaForm) {
+        personaForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Previne o comportamento padrão do envio
+
+            const apelido = document.getElementById('apelido').value.trim();
+            const fotoInput = document.getElementById('foto');
+            const foto = fotoInput.files[0];
+
+            if (!apelido || !foto) {
+                alert('Por favor, preencha todos os campos obrigatórios e selecione uma foto.');
+                return;
+            }
+
+            // Salvando dados no localStorage
+            localStorage.setItem('apelido', apelido);
+
+            // Para salvar a foto, você pode converter a foto em uma URL de dados e salvar no localStorage
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                localStorage.setItem('foto', e.target.result);
+                // Redirecionamento para main.html após salvar
+                window.location.href = 'main.html';
+            };
+            reader.readAsDataURL(foto);
         });
     }
 });
