@@ -8,6 +8,7 @@
 </head>
 <body>
     <header id="header">
+        <!-- O conteúdo do header será carregado dinamicamente -->
     </header>
 
     <main>
@@ -48,9 +49,10 @@
     </main>
 
     <footer id="footer">
-        <!-- Conteúdo do footer será carregado dinamicamente -->
+        <!-- O conteúdo do footer será carregado dinamicamente -->
     </footer>
 
+    <script src="script.js"></script>
     <script>
         // Função para carregar HTML externo em um elemento
         function loadHTML(elementId, filePath) {
@@ -72,43 +74,6 @@
         // Carregar header e footer dinamicamente
         loadHTML('header', 'header.html');
         loadHTML('footer', 'footer.html');
-
-        // Função para verificar se o usuário é menor de idade
-        function verificarIdade() {
-            const nascimento = document.getElementById('nascimento').value;
-            const dataNascimento = new Date(nascimento);
-            const hoje = new Date();
-            const idade = hoje.getFullYear() - dataNascimento.getFullYear();
-            const mes = hoje.getMonth() - dataNascimento.getMonth();
-
-            // Ajustar idade caso o mês atual seja antes do mês de nascimento
-            if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
-                idade--;
-            }
-
-            // Mostrar campo de responsável se menor de 18 anos
-            const responsavelGroup = document.getElementById('responsavel-group');
-            if (idade < 18) {
-                responsavelGroup.style.display = 'block';
-            } else {
-                responsavelGroup.style.display = 'none';
-            }
-        }
-
-        // Adicionar evento para verificar idade ao mudar a data de nascimento
-        document.getElementById('nascimento').addEventListener('change', verificarIdade);
-
-        // Validação básica do formulário
-        document.getElementById('cadastroForm').addEventListener('submit', function(event) {
-            const nome = document.getElementById('nome').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const telefone = document.getElementById('telefone').value.trim();
-
-            if (!nome || !email || !telefone) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                event.preventDefault();
-            }
-        });
     </script>
 </body>
 </html>

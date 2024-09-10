@@ -3,50 +3,46 @@ document.addEventListener('DOMContentLoaded', function () {
     const nascimentoInput = document.getElementById('nascimento');
     const responsavelGroup = document.getElementById('responsavel-group');
 
-    document.getElementById("add-habitants").addEventListener("click", function() {
-        // Redirecionar para cadastro.html ao clicar no botão
-        window.location.href = 'cadastro.html';
-    });
-    
-    
-    function calcularIdade(dataNascimento) {
+    // Função para verificar a idade e mostrar/esconder o campo de responsável
+    function verificarIdade() {
+        const nascimento = document.getElementById('nascimento').value;
+        const dataNascimento = new Date(nascimento);
         const hoje = new Date();
-        let idade = hoje.getFullYear() - dataNascimento.getFullYear();
+        const idade = hoje.getFullYear() - dataNascimento.getFullYear();
         const mes = hoje.getMonth() - dataNascimento.getMonth();
-        
+
+        // Ajustar idade caso o mês atual seja antes do mês de nascimento
         if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
             idade--;
         }
-        return idade;
-    }
 
-    // Evento de mudança para verificar idade após selecionar data de nascimento
-    nascimentoInput.addEventListener('change', function () {
-        const dataNascimento = new Date(nascimentoInput.value);
-        
-        // Verificação se a data é válida
-        if (isNaN(dataNascimento)) {
-            alert("Por favor, insira uma data de nascimento válida.");
-            nascimentoInput.value = ""; // Limpa o campo de entrada
-            responsavelGroup.style.display = 'none'; // Esconde o campo de responsável
-            return;
-        }
-
-        const idade = calcularIdade(dataNascimento);
-
-        // Exibe ou esconde o campo de responsável dependendo da idade
+        // Mostrar campo de responsável se menor de 18 anos
+        const responsavelGroup = document.getElementById('responsavel-group');
         if (idade < 18) {
             responsavelGroup.style.display = 'block';
         } else {
             responsavelGroup.style.display = 'none';
         }
-    });
+    }
+
+    // Adicionar evento para verificar idade ao mudar a data de nascimento
+    document.getElementById('nascimento').addEventListener('change', verificarIdade);
 
     // Evento de envio do formulário
     form.addEventListener('submit', function (event) {
         event.preventDefault(); // Previne o comportamento padrão do envio
-        
-        // Aqui você pode adicionar validações adicionais antes de permitir o envio
+
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telefone = document.getElementById('telefone').value.trim();
+
+        if (!nome || !email || !telefone) {
+            alert('Por favor, preencha todos os campos obrigatórios.');
+            return;
+        }
+
+        // Validação adicional pode ser adicionada aqui
+
         alert('Cadastro realizado com sucesso!');
 
         // Redirecionamento após o cadastro ser finalizado
