@@ -66,7 +66,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Validação adicional pode ser adicionada aqui
 
-            alert('Cadastro realizado com sucesso!');
+            // Remover o alerta de sucesso
+            // alert('Cadastro realizado com sucesso!');
 
             // Redirecionamento após o cadastro ser finalizado
             window.location.href = 'main.html';
