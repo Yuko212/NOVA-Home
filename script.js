@@ -3,6 +3,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const nascimentoInput = document.getElementById('nascimento');
     const responsavelGroup = document.getElementById('responsavel-group');
 
+    // Função para redirecionar do index.html para cadastro.html
+    const addHabitantsButton = document.getElementById('add-habitants');
+    if (addHabitantsButton) {
+        addHabitantsButton.addEventListener('click', function() {
+            window.location.href = 'cadastro.html';
+        });
+    }
+
+    // Função para calcular a idade
+    function calcularIdade(dataNascimento) {
+        const hoje = new Date();
+        let idade = hoje.getFullYear() - dataNascimento.getFullYear();
+        const mes = hoje.getMonth() - dataNascimento.getMonth();
+        
+        if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+            idade--;
+        }
+        return idade;
+    }
+
     // Função para verificar a idade e mostrar/esconder o campo de responsável
     function verificarIdade() {
         const nascimento = document.getElementById('nascimento').value;
@@ -26,26 +46,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Adicionar evento para verificar idade ao mudar a data de nascimento
-    document.getElementById('nascimento').addEventListener('change', verificarIdade);
+    if (nascimentoInput) {
+        nascimentoInput.addEventListener('change', verificarIdade);
+    }
 
     // Evento de envio do formulário
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Previne o comportamento padrão do envio
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Previne o comportamento padrão do envio
 
-        const nome = document.getElementById('nome').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const telefone = document.getElementById('telefone').value.trim();
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
 
-        if (!nome || !email || !telefone) {
-            alert('Por favor, preencha todos os campos obrigatórios.');
-            return;
-        }
+            if (!nome || !email || !telefone) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
 
-        // Validação adicional pode ser adicionada aqui
+            // Validação adicional pode ser adicionada aqui
 
-        alert('Cadastro realizado com sucesso!');
+            alert('Cadastro realizado com sucesso!');
 
-        // Redirecionamento após o cadastro ser finalizado
-        window.location.href = 'main.html';
-    });
+            // Redirecionamento após o cadastro ser finalizado
+            window.location.href = 'main.html';
+        });
+    }
 });
