@@ -92,6 +92,9 @@
         <!-- O conteúdo do footer será carregado dinamicamente -->
     </footer>
 
+    <!-- Carregando o script para manipulação de usuários e fotos -->
+    <script src="script.js"></script>
+    <script src="foto.js"></script>
     <script>
         // Função para carregar HTML externo em um elemento
         function loadHTML(elementId, filePath) {
@@ -113,60 +116,6 @@
         // Carregando header e footer dinamicamente
         loadHTML('header', 'header.html');
         loadHTML('footer', 'footer.html');
-
-        // Função para exibir os habitantes armazenados
-        function displayHabitants() {
-            const profileSection = document.getElementById('profile-section');
-            profileSection.innerHTML = ''; // Limpa o container antes de adicionar as novas fotos
-            for (let i = 0; i < 5; i++) {
-                const photo = localStorage.getItem(`foto${i}`);
-                const name = localStorage.getItem(`apelido${i}`);
-                if (photo) {
-                    const div = document.createElement('div');
-                    div.style.textAlign = 'center'; // Centraliza o nome abaixo da foto
-                    div.innerHTML = `
-                        <img class="profile-pic" src="${photo}" alt="Foto de Perfil">
-                        <div class="user-name">${name}</div>
-                    `;
-                    profileSection.appendChild(div);
-                }
-            }
-        }
-
-        // Exibindo os habitantes quando a página é carregada
-        document.addEventListener('DOMContentLoaded', function () {
-            displayHabitants();
-
-            // Evento para adicionar um habitante
-            const addHabitantsButton = document.getElementById('add-habitants');
-            if (addHabitantsButton) {
-                addHabitantsButton.addEventListener('click', function() {
-                    window.location.href = 'cadastro.html';
-                });
-            }
-
-            // Evento para remover um habitante
-            const removeHabitantsButton = document.getElementById('remove-habitants');
-            if (removeHabitantsButton) {
-                removeHabitantsButton.addEventListener('click', function() {
-                    const userToRemove = prompt('Digite o nome do usuário para remover:');
-                    if (userToRemove) {
-                        for (let i = 0; i < 5; i++) {
-                            if (localStorage.getItem(`apelido${i}`) === userToRemove) {
-                                localStorage.removeItem(`apelido${i}`);
-                                localStorage.removeItem(`foto${i}`);
-                                // Atualiza a exibição dos habitantes
-                                displayHabitants();
-                                alert('Usuário removido com sucesso!');
-                                break;
-                            }
-                        }
-                        alert('Usuário não encontrado.');
-                    }
-                });
-            }
-        });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
