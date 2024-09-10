@@ -77,8 +77,10 @@ document.addEventListener('DOMContentLoaded', function () {
             habitantes.push({ nome, email, telefone, foto });
             localStorage.setItem('habitantes', JSON.stringify(habitantes));
 
-            // Redirecionamento após o cadastro ser finalizado
-            window.location.href = 'persona.html'; // Redireciona para persona.html
+            // Remova o preventDefault e utilize um timeout para garantir que os dados sejam salvos antes do redirecionamento
+            setTimeout(function () {
+                window.location.href = 'persona.html'; // Redireciona para persona.html
+            }, 100); // Pequeno atraso para garantir o salvamento no localStorage
         });
     }
 
