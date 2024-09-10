@@ -58,31 +58,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Evento de envio do formulário de cadastro
-    if (cadastroForm) {
-        cadastroForm.addEventListener('submit', function (event) {
-            event.preventDefault();
+if (cadastroForm) {
+    cadastroForm.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-            const nome = document.getElementById('nome').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const telefone = document.getElementById('telefone').value.trim();
-            const foto = document.getElementById('foto').value.trim(); // Assume que o usuário insere um URL de foto
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telefone = document.getElementById('telefone').value.trim();
+        const foto = document.getElementById('foto').value.trim(); // Assume que o usuário insere um URL de foto
 
-            if (!nome || !email || !telefone || !foto) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                return;
-            }
+        if (!nome || !email || !telefone || !foto) {
+            alert('Por favor, preencha todos os campos obrigatórios.');
+            return;
+        }
 
-            // Salvando dados no localStorage
-            let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-            habitantes.push({ nome, email, telefone, foto });
-            localStorage.setItem('habitantes', JSON.stringify(habitantes));
+        // Salvando dados no localStorage
+        let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+        habitantes.push({ nome, email, telefone, foto });
+        localStorage.setItem('habitantes', JSON.stringify(habitantes));
 
-            // Remova o preventDefault e utilize um timeout para garantir que os dados sejam salvos antes do redirecionamento
-            setTimeout(function () {
-                window.location.href = 'persona.html'; // Redireciona para persona.html
-            }, 100); // Pequeno atraso para garantir o salvamento no localStorage
-        });
-    }
+        // Redireciona diretamente para persona.html após salvar os dados
+        window.location.href = 'persona.html'; // Redireciona para persona.html
+    });
+}
+
 
     // Código para index.html
     const profilesContainer = document.getElementById('profiles-container');
