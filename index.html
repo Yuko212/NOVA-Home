@@ -91,60 +91,7 @@
         <!-- O conteúdo do footer será carregado dinamicamente -->
     </footer>
 
-    <script>
-        // Função para carregar HTML externo em um elemento
-        function loadHTML(elementId, filePath) {
-            fetch(filePath)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro ao carregar ' + filePath);
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    document.getElementById(elementId).innerHTML = html;
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar o conteúdo: ', error);
-                });
-        }
-
-        // Carregando header e footer dinamicamente
-        loadHTML('header', 'header.html');
-        loadHTML('footer', 'footer.html');
-
-        // Exibindo a foto do perfil e o nome do usuário se estiver disponível no localStorage
-        document.addEventListener('DOMContentLoaded', function () {
-            const profilePic = document.getElementById('profile-pic');
-            const userName = document.getElementById('user-name');
-            const photo = localStorage.getItem('foto');
-            const name = localStorage.getItem('apelido');
-
-            if (photo) {
-                profilePic.src = photo;
-                profilePic.style.display = 'block';
-                profilePic.addEventListener('click', function() {
-                    window.location.href = 'login.html';
-                });
-            }
-
-            if (name) {
-                userName.textContent = name;
-            } else {
-                userName.textContent = 'Nenhum habitante cadastrado.';
-            }
-
-            // Exibir a lista de habitantes cadastrados
-            const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-            if (habitantes.length > 0) {
-                let habitantesList = '<ul>';
-                habitantes.forEach(habitante => {
-                    habitantesList += `<li>${habitante.nome} (${habitante.email}, ${habitante.telefone})</li>`;
-                });
-                habitantesList += '</ul>';
-                userName.innerHTML = habitantesList;
-            }
-        });
-    </script>
+    <!-- Mova o script para o final do corpo -->
+    <script src="script.js"></script>
 </body>
 </html>
