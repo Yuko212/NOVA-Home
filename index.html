@@ -24,27 +24,6 @@
         <!-- O conteúdo do footer será carregado dinamicamente -->
     </footer>
 
-    <script>
-        // Função para carregar HTML externo em um elemento
-        function loadHTML(elementId, filePath) {
-            fetch(filePath)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro ao carregar ' + filePath);
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    document.getElementById(elementId).innerHTML = html;
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar o conteúdo: ', error);
-                });
-        }
-
-        // Carregando header e footer dinamicamente
-        loadHTML('header', 'header.html');
-        loadHTML('footer', 'footer.html');
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

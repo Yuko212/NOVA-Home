@@ -160,6 +160,11 @@ button#add-habitants {
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 20px;
+    font-family: 'Georgia', serif; /* Fonte ajustada */
+    text-align: center; /* Centraliza o texto */
+    display: block; /* Faz o botão ocupar o espaço disponível */
+    margin-left: auto; /* Centraliza o botão horizontalmente */
+    margin-right: auto; /* Centraliza o botão horizontalmente */
 }
 
 button#add-habitants:hover {

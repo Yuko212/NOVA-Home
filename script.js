@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const responsavelGroup = document.getElementById('responsavel-group');
 
     document.getElementById("add-habitants").addEventListener("click", function() {
-        // Ação ao clicar no botão
-        alert("Adicionar Habitantes clicado!");
+        // Redirecionar para cadastro.html ao clicar no botão
+        window.location.href = 'cadastro.html';
     });
     
     
