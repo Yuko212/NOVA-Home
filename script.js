@@ -5,24 +5,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Função para redirecionar do index.html para cadastro.html
     const addHabitantsButton = document.getElementById('add-habitants');
     if (addHabitantsButton) {
-        addHabitantsButton.addEventListener('click', function() {
+        addHabitantsButton.addEventListener('click', function () {
             window.location.href = 'cadastro.html';
         });
     }
 
-    // Função para remover o último habitante cadastrado
-    const removeHabitantsButton = document.getElementById('remove-habitants');
-    if (removeHabitantsButton) {
-        removeHabitantsButton.addEventListener('click', function() {
-            let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-            if (habitantes.length > 0) {
-                habitantes.pop(); // Remove o último habitante da lista
-                localStorage.setItem('habitantes', JSON.stringify(habitantes)); // Atualiza o localStorage
-                window.location.reload(); // Recarrega a página para refletir as alterações
-            } else {
-                alert('Nenhum habitante cadastrado para remover.');
-            }
-        });
+    // Função para remover um habitante específico
+    function removerHabitante(index) {
+        let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+        if (habitantes.length > index) {
+            habitantes.splice(index, 1); // Remove o habitante pelo índice
+            localStorage.setItem('habitantes', JSON.stringify(habitantes)); // Atualiza o localStorage
+            window.location.reload(); // Recarrega a página para refletir as alterações
+        }
     }
 
     // Função para calcular a idade
@@ -93,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Exibir a lista de habitantes
     const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
     if (habitantes.length > 0) {
-        habitantes.forEach(habitante => {
+        habitantes.forEach((habitante, index) => {
             const profileSection = document.createElement('div');
             profileSection.classList.add('profile-section');
 
@@ -109,8 +104,18 @@ document.addEventListener('DOMContentLoaded', function () {
             name.classList.add('user-name');
             name.textContent = habitante.nome;
 
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remover';
+            removeButton.classList.add('btn');
+            removeButton.style.backgroundColor = '#f28d8d'; // Cor de remover
+            removeButton.style.color = 'white';
+            removeButton.addEventListener('click', function () {
+                removerHabitante(index); // Remove o habitante com base no índice
+            });
+
             profileSection.appendChild(img);
             profileSection.appendChild(name);
+            profileSection.appendChild(removeButton);
 
             profilesContainer.appendChild(profileSection);
         });
