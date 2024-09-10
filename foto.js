@@ -22,10 +22,11 @@ function exibirHabitantes() {
     const profileSection = document.getElementById('profile-section');
     profileSection.innerHTML = ''; // Limpa o container antes de adicionar as novas fotos
 
+    // Loop para buscar e exibir as fotos e nomes dos habitantes
     for (let i = 0; i < 5; i++) {
         const photo = localStorage.getItem(`foto${i}`);
         const name = localStorage.getItem(`apelido${i}`);
-        if (photo) {
+        if (photo && name) {
             const div = document.createElement('div');
             div.style.textAlign = 'center'; // Centraliza o nome abaixo da foto
             div.innerHTML = `
@@ -33,12 +34,15 @@ function exibirHabitantes() {
                 <div class="user-name">${name}</div>
             `;
             profileSection.appendChild(div);
+        } else {
+            console.log(`Nenhuma foto encontrada para o índice ${i}`);
         }
     }
 }
 
 // Inicializa a exibição de habitantes e a pré-visualização da foto
 document.addEventListener('DOMContentLoaded', function () {
+    console.log('Página carregada. Inicializando funções de foto...');
     exibirHabitantes();
     atualizarPreviewFoto();
 });
