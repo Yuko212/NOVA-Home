@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const nascimentoInput = document.getElementById('nascimento');
     const responsavelGroup = document.getElementById('responsavel-group');
     const adultoSelect = document.getElementById('adulto');
+    const avisoResponsaveis = document.getElementById('aviso-responsaveis');
 
     // Função para redirecionar do index.html para cadastro.html
     const addHabitantsButton = document.getElementById('add-habitants');
@@ -37,17 +38,23 @@ document.addEventListener('DOMContentLoaded', function () {
             carregarResponsaveis(); // Carregar responsáveis quando necessário
         } else {
             responsavelGroup.style.display = 'none';
+            avisoResponsaveis.style.display = 'none'; // Esconder aviso se não for necessário
         }
     }
 
     // Função para carregar responsáveis
     function carregarResponsaveis() {
-        // Simular uma lista de responsáveis
-        const responsaveis = [
-            { id: '1', nome: 'Responsável 1' },
-            { id: '2', nome: 'Responsável 2' },
-            { id: '3', nome: 'Responsável 3' }
-        ];
+        // Obter usuários do localStorage
+        const responsaveis = [];
+        for (let i = 0; i < 5; i++) {
+            const nome = localStorage.getItem(`nome${i}`);
+            const nascimento = localStorage.getItem(`nascimento${i}`);
+            const idade = calcularIdade(new Date(nascimento));
+
+            if (nome && idade >= 18) {
+                responsaveis.push({ id: i, nome });
+            }
+        }
 
         // Adicionar opções ao select
         adultoSelect.innerHTML = '<option value="">Selecione um responsável</option>'; // Resetar opções
@@ -57,6 +64,13 @@ document.addEventListener('DOMContentLoaded', function () {
             option.textContent = responsavel.nome;
             adultoSelect.appendChild(option);
         });
+
+        // Mostrar aviso se não houver responsáveis
+        if (responsaveis.length === 0) {
+            avisoResponsaveis.style.display = 'block';
+        } else {
+            avisoResponsaveis.style.display = 'none';
+        }
     }
 
     // Adicionar evento para verificar idade ao mudar a data de nascimento
@@ -72,10 +86,19 @@ document.addEventListener('DOMContentLoaded', function () {
             const nome = document.getElementById('nome').value.trim();
             const email = document.getElementById('email').value.trim();
             const telefone = document.getElementById('telefone').value.trim();
+            const adulto = document.getElementById('adulto').value;
 
             if (!nome || !email || !telefone) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
+            }
+
+            // Verificar se é menor de idade e se um responsável foi selecionado
+            if (document.getElementById('nascimento').value && calcularIdade(new Date(document.getElementById('nascimento').value)) < 18) {
+                if (!adulto) {
+                    alert('Por favor, selecione um responsável.');
+                    return;
+                }
             }
 
             // Redirecionamento após o cadastro ser finalizado
@@ -92,13 +115,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Função para atualizar a pré-visualização da foto
     if (fotoInput && previewImagem) {
         fotoInput.addEventListener('change', function () {
-            const arquivo = fotoInput.files[0];
-            if (arquivo) {
+            const file = this.files[0];
+            if (file) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
                     previewImagem.src = e.target.result;
-                }
-                reader.readAsDataURL(arquivo);
+                };
+                reader.readAsDataURL(file);
             }
         });
     }
@@ -111,25 +134,26 @@ document.addEventListener('DOMContentLoaded', function () {
             const apelido = apelidoInput.value.trim();
             const foto = fotoInput.files[0];
 
-            if (!apelido || !foto) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
+            if (!apelido) {
+                alert('Por favor, insira um apelido.');
                 return;
             }
 
-            // Salvar as informações no localStorage
-            for (let i = 0; i < 5; i++) {
-                if (!localStorage.getItem(`apelido${i}`)) {
-                    localStorage.setItem(`apelido${i}`, apelido);
+            // Salvar dados no localStorage
+            const usuarioIndex = localStorage.getItem('usuarioIndex');
+            if (usuarioIndex !== null) {
+                localStorage.setItem(`apelido${usuarioIndex}`, apelido);
+                if (foto) {
                     const reader = new FileReader();
                     reader.onload = function (e) {
-                        localStorage.setItem(`foto${i}`, e.target.result);
-                        // Redireciona para main.html após salvar
-                        window.location.href = 'main.html';
-                    }
+                        localStorage.setItem(`foto${usuarioIndex}`, e.target.result);
+                    };
                     reader.readAsDataURL(foto);
-                    break;
                 }
             }
+
+            alert('Personalização concluída!');
+            window.location.href = 'index.html';
         });
     }
 });
