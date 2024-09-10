@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const cadastroForm = document.getElementById('cadastroForm');
     const nascimentoInput = document.getElementById('nascimento');
-    const responsavelGroup = document.getElementById('responsavel-group');
 
     // Função para redirecionar do index.html para cadastro.html
     const addHabitantsButton = document.getElementById('add-habitants');
@@ -31,12 +30,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const idade = hoje.getFullYear() - dataNascimento.getFullYear();
         const mes = hoje.getMonth() - dataNascimento.getMonth();
 
-        // Ajustar idade caso o mês atual seja antes do mês de nascimento
         if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
             idade--;
         }
 
-        // Mostrar campo de responsável se menor de 18 anos
         const responsavelGroup = document.getElementById('responsavel-group');
         if (idade < 18) {
             responsavelGroup.style.display = 'block';
@@ -53,42 +50,56 @@ document.addEventListener('DOMContentLoaded', function () {
     // Evento de envio do formulário de cadastro
     if (cadastroForm) {
         cadastroForm.addEventListener('submit', function (event) {
-            event.preventDefault(); // Previne o comportamento padrão do envio
+            event.preventDefault();
 
             const nome = document.getElementById('nome').value.trim();
             const email = document.getElementById('email').value.trim();
             const telefone = document.getElementById('telefone').value.trim();
+            const foto = document.getElementById('foto').value.trim(); // Assume que o usuário insere um URL de foto
 
-            if (!nome || !email || !telefone) {
+            if (!nome || !email || !telefone || !foto) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
 
             // Salvando dados no localStorage
             let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-            habitantes.push({ nome, email, telefone });
+            habitantes.push({ nome, email, telefone, foto });
             localStorage.setItem('habitantes', JSON.stringify(habitantes));
 
             // Redirecionamento após o cadastro ser finalizado
-            window.location.href = 'index.html';
+            window.location.href = 'persona.html'; // Redireciona para persona.html
         });
     }
 
     // Código para index.html
-    const profilePic = document.getElementById('profile-pic');
-    const userName = document.getElementById('user-name');
+    const profilesContainer = document.getElementById('profiles-container');
 
     // Exibir a lista de habitantes
     const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
     if (habitantes.length > 0) {
-        userName.textContent = 'Habitantes Cadastrados:';
-        let habitantesList = '<ul>';
         habitantes.forEach(habitante => {
-            habitantesList += `<li>${habitante.nome} (${habitante.email}, ${habitante.telefone})</li>`;
+            const profileSection = document.createElement('div');
+            profileSection.classList.add('profile-section');
+
+            const img = document.createElement('img');
+            img.src = habitante.foto;
+            img.alt = `Foto de ${habitante.nome}`;
+            img.classList.add('profile-pic');
+            img.addEventListener('click', function () {
+                window.location.href = 'login.html'; // Redireciona para login.html ao clicar na imagem
+            });
+
+            const name = document.createElement('div');
+            name.classList.add('user-name');
+            name.textContent = habitante.nome;
+
+            profileSection.appendChild(img);
+            profileSection.appendChild(name);
+
+            profilesContainer.appendChild(profileSection);
         });
-        habitantesList += '</ul>';
-        userName.innerHTML = habitantesList;
     } else {
-        userName.textContent = 'Nenhum habitante cadastrado.';
+        profilesContainer.innerHTML = 'Nenhum habitante cadastrado.';
     }
 });
