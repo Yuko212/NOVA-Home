@@ -29,19 +29,37 @@
             margin-top: 10px;
         }
 
-        /* Estilo para o botão de remover */
-        #remove-habitants {
+        /* Estilo para o container dos botões */
+        #button-container {
+            text-align: center; /* Centraliza o conteúdo dos botões */
+            margin-top: 20px; /* Espaçamento superior para os botões */
+        }
+
+        /* Estilo para os botões */
+        .btn {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #f28d8d;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            margin-top: 20px;
             font-family: 'Georgia', serif;
-            text-align: center;
-            display: inline-block;
+            display: inline-block; /* Garante que o botão não ocupe toda a largura */
+            margin: 5px; /* Adiciona espaçamento entre os botões */
+        }
+
+        #add-habitants {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #add-habitants:hover {
+            background-color: #45a049;
+        }
+
+        #remove-habitants {
+            background-color: #f28d8d;
+            color: white;
         }
 
         #remove-habitants:hover {
@@ -62,9 +80,9 @@
                 <img id="profile-pic" src="" alt="Foto de Perfil" style="display: none; cursor: pointer;">
                 <div id="user-name"></div> <!-- Exibição do nome do usuário -->
             </div>
-            <div id="main-content">
-                <button id="add-habitants">Adicionar Habitantes</button>
-                <button id="remove-habitants">Remover Habitantes</button>
+            <div id="button-container">
+                <button id="add-habitants" class="btn">Adicionar Habitantes</button>
+                <button id="remove-habitants" class="btn">Remover Habitantes</button>
             </div>
         </section>
     </main>
