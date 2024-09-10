@@ -1,59 +1,32 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVA Home - Página Principal</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Main</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link para o CSS global -->
+    <link rel="stylesheet" href="main.css"> <!-- Link para o CSS específico da main.html -->
 </head>
 <body>
-    <header id="header">
-        <!-- O conteúdo do header será carregado dinamicamente -->
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>Meu Site</h1>
     </header>
-
     <main>
-        <h1>Casa de [Sobrenome da Família]</h1>
         <nav>
             <ul>
-                <li><a href="casa.html">Casa (Apenas Anfitrião)</a></li>
-                <li><a href="preferencias.html">Minhas Preferências</a></li>
-                <li><a href="sensores.html">Sensores</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-
         <section id="home-status">
             <h2>Quem está na casa?</h2>
-            <div class="status">
-                <!-- Lista de usuários será carregada dinamicamente -->
-            </div>
+            <!-- Conteúdo aqui -->
         </section>
     </main>
-
-    <footer id="footer">
-        <!-- O conteúdo do footer será carregado dinamicamente -->
+    <footer>
+        <p>&copy; 2024 Meu Site</p>
     </footer>
-
-    <script>
-        // Função para carregar HTML externo em um elemento
-        function loadHTML(elementId, filePath) {
-            fetch(filePath)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro ao carregar ' + filePath);
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    document.getElementById(elementId).innerHTML = html;
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar o conteúdo: ', error);
-                });
-        }
-
-        // Carregar header e footer dinamicamente
-        loadHTML('header', 'header.html');
-        loadHTML('footer', 'footer.html');
-    </script>
 </body>
 </html>

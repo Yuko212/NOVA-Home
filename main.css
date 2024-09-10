@@ -1,0 +1,132 @@
+/* Estilos específicos para main.html */
+
+body {
+    background-color: #F2F2F2; /* Ajuste se necessário */
+    color: #595859; /* Ajuste se necessário */
+    font-family: Arial, sans-serif; /* Ajuste se necessário */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #F2DFDF;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+header h1 {
+    text-align: center;
+    color: #D9B1AD;
+    margin-left: 20px;
+    font-size: 1.5rem;
+}
+
+#home-status h2 {
+    text-align: center;
+    color: #D9C1B8;
+    margin-bottom: 20px;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 140px;
+    padding-bottom: 60px;
+}
+
+nav {
+    background-color: #F2DFDF;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #D9B1AD;
+    font-size: 1.1rem;
+}
+
+nav ul li a:hover {
+    color: #D9C1B8;
+}
+
+#home-status {
+    background-color: #F2DFDF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #F2DFDF;
+    padding: 10px;
+    text-align: center;
+    color: #595859;
+    z-index: 1000;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button#add-habitants {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #e6a6a6;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    font-family: 'Georgia', serif;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button#add-habitants:hover {
+    background-color: #d88b8b;
+}
