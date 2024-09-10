@@ -72,38 +72,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Código para persona.html
     const personaForm = document.getElementById('personalizacaoForm');
+    const nomeInput = document.getElementById('nome');
+    const fotoInput = document.getElementById('foto');
+    const previewImagem = document.getElementById('preview');
 
+    // Função para atualizar a pré-visualização da foto
+    if (fotoInput && previewImagem) {
+        fotoInput.addEventListener('change', function () {
+            const arquivo = fotoInput.files[0];
+            if (arquivo) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImagem.src = e.target.result;
+                }
+                reader.readAsDataURL(arquivo);
+            }
+        });
+    }
+
+    // Evento de envio do formulário de personalização
     if (personaForm) {
-        personaForm.addEventListener('submit', function(event) {
+        personaForm.addEventListener('submit', function (event) {
             event.preventDefault(); // Previne o comportamento padrão do envio
 
-            const apelido = document.getElementById('apelido').value.trim();
-            const fotoInput = document.getElementById('foto');
-            const foto = fotoInput.files[0];
-            const senhaInput = document.getElementById('senha'); // Novo campo de senha
-            const senha = senhaInput ? senhaInput.value.trim() : ''; // Novo campo de senha (opcional)
+            const nome = document.getElementById('nome').value.trim();
+            const foto = document.getElementById('foto').files[0];
 
-            if (!apelido || !foto || !senha) {
-                alert('Por favor, preencha todos os campos obrigatórios e selecione uma foto.');
+            if (!nome || !foto) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
 
-            // Salvando dados no localStorage
-            localStorage.setItem('apelido', apelido);
-            localStorage.setItem('senha', senha); // Salvando a senha
-
-            // Para salvar a foto, você pode converter a foto em uma URL de dados e salvar no localStorage
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                localStorage.setItem('foto', e.target.result);
-                console.log('Foto salva no localStorage e redirecionando para main.html');
-                // Redirecionamento para main.html após salvar
-                window.location.href = 'main.html';
-            };
-            reader.onerror = function(e) {
-                console.error('Erro ao ler o arquivo de imagem:', e);
-            };
-            reader.readAsDataURL(foto);
+            // Salvar as informações no localStorage
+            for (let i = 0; i < 5; i++) {
+                if (!localStorage.getItem(`apelido${i}`)) {
+                    localStorage.setItem(`apelido${i}`, nome);
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        localStorage.setItem(`foto${i}`, e.target.result);
+                        window.location.href = 'index.html'; // Redireciona para a página inicial após salvar
+                    }
+                    reader.readAsDataURL(foto);
+                    break;
+                }
+            }
         });
     }
 });

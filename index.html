@@ -7,26 +7,29 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Estilo para garantir que a foto do perfil tenha no máximo 120x120px */
-        #profile-pic {
+        .profile-pic {
             max-width: 120px;
             max-height: 120px;
             object-fit: cover;
             border-radius: 50%; /* Opcional: para deixar a foto redonda */
             display: block; /* Para garantir que a imagem seja exibida como bloco */
-            margin: 10px auto; /* Centralizar a imagem horizontalmente */
+            margin: 10px; /* Margem entre as fotos */
         }
 
-        /* Estilo adicional para o container da foto do perfil */
+        /* Estilo adicional para o container das fotos do perfil */
         #profile-section {
-            text-align: center; /* Centraliza o conteúdo do container */
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Permite que as fotos se ajustem à largura disponível */
+            gap: 20px; /* Espaçamento entre as fotos */
             margin: 20px 0; /* Adiciona margem superior e inferior ao container */
         }
 
         /* Estilo para o nome do usuário */
-        #user-name {
+        .user-name {
             font-size: 1.2rem;
             color: #595859;
-            margin-top: 10px;
+            text-align: center; /* Centraliza o texto abaixo da foto */
         }
 
         /* Estilo para o container dos botões */
@@ -76,9 +79,7 @@
         <section id="user-selection">
             <h1 id="main-title">Quem está conectando?</h1>
             <div id="profile-section">
-                <!-- A foto do usuário será exibida aqui -->
-                <img id="profile-pic" src="" alt="Foto de Perfil" style="display: none; cursor: pointer;">
-                <div id="user-name"></div> <!-- Exibição do nome do usuário -->
+                <!-- As fotos dos usuários serão exibidas aqui -->
             </div>
             <div id="button-container">
                 <button id="add-habitants" class="btn">Adicionar Habitantes</button>
@@ -113,23 +114,35 @@
         loadHTML('header', 'header.html');
         loadHTML('footer', 'footer.html');
 
-        // Exibindo a foto do perfil e o nome do usuário se estiver disponível no localStorage
-        document.addEventListener('DOMContentLoaded', function () {
-            const profilePic = document.getElementById('profile-pic');
-            const userName = document.getElementById('user-name');
-            const photo = localStorage.getItem('foto');
-            const name = localStorage.getItem('apelido');
-
-            if (photo) {
-                profilePic.src = photo;
-                profilePic.style.display = 'block';
-                profilePic.addEventListener('click', function() {
-                    window.location.href = 'login.html';
-                });
+        // Função para exibir os habitantes armazenados
+        function displayHabitants() {
+            const profileSection = document.getElementById('profile-section');
+            profileSection.innerHTML = ''; // Limpa o container antes de adicionar as novas fotos
+            for (let i = 0; i < 5; i++) {
+                const photo = localStorage.getItem(`foto${i}`);
+                const name = localStorage.getItem(`apelido${i}`);
+                if (photo) {
+                    const div = document.createElement('div');
+                    div.style.textAlign = 'center'; // Centraliza o nome abaixo da foto
+                    div.innerHTML = `
+                        <img class="profile-pic" src="${photo}" alt="Foto de Perfil">
+                        <div class="user-name">${name}</div>
+                    `;
+                    profileSection.appendChild(div);
+                }
             }
+        }
 
-            if (name) {
-                userName.textContent = name;
+        // Exibindo os habitantes quando a página é carregada
+        document.addEventListener('DOMContentLoaded', function () {
+            displayHabitants();
+
+            // Evento para adicionar um habitante
+            const addHabitantsButton = document.getElementById('add-habitants');
+            if (addHabitantsButton) {
+                addHabitantsButton.addEventListener('click', function() {
+                    window.location.href = 'cadastro.html';
+                });
             }
 
             // Evento para remover um habitante
@@ -138,18 +151,17 @@
                 removeHabitantsButton.addEventListener('click', function() {
                     const userToRemove = prompt('Digite o nome do usuário para remover:');
                     if (userToRemove) {
-                        // Remover usuário do localStorage
-                        if (localStorage.getItem('apelido') === userToRemove) {
-                            localStorage.removeItem('apelido');
-                            localStorage.removeItem('foto');
-                            // Limpar o conteúdo da página
-                            profilePic.src = '';
-                            profilePic.style.display = 'none';
-                            userName.textContent = '';
-                            alert('Usuário removido com sucesso!');
-                        } else {
-                            alert('Usuário não encontrado.');
+                        for (let i = 0; i < 5; i++) {
+                            if (localStorage.getItem(`apelido${i}`) === userToRemove) {
+                                localStorage.removeItem(`apelido${i}`);
+                                localStorage.removeItem(`foto${i}`);
+                                // Atualiza a exibição dos habitantes
+                                displayHabitants();
+                                alert('Usuário removido com sucesso!');
+                                break;
+                            }
                         }
+                        alert('Usuário não encontrado.');
                     }
                 });
             }
