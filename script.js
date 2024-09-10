@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function verificarIdade() {
         const nascimento = document.getElementById('nascimento').value;
         const dataNascimento = new Date(nascimento);
-        const hoje = new Date();
         const idade = calcularIdade(dataNascimento);
 
         // Mostrar campo de responsável se menor de 18 anos
@@ -65,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Código para persona.html
     const personaForm = document.getElementById('personalizacaoForm');
-    const nomeInput = document.getElementById('nome');
+    const apelidoInput = document.getElementById('apelido');
     const fotoInput = document.getElementById('foto');
     const previewImagem = document.getElementById('preview');
 
@@ -88,10 +87,10 @@ document.addEventListener('DOMContentLoaded', function () {
         personaForm.addEventListener('submit', function (event) {
             event.preventDefault(); // Previne o comportamento padrão do envio
 
-            const nome = document.getElementById('nome').value.trim();
-            const foto = document.getElementById('foto').files[0];
+            const apelido = apelidoInput.value.trim();
+            const foto = fotoInput.files[0];
 
-            if (!nome || !foto) {
+            if (!apelido || !foto) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
@@ -99,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Salvar as informações no localStorage
             for (let i = 0; i < 5; i++) {
                 if (!localStorage.getItem(`apelido${i}`)) {
-                    localStorage.setItem(`apelido${i}`, nome);
+                    localStorage.setItem(`apelido${i}`, apelido);
                     const reader = new FileReader();
                     reader.onload = function (e) {
                         localStorage.setItem(`foto${i}`, e.target.result);
