@@ -86,7 +86,8 @@
             </div>
             <div id="button-container">
                 <button id="add-habitants" class="btn">Adicionar Habitantes</button>
-                <button id="remove-habitants" class="btn">Remover Habitantes</button>
+                <!-- O botão de remover habitantes será adicionado após a seleção do perfil -->
+                <button id="remove-habitants" class="btn" style="display: none;">Remover Habitantes</button>
             </div>
         </section>
     </main>
@@ -95,6 +96,46 @@
         <!-- O conteúdo do footer será carregado dinamicamente -->
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        window.onload = function () {
+            const profilesContainer = document.getElementById('profiles-container');
+            const removeButton = document.getElementById('remove-habitants');
+            const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+
+            // Exibe perfis
+            habitantes.forEach((habitante, index) => {
+                const div = document.createElement('div');
+                div.className = 'profile-section';
+                div.innerHTML = `
+                    <img src="${habitante.foto}" alt="Foto de ${habitante.nome}" class="profile-pic">
+                    <p class="user-name">${habitante.nome}</p>
+                    <button onclick="selectProfile(${index})">Selecionar Perfil</button>
+                `;
+                profilesContainer.appendChild(div);
+            });
+
+            // Adiciona funcionalidade ao botão "Remover Habitantes"
+            removeButton.addEventListener('click', function () {
+                const senha = prompt('Digite a senha para confirmar a remoção:');
+                // Aqui você deve verificar a senha correta. Substitua 'senhaCerta' pela senha real.
+                if (senha === 'senhaCerta') { // Troque 'senhaCerta' pela senha real ou outro método de validação
+                    const selectedIndex = localStorage.getItem('selectedIndex');
+                    if (selectedIndex !== null) {
+                        let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+                        habitantes.splice(selectedIndex, 1);
+                        localStorage.setItem('habitantes', JSON.stringify(habitantes));
+                        window.location.reload(); // Recarrega a página para atualizar a lista
+                    }
+                } else {
+                    alert('Senha incorreta.');
+                }
+            });
+        };
+
+        function selectProfile(index) {
+            localStorage.setItem('selectedIndex', index);
+            document.getElementById('remove-habitants').style.display = 'block'; // Mostra o botão de remover
+        }
+    </script>
 </body>
 </html>
