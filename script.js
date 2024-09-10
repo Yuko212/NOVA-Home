@@ -65,9 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // Remover o alerta de sucesso
-            // alert('Cadastro realizado com sucesso!');
-
             // Redirecionamento após o cadastro ser finalizado
             window.location.href = 'persona.html';
         });
@@ -84,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const fotoInput = document.getElementById('foto');
             const foto = fotoInput.files[0];
             const senhaInput = document.getElementById('senha'); // Novo campo de senha
-            const senha = senhaInput.value.trim(); // Novo campo de senha
+            const senha = senhaInput ? senhaInput.value.trim() : ''; // Novo campo de senha (opcional)
 
             if (!apelido || !foto || !senha) {
                 alert('Por favor, preencha todos os campos obrigatórios e selecione uma foto.');
@@ -99,8 +96,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const reader = new FileReader();
             reader.onload = function(e) {
                 localStorage.setItem('foto', e.target.result);
+                console.log('Foto salva no localStorage e redirecionando para main.html');
                 // Redirecionamento para main.html após salvar
                 window.location.href = 'main.html';
+            };
+            reader.onerror = function(e) {
+                console.error('Erro ao ler o arquivo de imagem:', e);
             };
             reader.readAsDataURL(foto);
         });
