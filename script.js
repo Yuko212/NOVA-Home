@@ -10,6 +10,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Função para remover o último habitante cadastrado
+    const removeHabitantsButton = document.getElementById('remove-habitants');
+    if (removeHabitantsButton) {
+        removeHabitantsButton.addEventListener('click', function() {
+            let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
+            if (habitantes.length > 0) {
+                habitantes.pop(); // Remove o último habitante da lista
+                localStorage.setItem('habitantes', JSON.stringify(habitantes)); // Atualiza o localStorage
+                window.location.reload(); // Recarrega a página para refletir as alterações
+            } else {
+                alert('Nenhum habitante cadastrado para remover.');
+            }
+        });
+    }
+
     // Função para calcular a idade
     function calcularIdade(dataNascimento) {
         const hoje = new Date();
