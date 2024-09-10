@@ -70,21 +70,26 @@ nav {
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex; /* Exibe os itens da lista em linha */
 }
 
 nav ul li {
-    margin-bottom: 10px;
+    margin: 0 15px; /* Espaço entre os itens da lista */
 }
 
 nav ul li a {
     text-decoration: none;
     color: #D9B1AD;
     font-size: 1.1rem;
+    font-family: 'Georgia', serif; /* Fonte ajustada */
 }
 
 nav ul li a:hover {
