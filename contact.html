@@ -3,49 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="style.css"> <!-- Link para o CSS global -->
-    <link rel="stylesheet" href="main.css"> <!-- Link para o CSS específico -->
+    <link rel="stylesheet" href="main.css"> <!-- Link para o CSS da main.html -->
+    <link rel="stylesheet" href="contact.css"> <!-- Link para o CSS específico da página de contato -->
 </head>
 <body>
     <header>
         <img src="logoNova.jpg" alt="Logo" class="logo">
-        <h1>NOVA Home - Contato</h1>
+        <h1>NOVA Home</h1>
     </header>
+    
+    <nav>
+        <ul>
+            <li><a href="main.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
     <main>
-        <!-- Barra de Navegação -->
-        <nav>
-            <ul>
-                <li><a href="main.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-
-        <section id="contact-section">
-            <h2>Entre em Contato</h2>
-
-            <div class="contact-info">
-                <p>Email de Suporte: <a href="mailto:novahome_oficial@support.com">novahome_oficial@support.com</a></p>
-                <p>SAC: <a href="tel:+554199999999"> (41) 9####-#### </a></p>
+        <section id="contact-info">
+            <h2>Contato</h2>
+            <div class="contact-box">
+                <h3>Email de Suporte:</h3>
+                <p>novahome_oficial@support.com</p>
             </div>
-
-            <form id="contact-form">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" placeholder="Seu nome..." required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Seu email..." required>
-
-                <label for="message">Mensagem:</label>
-                <textarea id="message" name="message" rows="4" placeholder="Escreva sua mensagem..." required></textarea>
-
-                <label for="print">Anexar Print (opcional):</label>
-                <input type="file" id="print" name="print" accept="image/*">
-
-                <button type="submit">Enviar</button>
-            </form>
+            <div class="contact-box">
+                <h3>SAC:</h3>
+                <p>(41) 9####-####</p>
+            </div>
+            <div class="contact-box">
+                <h3>Enviar Arquivo:</h3>
+                <label for="file-upload" class="custom-file-upload">
+                    <input type="file" id="file-upload">
+                    Escolher arquivo
+                </label>
+            </div>
         </section>
     </main>
 

@@ -1,12 +1,13 @@
 body {
-    background-color: #F2F2F2; 
-    color: #595859; 
-    font-family: Arial, sans-serif; 
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+    background-color: #F2F2F2;
+    font-family: 'Georgia', serif;
+    color: #595859;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -81,11 +82,10 @@ nav ul li a:hover {
 
 main {
     flex: 1;
-    width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    padding-top: 140px;
-    padding-bottom: 60px;
+    padding: 20px;
+    width: 100%;
 }
 
 #contact-section {
@@ -99,6 +99,15 @@ main {
     text-align: center;
     color: #d9b1ad;
     margin-bottom: 20px;
+}
+
+.contact-info {
+    margin-bottom: 20px;
+}
+
+.contact-info h3 {
+    color: #d9b1ad;
+    margin-bottom: 10px;
 }
 
 .contact-info p {
