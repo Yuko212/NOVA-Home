@@ -14,12 +14,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// Função para abrir a seleção de arquivos ao clicar na imagem
+function triggerFileInput(inputId) {
+    document.getElementById(inputId).click();
+}
+
 // Função para carregar a imagem selecionada e trocar o avatar do usuário
 function loadImage(event, imgId) {
     const img = document.getElementById(imgId);
     const file = event.target.files[0];
     const reader = new FileReader();
-    
+
     reader.onload = function(e) {
         img.src = e.target.result;
     };
