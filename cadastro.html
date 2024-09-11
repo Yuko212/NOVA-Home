@@ -86,7 +86,7 @@
         loadHTML('header', 'header.html');
         loadHTML('footer', 'footer.html');
 
-        // Validação e armazenamento da senha ao enviar o formulário
+        // Validação de Senha
         document.getElementById('cadastroForm').addEventListener('submit', function(event) {
             const senha = document.getElementById('senha').value;
             const confirmarSenha = document.getElementById('confirmar-senha').value;
@@ -94,12 +94,7 @@
             if (senha !== confirmarSenha) {
                 alert('As senhas não coincidem.');
                 event.preventDefault(); // Impede o envio do formulário
-                return; // Impede o envio do formulário
             }
-
-            // Armazenar a senha no localStorage
-            localStorage.setItem('senha', senha);
-            alert('Senha cadastrada com sucesso!');
         });
     </script>
 </body>

@@ -1,23 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Código existente para cadastro.html
     const cadastroForm = document.getElementById('cadastroForm');
     const nascimentoInput = document.getElementById('nascimento');
+    const responsavelGroup = document.getElementById('responsavel-group');
 
     // Função para redirecionar do index.html para cadastro.html
     const addHabitantsButton = document.getElementById('add-habitants');
     if (addHabitantsButton) {
-        addHabitantsButton.addEventListener('click', function () {
+        addHabitantsButton.addEventListener('click', function() {
             window.location.href = 'cadastro.html';
         });
-    }
-
-    // Função para remover um habitante específico
-    function removerHabitante(index) {
-        let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-        if (habitantes.length > index) {
-            habitantes.splice(index, 1); // Remove o habitante pelo índice
-            localStorage.setItem('habitantes', JSON.stringify(habitantes)); // Atualiza o localStorage
-            window.location.reload(); // Recarrega a página para refletir as alterações
-        }
     }
 
     // Função para calcular a idade
@@ -40,10 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const idade = hoje.getFullYear() - dataNascimento.getFullYear();
         const mes = hoje.getMonth() - dataNascimento.getMonth();
 
+        // Ajustar idade caso o mês atual seja antes do mês de nascimento
         if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
             idade--;
         }
 
+        // Mostrar campo de responsável se menor de 18 anos
         const responsavelGroup = document.getElementById('responsavel-group');
         if (idade < 18) {
             responsavelGroup.style.display = 'block';
@@ -57,113 +51,59 @@ document.addEventListener('DOMContentLoaded', function () {
         nascimentoInput.addEventListener('change', verificarIdade);
     }
 
-// Evento de envio do formulário de cadastro
-if (cadastroForm) {
-    cadastroForm.addEventListener('submit', function (event) {
-        event.preventDefault();
+    // Evento de envio do formulário de cadastro
+    if (cadastroForm) {
+        cadastroForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Previne o comportamento padrão do envio
 
-        const nome = document.getElementById('nome').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const telefone = document.getElementById('telefone').value.trim();
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
 
-        if (!nome || !email || !telefone) {
-            alert('Por favor, preencha todos os campos obrigatórios.');
-            return;
-        }
-
-        // Salvando dados no localStorage
-        let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-        habitantes.push({ nome, email, telefone });
-        localStorage.setItem('habitantes', JSON.stringify(habitantes));
-
-        // Redireciona diretamente para persona.html após salvar os dados
-        window.location.href = 'persona.html'; // Redireciona para persona.html
-    });
-}
-
-// Código para index.html
-const profilesContainer = document.getElementById('profiles-container');
-
-    // Exibir a lista de habitantes
-    const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-    if (habitantes.length > 0) {
-        habitantes.forEach((habitante, index) => {
-            const profileSection = document.createElement('div');
-            profileSection.classList.add('profile-section');
-
-            const img = document.createElement('img');
-            img.src = habitante.foto || 'default-profile.png'; // Usar uma imagem padrão caso não haja foto
-            img.alt = `Foto de ${habitante.nome}`;
-            img.classList.add('profile-pic');
-            img.addEventListener('click', function () {
-                window.location.href = 'login.html'; // Redireciona para login.html ao clicar na imagem
-            });
-
-            const name = document.createElement('div');
-            name.classList.add('user-name');
-            name.textContent = habitante.nome;
-
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'Remover';
-            removeButton.classList.add('btn');
-            removeButton.style.backgroundColor = '#f28d8d'; // Cor de remover
-            removeButton.style.color = 'white';
-            removeButton.addEventListener('click', function () {
-                removerHabitante(index); // Remove o habitante com base no índice
-            });
-
-            profileSection.appendChild(img);
-            profileSection.appendChild(name);
-            profileSection.appendChild(removeButton);
-
-            profilesContainer.appendChild(profileSection);
-        });
-    } else {
-        profilesContainer.innerHTML = 'Nenhum habitante cadastrado.';
-    }
-});
-
-    // Adicionando a função para carregar a foto corretamente em persona.html
-document.addEventListener('DOMContentLoaded', function () {
-    const cadastroForm = document.getElementById('cadastroForm');
-    const nascimentoInput = document.getElementById('nascimento');
-
-    // Função para redirecionar do index.html para cadastro.html
-    const addHabitantsButton = document.getElementById('add-habitants');
-    if (addHabitantsButton) {
-        addHabitantsButton.addEventListener('click', function () {
-            window.location.href = 'cadastro.html';
-        });
-    }
-
-    // Função para remover um habitante específico
-    function removerHabitante(index) {
-        let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-        if (habitantes.length > index) {
-            habitantes.splice(index, 1); // Remove o habitante pelo índice
-            localStorage.setItem('habitantes', JSON.stringify(habitantes)); // Atualiza o localStorage
-            window.location.reload(); // Recarrega a página para refletir as alterações
-        }
-    }
-
-    const removeButton = document.getElementById('remove-habitants');
-if (removeButton) {
-    removeButton.addEventListener('click', function () {
-        const senha = prompt('Digite a senha para confirmar a remoção:');
-        const senhaCerta = localStorage.getItem('senha'); // Recuperar a senha armazenada
-
-        if (senha === senhaCerta) {
-            const selectedIndex = localStorage.getItem('selectedIndex');
-            if (selectedIndex !== null) {
-                let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-                habitantes.splice(selectedIndex, 1);
-                localStorage.setItem('habitantes', JSON.stringify(habitantes));
-                window.location.reload(); // Recarrega a página para atualizar a lista
+            if (!nome || !email || !telefone) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
             }
-        } else {
-            alert('Senha incorreta.');
-        }
-    });
-}
 
+            // Redirecionamento após o cadastro ser finalizado
+            window.location.href = 'persona.html';
+        });
+    }
+
+    // Código para persona.html
+    const personaForm = document.getElementById('personalizacaoForm');
+
+    if (personaForm) {
+        personaForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Previne o comportamento padrão do envio
+
+            const apelido = document.getElementById('apelido').value.trim();
+            const fotoInput = document.getElementById('foto');
+            const foto = fotoInput.files[0];
+            const senhaInput = document.getElementById('senha'); // Novo campo de senha
+            const senha = senhaInput ? senhaInput.value.trim() : ''; // Novo campo de senha (opcional)
+
+            if (!apelido || !foto || !senha) {
+                alert('Por favor, preencha todos os campos obrigatórios e selecione uma foto.');
+                return;
+            }
+
+            // Salvando dados no localStorage
+            localStorage.setItem('apelido', apelido);
+            localStorage.setItem('senha', senha); // Salvando a senha
+
+            // Para salvar a foto, você pode converter a foto em uma URL de dados e salvar no localStorage
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                localStorage.setItem('foto', e.target.result);
+                console.log('Foto salva no localStorage e redirecionando para main.html');
+                // Redirecionamento para main.html após salvar
+                window.location.href = 'main.html';
+            };
+            reader.onerror = function(e) {
+                console.error('Erro ao ler o arquivo de imagem:', e);
+            };
+            reader.readAsDataURL(foto);
+        });
+    }
 });

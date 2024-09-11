@@ -40,34 +40,26 @@
 
     <script src="script.js"></script>
     <script>
-        document.getElementById('personalizacaoForm').addEventListener('submit', function (event) {
-            event.preventDefault();
+        // Função para carregar HTML externo em um elemento
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar ' + filePath);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(elementId).innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o conteúdo: ', error);
+                });
+        }
 
-            const apelido = document.getElementById('apelido').value.trim();
-            const fotoInput = document.getElementById('foto');
-            const senha = document.getElementById('senha').value;
-
-            // Verifica se todos os campos obrigatórios estão preenchidos
-            if (!apelido || !fotoInput.files.length || !senha) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                return;
-            }
-
-            // Armazena a foto como URL de dados (base64)
-            const foto = URL.createObjectURL(fotoInput.files[0]);
-
-            // Recupera os dados do localStorage
-            let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-
-            // Adiciona a foto ao último habitante
-            if (habitantes.length > 0) {
-                habitantes[habitantes.length - 1].foto = foto;
-                localStorage.setItem('habitantes', JSON.stringify(habitantes));
-            }
-
-            // Redireciona para main.html
-            window.location.href = 'main.html'; // Redireciona para main.html
-        });
+        // Carregar header e footer dinamicamente
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
     </script>
 </body>
 </html>

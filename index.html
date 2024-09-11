@@ -7,39 +7,32 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Estilo para garantir que a foto do perfil tenha no máximo 120x120px */
-        .profile-pic {
+        #profile-pic {
             max-width: 120px;
             max-height: 120px;
             object-fit: cover;
-            border-radius: 50%; /* Deixa a foto redonda */
-            display: block;
-            margin: 10px auto;
-            cursor: pointer; /* Faz o cursor ser uma mão ao passar sobre a imagem */
+            border-radius: 50%; /* Opcional: para deixar a foto redonda */
+            display: block; /* Para garantir que a imagem seja exibida como bloco */
+            margin: 10px auto; /* Centralizar a imagem horizontalmente */
         }
 
         /* Estilo adicional para o container da foto do perfil */
-        .profile-section {
+        #profile-section {
             text-align: center; /* Centraliza o conteúdo do container */
-            margin: 20px;
-            display: inline-block; /* Alinha as seções lado a lado */
+            margin: 20px 0; /* Adiciona margem superior e inferior ao container */
         }
 
         /* Estilo para o nome do usuário */
-        .user-name {
+        #user-name {
             font-size: 1.2rem;
             color: #595859;
             margin-top: 10px;
         }
 
-        /* Estilo para o container principal dos perfis */
-        #profiles-container {
-            text-align: center; /* Centraliza o container */
-        }
-
         /* Estilo para o container dos botões */
         #button-container {
-            text-align: center; /* Centraliza os botões */
-            margin-top: 20px;
+            text-align: center; /* Centraliza o conteúdo dos botões */
+            margin-top: 20px; /* Espaçamento superior para os botões */
         }
 
         /* Estilo para os botões */
@@ -51,7 +44,8 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             font-family: 'Georgia', serif;
-            margin: 5px;
+            display: inline-block; /* Garante que o botão não ocupe toda a largura */
+            margin: 5px; /* Adiciona espaçamento entre os botões */
         }
 
         #add-habitants {
@@ -81,13 +75,14 @@
     <main>
         <section id="user-selection">
             <h1 id="main-title">Quem está conectando?</h1>
-            <div id="profiles-container">
-                <!-- As fotos e nomes dos usuários cadastrados serão exibidos aqui -->
+            <div id="profile-section">
+                <!-- A foto do usuário será exibida aqui -->
+                <img id="profile-pic" src="" alt="Foto de Perfil" style="display: none; cursor: pointer;">
+                <div id="user-name"></div> <!-- Exibição do nome do usuário -->
             </div>
             <div id="button-container">
                 <button id="add-habitants" class="btn">Adicionar Habitantes</button>
-                <!-- O botão de remover habitantes será adicionado após a seleção do perfil -->
-                <button id="remove-habitants" class="btn" style="display: none;">Remover Habitantes</button>
+                <button id="remove-habitants" class="btn">Remover Habitantes</button>
             </div>
         </section>
     </main>
@@ -97,45 +92,69 @@
     </footer>
 
     <script>
-        window.onload = function () {
-            const profilesContainer = document.getElementById('profiles-container');
-            const removeButton = document.getElementById('remove-habitants');
-            const habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-
-            // Exibe perfis
-            habitantes.forEach((habitante, index) => {
-                const div = document.createElement('div');
-                div.className = 'profile-section';
-                div.innerHTML = `
-                    <img src="${habitante.foto}" alt="Foto de ${habitante.nome}" class="profile-pic">
-                    <p class="user-name">${habitante.nome}</p>
-                    <button onclick="selectProfile(${index})">Selecionar Perfil</button>
-                `;
-                profilesContainer.appendChild(div);
-            });
-
-            // Adiciona funcionalidade ao botão "Remover Habitantes"
-            removeButton.addEventListener('click', function () {
-                const senha = prompt('Digite a senha para confirmar a remoção:');
-                // Aqui você deve verificar a senha correta. Substitua 'senhaCerta' pela senha real.
-                if (senha === 'senhaCerta') { // Troque 'senhaCerta' pela senha real ou outro método de validação
-                    const selectedIndex = localStorage.getItem('selectedIndex');
-                    if (selectedIndex !== null) {
-                        let habitantes = JSON.parse(localStorage.getItem('habitantes')) || [];
-                        habitantes.splice(selectedIndex, 1);
-                        localStorage.setItem('habitantes', JSON.stringify(habitantes));
-                        window.location.reload(); // Recarrega a página para atualizar a lista
+        // Função para carregar HTML externo em um elemento
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar ' + filePath);
                     }
-                } else {
-                    alert('Senha incorreta.');
-                }
-            });
-        };
-
-        function selectProfile(index) {
-            localStorage.setItem('selectedIndex', index);
-            document.getElementById('remove-habitants').style.display = 'block'; // Mostra o botão de remover
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(elementId).innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o conteúdo: ', error);
+                });
         }
+
+        // Carregando header e footer dinamicamente
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
+
+        // Exibindo a foto do perfil e o nome do usuário se estiver disponível no localStorage
+        document.addEventListener('DOMContentLoaded', function () {
+            const profilePic = document.getElementById('profile-pic');
+            const userName = document.getElementById('user-name');
+            const photo = localStorage.getItem('foto');
+            const name = localStorage.getItem('apelido');
+
+            if (photo) {
+                profilePic.src = photo;
+                profilePic.style.display = 'block';
+                profilePic.addEventListener('click', function() {
+                    window.location.href = 'login.html';
+                });
+            }
+
+            if (name) {
+                userName.textContent = name;
+            }
+
+            // Evento para remover um habitante
+            const removeHabitantsButton = document.getElementById('remove-habitants');
+            if (removeHabitantsButton) {
+                removeHabitantsButton.addEventListener('click', function() {
+                    const userToRemove = prompt('Digite o nome do usuário para remover:');
+                    if (userToRemove) {
+                        // Remover usuário do localStorage
+                        if (localStorage.getItem('apelido') === userToRemove) {
+                            localStorage.removeItem('apelido');
+                            localStorage.removeItem('foto');
+                            // Limpar o conteúdo da página
+                            profilePic.src = '';
+                            profilePic.style.display = 'none';
+                            userName.textContent = '';
+                            alert('Usuário removido com sucesso!');
+                        } else {
+                            alert('Usuário não encontrado.');
+                        }
+                    }
+                });
+            }
+        });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
