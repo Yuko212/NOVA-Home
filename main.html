@@ -31,17 +31,52 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
-        <section id="home-status">
-            <h2>Quem está na casa?</h2>
-            <!-- Conteúdo aqui -->
-        </section>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        
+            <!-- Seção Quem está na casa -->
+            <section id="home-status">
+                <h2>Quem está na casa?</h2>
+                <div class="user-container" id="users-inside">
+                    <div class="user-box" contenteditable="true">
+                        <img src="placeholder.jpg" alt="User" class="user-img" id="user-inside-img1">
+                        <input type="file" id="upload-inside1" onchange="loadImage(event, 'user-inside-img1')">
+                        <p class="user-name" contenteditable="true">Usuário 1</p>
+                    </div>
+                    <div class="user-box" contenteditable="true">
+                        <img src="placeholder.jpg" alt="User" class="user-img" id="user-inside-img2">
+                        <input type="file" id="upload-inside2" onchange="loadImage(event, 'user-inside-img2')">
+                        <p class="user-name" contenteditable="true">Usuário 2</p>
+                    </div>
+                </div>
+        
+                <h2>Quem está fora de casa?</h2>
+                <div class="user-container" id="users-outside">
+                    <div class="user-box" contenteditable="true">
+                        <img src="placeholder.jpg" alt="User" class="user-img" id="user-outside-img1">
+                        <input type="file" id="upload-outside1" onchange="loadImage(event, 'user-outside-img1')">
+                        <p class="user-name" contenteditable="true">Usuário 3</p>
+                    </div>
+                    <div class="user-box" contenteditable="true">
+                        <img src="placeholder.jpg" alt="User" class="user-img" id="user-outside-img2">
+                        <input type="file" id="upload-outside2" onchange="loadImage(event, 'user-outside-img2')">
+                        <p class="user-name" contenteditable="true">Usuário 4</p>
+                    </div>
+                </div>
+            </section>
     </main>
 
     <footer>
         <p>NOVA Home &copy; 2024</p>
     </footer>
 
-    <script src="main.js"></script> <!-- Link para o arquivo JS -->
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
+
 </body>
 </html>
