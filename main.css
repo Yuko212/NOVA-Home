@@ -178,8 +178,8 @@ button#add-habitants:hover {
     color: #595859;
     cursor: pointer;
     position: absolute;
-    right: 20px;
-    top: 15px;
+    left: 20px; /* Mover o botão para a esquerda */
+    top: 110px; /* Mover o botão abaixo do header */
     z-index: 1001;
 }
 
