@@ -13,15 +13,16 @@
         }
 
         #add-comodo {
-            width: 65%;
+            width: 60%;
         }
 
         #pre-cadastrados {
-            width: 30%;
+            width: 35%;
             padding: 10px;
             background-color: #F2DFDF;
             border-radius: 5px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 20px; /* Ajuste para afastar a subcaixa da borda direita */
         }
 
         #pre-cadastrados h2 {
@@ -32,14 +33,22 @@
             padding: 10px;
             margin-bottom: 10px;
             cursor: pointer;
-            background-color: #e6a6a6;
             border-radius: 5px;
             color: white;
+            text-align: center;
         }
 
         .comodo-item:hover {
-            background-color: #d88b8b;
+            opacity: 0.9;
         }
+
+        /* Cores diferentes para cada cômodo */
+        .quarto { background-color: #8e44ad; } /* Roxo */
+        .banheiro { background-color: #3498db; } /* Azul */
+        .sala { background-color: #e67e22; } /* Laranja */
+        .hall { background-color: #2ecc71; } /* Verde */
+        .varanda { background-color: #f39c12; } /* Amarelo */
+        .cozinha { background-color: #c0392b; } /* Vermelho */
 
         .popup {
             display: none;
@@ -71,7 +80,7 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            cursor: pointer;
+            cursor: default;
             margin-bottom: 10px;
         }
 
@@ -80,6 +89,7 @@
             border-radius: 5px;
             padding: 5px;
             margin-bottom: 10px;
+            display: none; /* Oculta o campo de nome, exceto no quarto */
         }
 
         .popup button {
@@ -154,12 +164,12 @@
 
             <section id="pre-cadastrados">
                 <h2>Cômodos Pré-Cadastrados</h2>
-                <div class="comodo-item" data-comodo="quarto">Quarto</div>
-                <div class="comodo-item" data-comodo="banheiro">Banheiro</div>
-                <div class="comodo-item" data-comodo="sala">Sala</div>
-                <div class="comodo-item" data-comodo="hall">Hall de Entrada</div>
-                <div class="comodo-item" data-comodo="varanda">Varanda</div>
-                <div class="comodo-item" data-comodo="cozinha">Cozinha</div>
+                <div class="comodo-item quarto" data-comodo="quarto">Quarto</div>
+                <div class="comodo-item banheiro" data-comodo="banheiro">Banheiro</div>
+                <div class="comodo-item sala" data-comodo="sala">Sala</div>
+                <div class="comodo-item hall" data-comodo="hall">Hall de Entrada</div>
+                <div class="comodo-item varanda" data-comodo="varanda">Varanda</div>
+                <div class="comodo-item cozinha" data-comodo="cozinha">Cozinha</div>
             </section>
         </div>
 
@@ -215,21 +225,57 @@
             const popupDimensoes = document.getElementById('popup-dimensoes');
             const popupSensor = document.getElementById('popup-sensor');
 
-            // Definições para os cômodos
             const comodos = {
-                'quarto': { dimensoes: '4x5x3', sensor: 'Sensor de Movimento', img: 'profile1.jpg', name: 'Usuário A' },
-                'banheiro': { dimensoes: '2x3x2.5', sensor: 'Nenhum', img: 'profile2.jpg', name: '' },
-                'sala': { dimensoes: '6x4x3', sensor: 'Sensor de Temperatura', img: 'profile3.jpg', name: '' },
-                'hall': { dimensoes: '3x4x2.5', sensor: 'Nenhum', img: '', name: '' },
-                'varanda': { dimensoes: '3x5x2.5', sensor: 'Sensor de Umidade', img: '', name: '' },
-                'cozinha': { dimensoes: '5x4x3', sensor: 'Sensor de Gás', img: '', name: '' }
+                quarto: {
+                    img: 'quarto.jpg',
+                    name: 'Quarto',
+                    dimensoes: '4x5x2.5',
+                    sensor: 'Nenhum',
+                    editable: true
+                },
+                banheiro: {
+                    img: 'banheiro.jpg',
+                    name: 'Banheiro',
+                    dimensoes: '2x3x2.5',
+                    sensor: 'Movimento',
+                    editable: false
+                },
+                sala: {
+                    img: 'sala.jpg',
+                    name: 'Sala',
+                    dimensoes: '5x7x3',
+                    sensor: 'Temperatura',
+                    editable: false
+                },
+                hall: {
+                    img: 'hall.jpg',
+                    name: 'Hall de Entrada',
+                    dimensoes: '3x3x3',
+                    sensor: 'Nenhum',
+                    editable: false
+                },
+                varanda: {
+                    img: 'varanda.jpg',
+                    name: 'Varanda',
+                    dimensoes: '4x5x2.5',
+                    sensor: 'Umidade',
+                    editable: false
+                },
+                cozinha: {
+                    img: 'cozinha.jpg',
+                    name: 'Cozinha',
+                    dimensoes: '4x6x3',
+                    sensor: 'Gás',
+                    editable: false
+                }
             };
 
-            // Atualizar informações do pop-up
+            // Atualiza o conteúdo do pop-up
             popupImg.src = comodos[comodo].img;
             popupName.value = comodos[comodo].name;
             popupDimensoes.textContent = 'Dimensões: ' + comodos[comodo].dimensoes;
             popupSensor.textContent = 'Sensor: ' + comodos[comodo].sensor;
+            popupName.style.display = comodos[comodo].editable ? 'block' : 'none';
 
             // Mostrar pop-up
             popup.classList.add('active');
