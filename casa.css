@@ -217,10 +217,12 @@ footer {
     border: none;
     border-radius: 10px;
     color: #595859;
-    padding: 10px;
+    padding: 10px 20px; /* Ajuste o padding para botões maiores */
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
+    display: inline-block;
 }
 
 #popup-close-btn:hover,
@@ -258,4 +260,42 @@ footer {
     color: #595859;
     font-size: 1.1rem;
     margin-top: 10px;
+}
+
+/* Botão para adicionar cômodos */
+#add-room-btn {
+    background-color: #e6a6a6;
+    border: none;
+    border-radius: 10px;
+    color: #595859;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#add-room-btn:hover {
+    background-color: #d88b8b;
+}
+
+/* Opções de edição dos cômodos */
+.edit-room-btn {
+    background-color: #e6a6a6;
+    border: none;
+    border-radius: 10px;
+    color: #595859;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.edit-room-btn:hover {
+    background-color: #d88b8b;
 }
