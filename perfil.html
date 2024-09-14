@@ -11,6 +11,15 @@
         <!-- O conteúdo do header será carregado dinamicamente -->
     </header>
 
+    <button class="menu-toggle" onclick="toggleNav()">☰</button>
+    <div id="side-nav" class="side-nav">
+        <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="prefer.html">Preferências</a>
+        <a href="sensores.html">Sensores</a>
+        <a href="casa.html">Casa</a>
+    </div>
+
     <main>
         <section id="perfil">
             <h2>Perfil</h2>
@@ -61,6 +70,38 @@
         // Carregar header e footer dinamicamente
         loadHTML('header', 'header.html');
         loadHTML('footer', 'footer.html');
+
+        // Funções para abrir e fechar a barra lateral
+        function toggleNav() {
+            const sideNav = document.getElementById('side-nav');
+            if (sideNav.style.width === '250px') {
+                closeNav();
+            } else {
+                openNav();
+            }
+        }
+
+        function openNav() {
+            document.getElementById('side-nav').style.width = '250px';
+        }
+
+        function closeNav() {
+            document.getElementById('side-nav').style.width = '0';
+        }
+
+        // Exibir imagem de pré-visualização quando a foto é selecionada
+        document.getElementById('foto').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const fotoPreview = document.getElementById('fotoPreview');
+                    fotoPreview.src = e.target.result;
+                    fotoPreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
     </script>
 </body>
 </html>

@@ -1,57 +1,47 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const perfilForm = document.getElementById('perfilForm');
-    const apelidoInput = document.getElementById('apelido');
-    const fotoInput = document.getElementById('foto');
-    const fotoPreview = document.getElementById('fotoPreview');
-    const senhaInput = document.getElementById('senha');
+// Código para perfil.html
+const perfilForm = document.getElementById('perfilForm');
 
-    // Carregar dados do localStorage
-    function loadProfile() {
-        const apelido = localStorage.getItem('apelido') || '';
-        const foto = localStorage.getItem('foto') || '';
-        const senha = localStorage.getItem('senha') || '';
-
-        apelidoInput.value = apelido;
-        senhaInput.value = senha;
-
-        if (foto) {
-            fotoPreview.src = foto;
-            fotoPreview.style.display = 'block';
-        }
-    }
-
-    loadProfile();
-
+if (perfilForm) {
     perfilForm.addEventListener('submit', function(event) {
         event.preventDefault(); // Previne o comportamento padrão do envio
 
-        const apelido = apelidoInput.value.trim();
-        const fotoFile = fotoInput.files[0];
-        const senha = senhaInput.value.trim();
+        const apelido = document.getElementById('apelido').value.trim();
+        const fotoInput = document.getElementById('foto');
+        const foto = fotoInput.files[0];
+        const senhaInput = document.getElementById('senha'); // Campo de senha
+        const senha = senhaInput ? senhaInput.value.trim() : ''; // Campo de senha (opcional)
 
-        if (!apelido || !senha) {
-            alert('Por favor, preencha todos os campos obrigatórios.');
+        if (!apelido || (foto && !senha)) {
+            alert('Por favor, preencha todos os campos obrigatórios e selecione uma foto.');
             return;
         }
 
         // Salvando dados no localStorage
         localStorage.setItem('apelido', apelido);
-        localStorage.setItem('senha', senha);
 
-        // Atualizando a foto de perfil se uma nova for selecionada
-        if (fotoFile) {
+        // Para salvar a foto, você pode converter a foto em uma URL de dados e salvar no localStorage
+        if (foto) {
             const reader = new FileReader();
-            reader.onload = function(e) {
-                localStorage.setItem('foto', e.target.result);
-                fotoPreview.src = e.target.result;
-                fotoPreview.style.display = 'block';
+            reader.onload = function(event) {
+                localStorage.setItem('foto', event.target.result);
             };
-            reader.onerror = function(e) {
-                console.error('Erro ao ler o arquivo de imagem:', e);
-            };
-            reader.readAsDataURL(fotoFile);
+            reader.readAsDataURL(foto);
         }
 
-        alert('Perfil atualizado com sucesso!');
+        alert('Informações salvas com sucesso!');
     });
+}
+
+// Exibir imagem de pré-visualização quando a foto é selecionada
+document.getElementById('foto').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const fotoPreview = document.getElementById('fotoPreview');
+            fotoPreview.src = e.target.result;
+            fotoPreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
 });
