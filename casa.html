@@ -3,63 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVA Home - Gerenciar Casa</title>
+    <title>Gerenciar Casa - NOVA</title>
     <link rel="stylesheet" href="casa.css">
 </head>
 <body>
-    <header id="header"></header>
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>Gerenciar Casa</h1>
+    </header>
 
-    <div id="side-nav" class="side-nav">
+    <nav id="side-nav" class="side-nav">
         <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
         <a href="perfil.html">Perfil</a>
         <a href="preferencias.html">Preferências</a>
         <a href="sensores.html">Sensores</a>
-        <a href="casa.html">Casa</a>
-    </div>
+        <a href="casa.html" class="active">Casa</a>
+    </nav>
 
     <main>
-        <div class="container">
-            <section id="add-comodo">
-                <h1>Gerenciar Casa</h1>
-                <h2>Adicionar Cômodo</h2>
-                <form action="cadastrar_comodo.php" method="POST">
-                    <div class="form-group">
-                        <label for="comodo">Nome do Cômodo:</label>
-                        <input type="text" id="comodo" name="comodo" required>
-                    </div>
+        <section id="add-comodo">
+            <h2>Adicionar Cômodo</h2>
+            <form action="cadastrar_comodo.php" method="POST">
+                <div class="form-group">
+                    <label for="comodo">Nome do Cômodo:</label>
+                    <input type="text" id="comodo" name="comodo" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo de Cômodo:</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="quarto">Quarto</option>
+                        <option value="banheiro">Banheiro</option>
+                        <option value="sala">Sala</option>
+                        <option value="cozinha">Cozinha</option>
+                        <option value="lavanderia">Lavanderia</option>
+                        <option value="outro">Outro (especificar)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dimensoes">Dimensões do Cômodo (em metros):</label>
+                    <input type="text" id="dimensoes" name="dimensoes" pattern="\d+(\.\d+)?x\d+(\.\d+)?x\d+(\.\d+)?" placeholder="Ex: 5x7x3.5" required>
+                    <small>Formato: largura x comprimento x altura</small>
+                </div>
+                <button type="submit" class="btn">Adicionar Cômodo</button>
+            </form>
+        </section>
 
-                    <div class="form-group">
-                        <label for="tipo">Tipo de Cômodo:</label>
-                        <select id="tipo" name="tipo" required>
-                            <option value="quarto">Quarto</option>
-                            <option value="banheiro">Banheiro</option>
-                            <option value="sala">Sala</option>
-                            <option value="cozinha">Cozinha</option>
-                            <option value="lavanderia">Lavanderia</option>
-                            <option value="outro">Outro (especificar)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="dimensoes">Dimensões do Cômodo (em metros):</label>
-                        <input type="text" id="dimensoes" name="dimensoes" pattern="\d+(\.\d+)?x\d+(\.\d+)?x\d+(\.\d+)?" placeholder="Ex: 5x7x3.5" required>
-                        <small>Formato: largura x comprimento x altura</small>
-                    </div>
-                    
-                    <button type="submit" class="btn">Adicionar Cômodo</button>
-                </form>
-            </section>
-
-            <section id="pre-cadastrados">
-                <h2>Cômodos Pré-Cadastrados</h2>
-                <div class="comodo-item quarto" data-comodo="quarto">Quarto</div>
-                <div class="comodo-item banheiro" data-comodo="banheiro">Banheiro</div>
-                <div class="comodo-item sala" data-comodo="sala">Sala</div>
-                <div class="comodo-item hall" data-comodo="hall">Hall de Entrada</div>
-                <div class="comodo-item varanda" data-comodo="varanda">Varanda</div>
-                <div class="comodo-item cozinha" data-comodo="cozinha">Cozinha</div>
-            </section>
-        </div>
+        <section id="pre-cadastrados">
+            <h2>Cômodos Pré-Cadastrados</h2>
+            <div class="comodo-container">
+                <div class="comodo-item" data-comodo="quarto">Quarto</div>
+                <div class="comodo-item" data-comodo="banheiro">Banheiro</div>
+                <div class="comodo-item" data-comodo="sala">Sala</div>
+                <div class="comodo-item" data-comodo="hall">Hall de Entrada</div>
+                <div class="comodo-item" data-comodo="varanda">Varanda</div>
+                <div class="comodo-item" data-comodo="cozinha">Cozinha</div>
+            </div>
+        </section>
 
         <section id="house-plan">
             <h2>Planta da Casa</h2>
@@ -67,7 +66,9 @@
         </section>
     </main>
 
-    <footer id="footer"></footer>
+    <footer>
+        <p>&copy; 2024 NOVA. Todos os direitos reservados.</p>
+    </footer>
 
     <!-- Pop-up -->
     <div id="popup" class="popup">

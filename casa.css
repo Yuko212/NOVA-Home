@@ -1,9 +1,8 @@
-/* Estilos para casa.html */
-
+/* Estilos gerais */
 body {
-    background-color: #F2F2F2; /* Cor de fundo padrão */
-    color: #595859; /* Cor do texto padrão */
-    font-family: Arial, sans-serif; /* Fonte padrão */
+    background-color: #F2F2F2;
+    color: #595859;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -13,119 +12,42 @@ body {
 
 header {
     width: 100%;
-    height: 10%;
+    height: 80px;
     position: fixed;
     top: 0;
     left: 0;
     background-color: #F2DFDF;
     padding: 10px;
-    z-index: 1000;
     display: flex;
-    justify-content: center;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-header img {
-    max-height: 100%;
-    max-width: 100%;
+header .logo {
+    width: 60px;
     height: auto;
-    width: auto;
-    object-fit: contain;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-.logo {
-    width: 100px;
-    height: 100px;
 }
 
 header h1 {
-    text-align: center;
-    color: #d9b1ad;
     margin-left: 20px;
+    color: #d9b1ad;
     font-size: 1.5rem;
 }
 
-main {
-    flex: 1;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding-top: 140px;
-    padding-bottom: 60px;
-}
-
-nav {
-    background-color: #F2DFDF;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    display: flex;
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex; /* Exibe os itens da lista em linha */
-}
-
-nav ul li {
-    margin: 0 15px; /* Espaço entre os itens da lista */
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #D9B1AD;
-    font-size: 1.1rem;
-    font-family: 'Georgia', serif; /* Fonte ajustada */
-}
-
-nav ul li a:hover {
-    color: #D9C1B8;
-}
-
-#home-status {
-    background-color: #F2DFDF;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-footer {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: #F2DFDF;
-    padding: 10px;
-    text-align: center;
-    color: #595859;
-    z-index: 1000;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos para a barra lateral retrátil */
-.side-nav {
+nav.side-nav {
     height: 100%;
-    width: 0;
+    width: 250px;
     position: fixed;
-    z-index: 1000;
     top: 0;
     left: 0;
     background-color: #F2DFDF;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.3s;
     padding-top: 60px;
 }
 
-.side-nav a {
-    padding: 10px 15px;
+nav.side-nav a {
+    padding: 15px;
     text-decoration: none;
     font-size: 1.2rem;
     color: #595859;
@@ -133,222 +55,152 @@ footer {
     transition: 0.3s;
 }
 
-.side-nav a:hover {
+nav.side-nav a:hover, nav.side-nav a.active {
     background-color: #d88b8b;
     color: white;
 }
 
-.side-nav .close-btn {
+nav.side-nav .close-btn {
     position: absolute;
     top: 10px;
     right: 20px;
     font-size: 36px;
-}
-
-.menu-toggle {
-    font-size: 30px;
-    background-color: transparent;
-    border: none;
-    color: #595859;
     cursor: pointer;
-    position: absolute;
-    left: 20px; /* Mover o botão para a esquerda */
-    top: 110px; /* Mover o botão abaixo do header */
-    z-index: 1001;
 }
 
-.menu-toggle:hover {
-    color: #d88b8b;
-}
-
-/* Estilos para o pop-up dos cômodos */
-#popup {
-    display: none;
-    position: fixed;
-    z-index: 1001;
-    left: 0;
-    top: 0;
+main {
+    flex: 1;
     width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 120px 20px 60px;
 }
 
-#popup.active {
+h2 {
+    color: #d9b1ad;
+    margin-top: 0;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+}
+
+form .form-group label {
     display: block;
+    margin-bottom: 5px;
 }
 
-#popup-content {
-    background-color: #F2DFDF;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 600px;
-}
-
-#popup-img {
+form .form-group input, form .form-group select {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-#popup-name {
+button.btn {
+    background-color: #d9b1ad;
+    color: white;
     border: none;
-    background: transparent;
-    font-size: 1.2rem;
-    color: #595859;
-    font-family: 'Georgia', serif;
-    margin-top: 10px;
-    display: block;
-    width: 100%;
-}
-
-#popup-dimensoes,
-#popup-sensor {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 1rem;
-    color: #595859;
-    margin-top: 10px;
 }
 
-#popup-close-btn,
-#edit-btn {
-    background-color: #e6a6a6;
-    border: none;
-    border-radius: 10px;
-    color: #595859;
-    padding: 10px 20px; /* Ajuste o padding para botões maiores */
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-    display: inline-block;
-}
-
-#popup-close-btn:hover,
-#edit-btn:hover {
+button.btn:hover {
     background-color: #d88b8b;
 }
 
-/* Container dos cômodos */
+footer {
+    background-color: #F2DFDF;
+    color: #595859;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 .comodo-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
 }
 
 .comodo-item {
-    background-color: #F2DFDF;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    text-align: center;
+    background-color: #FFF;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
     cursor: pointer;
+    width: 100px;
+    text-align: center;
 }
 
-.comodo-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
+.comodo-item:hover {
+    background-color: #f2f2f2;
 }
 
-.comodo-item h3 {
-    font-family: 'Georgia', serif;
-    color: #595859;
-    font-size: 1.1rem;
-    margin-top: 10px;
-}
-
-/* Estilos para a área de adicionar cômodos */
-
-#add-room-popup {
+/* Estilos do pop-up */
+.popup {
     display: none;
     position: fixed;
-    z-index: 1001;
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
 }
 
-#add-room-popup.active {
-    display: block;
-}
-
-#add-room-content {
-    background-color: #F2DFDF;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-#add-room-header {
-    font-family: 'Georgia', serif;
-    font-size: 1.5rem;
-    color: #595859;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#add-room-form {
+.popup.active {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
 }
 
-#add-room-form input[type="text"],
-#add-room-form input[type="file"] {
+.popup-content {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    width: 400px;
+    text-align: center;
+}
+
+.popup-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.popup-content input {
+    border: 1px solid #ccc;
     padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #d88b8b;
-    font-family: 'Georgia', serif;
+    border-radius: 5px;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.popup-content button {
+    background-color: #d9b1ad;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 1rem;
-    color: #595859;
-    background-color: #fff;
 }
 
-#add-room-form input[type="text"]::placeholder {
-    color: #a3a3a3;
-}
-
-#add-room-form button {
-    background-color: #e6a6a6;
-    border: none;
-    border-radius: 10px;
-    color: #595859;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-    text-align: center;
-}
-
-#add-room-form button:hover {
+.popup-content button:hover {
     background-color: #d88b8b;
 }
 
-#add-room-close-btn {
-    background-color: #d88b8b;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 16px;
+.popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-    text-align: center;
-}
-
-#add-room-close-btn:hover {
-    background-color: #b57a7a;
 }
