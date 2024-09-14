@@ -1,7 +1,7 @@
 /* Estilos gerais */
 body {
-    background-color: #E8F0F2; /* Cor de fundo suave */
-    color: #333; /* Cor do texto */
+    background-color: #F2F2F2; /* Cor de fundo geral */
+    color: #595859; /* Cor do texto */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -16,8 +16,8 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #004d40; /* Cor de fundo do header */
-    color: #ffffff; /* Cor do texto do header */
+    background-color: #D9B1AD; /* Cor de fundo do header */
+    color: #595859; /* Cor do texto do header */
     padding: 10px;
     display: flex;
     align-items: center;
@@ -38,10 +38,10 @@ nav.side-nav {
     position: fixed;
     top: 80px;
     left: 0;
-    width: 220px; /* Largura aumentada */
+    width: 220px; /* Largura da barra lateral */
     height: calc(100% - 80px);
-    background-color: #004d40; /* Cor de fundo da barra lateral */
-    color: #ffffff; /* Cor do texto da barra lateral */
+    background-color: #D9C1B8; /* Cor de fundo da barra lateral */
+    color: #595859; /* Cor do texto da barra lateral */
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
@@ -52,18 +52,18 @@ nav.side-nav a {
     display: block;
     padding: 10px;
     text-decoration: none;
-    color: #ffffff; /* Cor do texto dos links */
-    border-bottom: 1px solid #003d34; /* Linha separadora */
+    color: #595859; /* Cor do texto dos links */
+    border-bottom: 1px solid #F2DFDF; /* Linha separadora */
 }
 
 nav.side-nav a.active {
-    background-color: #00796b; /* Cor de fundo do link ativo */
+    background-color: #D9B1AD; /* Cor de fundo do link ativo */
     font-weight: bold;
 }
 
 nav.side-nav .close-btn {
     font-size: 24px;
-    color: #ffffff; /* Cor do botão de fechar */
+    color: #595859; /* Cor do botão de fechar */
     text-align: center;
     text-decoration: none;
     display: block;
@@ -71,14 +71,14 @@ nav.side-nav .close-btn {
 }
 
 main {
-    margin-left: 220px; /* Distância do conteúdo principal da barra lateral */
+    margin-left: 240px; /* Distância do conteúdo principal da barra lateral */
     margin-top: 100px; /* Distância do conteúdo principal do header */
     padding: 20px;
 }
 
 footer {
-    background-color: #004d40; /* Cor de fundo do rodapé */
-    color: #ffffff; /* Cor do texto do rodapé */
+    background-color: #D9B1AD; /* Cor de fundo do rodapé */
+    color: #595859; /* Cor do texto do rodapé */
     padding: 10px;
     text-align: center;
     position: fixed;
@@ -94,7 +94,7 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #ffffff;
+    background-color: #F2F2F2;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     padding: 20px;
@@ -119,7 +119,6 @@ footer {
     cursor: pointer;
 }
 
-/* Estilos do formulário */
 .form-group {
     margin-bottom: 15px;
 }
@@ -136,7 +135,7 @@ footer {
 }
 
 .btn {
-    background-color: #004d40; /* Cor do botão */
+    background-color: #595859; /* Cor do botão */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -149,7 +148,7 @@ footer {
 }
 
 .btn:hover {
-    background-color: #003d34; /* Cor de fundo do botão ao passar o mouse */
+    background-color: #D9B1AD; /* Cor de fundo do botão ao passar o mouse */
 }
 
 .popup img {
@@ -163,8 +162,8 @@ footer {
 }
 
 .comodo-item {
-    background-color: #ffffff; /* Cor de fundo dos itens */
-    border: 1px solid #ddd;
+    background-color: #F2F2F2; /* Cor de fundo dos itens */
+    border: 1px solid #D9C1B8;
     border-radius: 5px;
     padding: 10px;
     margin: 5px;
@@ -173,6 +172,6 @@ footer {
 }
 
 .comodo-item:hover {
-    background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
-    border-color: #ccc;
+    background-color: #D9B1AD; /* Cor de fundo ao passar o mouse */
+    border-color: #F2DFDF;
 }
