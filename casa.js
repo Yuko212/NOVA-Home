@@ -63,7 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         editBtn.onclick = function() {
             if (data.editable) {
-                alert('Função de editar ainda não implementada');
+                data.name = popupName.value;
+                alert('Cômodo salvo com sucesso!');
+                popup.classList.remove('active');
             }
         };
     }
