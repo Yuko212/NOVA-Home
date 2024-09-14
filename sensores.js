@@ -1,5 +1,3 @@
-// Código para sensores.html
-// Funções para abrir e fechar a barra lateral
 document.addEventListener('DOMContentLoaded', () => {
     const sideNav = document.getElementById('side-nav');
     const menuToggle = document.getElementById('menu-toggle');
@@ -24,4 +22,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-}
