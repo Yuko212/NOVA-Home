@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA Home - Perfil</title>
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+    <header id="header">
+        <!-- O conteúdo do header será carregado dinamicamente -->
+    </header>
+
+    <main>
+        <section id="perfil">
+            <h2>Perfil</h2>
+            <form id="perfilForm">
+                <div class="form-group">
+                    <label for="apelido">Apelido:</label>
+                    <input type="text" id="apelido" name="apelido" required>
+                </div>
+                <div class="form-group">
+                    <label for="foto">Foto de Perfil:</label>
+                    <input type="file" id="foto" name="foto" accept="image/*">
+                    <img id="fotoPreview" src="" alt="Foto de Perfil" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">Salvar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <!-- O conteúdo do footer será carregado dinamicamente -->
+    </footer>
+
+    <script src="perfil.js"></script>
+    <script>
+        // Função para carregar HTML externo em um elemento
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar ' + filePath);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(elementId).innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o conteúdo: ', error);
+                });
+        }
+
+        // Carregar header e footer dinamicamente
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
+    </script>
+</body>
+</html>
