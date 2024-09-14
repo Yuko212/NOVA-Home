@@ -262,28 +262,64 @@ footer {
     margin-top: 10px;
 }
 
-/* Botão para adicionar cômodos */
-#add-room-btn {
-    background-color: #e6a6a6;
-    border: none;
-    border-radius: 10px;
-    color: #595859;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
+/* Estilos para a área de adicionar cômodos */
+
+#add-room-popup {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#add-room-popup.active {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-#add-room-btn:hover {
-    background-color: #d88b8b;
+#add-room-content {
+    background-color: #F2DFDF;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Opções de edição dos cômodos */
-.edit-room-btn {
+#add-room-header {
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    color: #595859;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#add-room-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#add-room-form input[type="text"],
+#add-room-form input[type="file"] {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #d88b8b;
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    color: #595859;
+    background-color: #fff;
+}
+
+#add-room-form input[type="text"]::placeholder {
+    color: #a3a3a3;
+}
+
+#add-room-form button {
     background-color: #e6a6a6;
     border: none;
     border-radius: 10px;
@@ -294,8 +330,27 @@ footer {
     transition: background-color 0.3s ease;
     margin-top: 10px;
     display: inline-block;
+    text-align: center;
 }
 
-.edit-room-btn:hover {
+#add-room-form button:hover {
     background-color: #d88b8b;
+}
+
+#add-room-close-btn {
+    background-color: #d88b8b;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+}
+
+#add-room-close-btn:hover {
+    background-color: #b57a7a;
 }
