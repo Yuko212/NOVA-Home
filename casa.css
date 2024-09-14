@@ -10,9 +10,10 @@ body {
     flex-direction: column;
 }
 
+/* Estilo do header */
 header {
     width: 100%;
-    height: 10%; /* Defina a altura que o header terá */
+    height: 60px; /* Ajuste a altura do header */
     position: fixed;
     top: 0;
     left: 0;
@@ -32,9 +33,6 @@ header img {
     height: auto; 
     width: auto; 
     object-fit: contain; 
-    position: absolute;
-    top: 10px;
-    left: 10px;
 }
 
 /* Tamanho fixo para a logo */
@@ -50,8 +48,10 @@ header h1 {
     font-size: 1.5rem;
 }
 
+/* Estilo do footer */
 footer {
     width: 100%;
+    height: 60px; /* Ajuste a altura do footer */
     position: fixed; 
     bottom: 0;
     left: 0;
@@ -104,7 +104,8 @@ nav.side-nav .close-btn {
 
 main {
     margin-left: 240px; /* Distância do conteúdo principal da barra lateral */
-    margin-top: 60px; /* Distância do conteúdo principal do header */
+    margin-top: 70px; /* Distância do conteúdo principal do header */
+    margin-bottom: 70px; /* Distância do conteúdo principal do footer */
     padding: 20px;
 }
 
