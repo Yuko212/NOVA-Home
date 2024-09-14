@@ -1,7 +1,7 @@
 /* Estilos gerais */
 body {
-    background-color: #F2F2F2;
-    color: #595859;
+    background-color: #E8F0F2; /* Cor de fundo suave */
+    color: #333; /* Cor do texto */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -16,7 +16,8 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #F2DFDF;
+    background-color: #004d40; /* Cor de fundo do header */
+    color: #ffffff; /* Cor do texto do header */
     padding: 10px;
     display: flex;
     align-items: center;
@@ -35,31 +36,34 @@ header h1 {
 
 nav.side-nav {
     position: fixed;
-    top: 80px; /* Distância do topo */
+    top: 80px;
     left: 0;
-    width: 200px;
+    width: 220px; /* Largura aumentada */
     height: calc(100% - 80px);
-    background-color: #F2F2F2;
-    padding-top: 20px;
+    background-color: #004d40; /* Cor de fundo da barra lateral */
+    color: #ffffff; /* Cor do texto da barra lateral */
+    padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    transition: transform 0.3s ease;
 }
 
 nav.side-nav a {
     display: block;
     padding: 10px;
     text-decoration: none;
-    color: #595859;
-    border-bottom: 1px solid #ddd;
+    color: #ffffff; /* Cor do texto dos links */
+    border-bottom: 1px solid #003d34; /* Linha separadora */
 }
 
 nav.side-nav a.active {
-    background-color: #e0e0e0;
+    background-color: #00796b; /* Cor de fundo do link ativo */
     font-weight: bold;
 }
 
 nav.side-nav .close-btn {
     font-size: 24px;
-    color: #595859;
+    color: #ffffff; /* Cor do botão de fechar */
     text-align: center;
     text-decoration: none;
     display: block;
@@ -73,7 +77,8 @@ main {
 }
 
 footer {
-    background-color: #F2DFDF;
+    background-color: #004d40; /* Cor de fundo do rodapé */
+    color: #ffffff; /* Cor do texto do rodapé */
     padding: 10px;
     text-align: center;
     position: fixed;
@@ -131,7 +136,7 @@ footer {
 }
 
 .btn {
-    background-color: #595859;
+    background-color: #004d40; /* Cor do botão */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -144,7 +149,7 @@ footer {
 }
 
 .btn:hover {
-    background-color: #474747;
+    background-color: #003d34; /* Cor de fundo do botão ao passar o mouse */
 }
 
 .popup img {
@@ -158,7 +163,7 @@ footer {
 }
 
 .comodo-item {
-    background-color: #fff;
+    background-color: #ffffff; /* Cor de fundo dos itens */
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
@@ -168,6 +173,6 @@ footer {
 }
 
 .comodo-item:hover {
-    background-color: #e0e0e0;
+    background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
     border-color: #ccc;
 }
