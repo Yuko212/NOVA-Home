@@ -6,7 +6,6 @@
     <title>NOVA Home - Gerenciar Casa</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Adicione o estilo para a nova seção aqui */
         .container {
             display: flex;
             justify-content: space-between;
@@ -22,7 +21,7 @@
             background-color: #F2DFDF;
             border-radius: 5px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            margin-left: 20px; /* Ajuste para afastar a subcaixa da borda direita */
+            margin-left: 20px;
         }
 
         #pre-cadastrados h2 {
@@ -42,13 +41,12 @@
             opacity: 0.9;
         }
 
-        /* Cores diferentes para cada cômodo */
-        .quarto { background-color: #8e44ad; } /* Roxo */
-        .banheiro { background-color: #3498db; } /* Azul */
-        .sala { background-color: #e67e22; } /* Laranja */
-        .hall { background-color: #2ecc71; } /* Verde */
-        .varanda { background-color: #f39c12; } /* Amarelo */
-        .cozinha { background-color: #c0392b; } /* Vermelho */
+        .quarto { background-color: #8e44ad; }
+        .banheiro { background-color: #3498db; }
+        .sala { background-color: #e67e22; }
+        .hall { background-color: #2ecc71; }
+        .varanda { background-color: #f39c12; }
+        .cozinha { background-color: #c0392b; }
 
         .popup {
             display: none;
@@ -116,10 +114,8 @@
     </style>
 </head>
 <body>
-    <header id="header">
-        <!-- O conteúdo do header será carregado dinamicamente -->
-    </header>
-    
+    <header id="header"></header>
+
     <!-- Barra lateral retrátil -->
     <div id="side-nav" class="side-nav">
         <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
@@ -179,9 +175,7 @@
         </section>
     </main>
 
-    <footer id="footer">
-        <!-- O conteúdo do footer será carregado dinamicamente -->
-    </footer>
+    <footer id="footer"></footer>
 
     <!-- Pop-up -->
     <div id="popup" class="popup">
@@ -195,108 +189,6 @@
         </div>
     </div>
 
-    <script>
-        // Função para carregar HTML externo em um elemento
-        function loadHTML(elementId, filePath) {
-            fetch(filePath)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro ao carregar ' + filePath);
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    document.getElementById(elementId).innerHTML = html;
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar o conteúdo: ', error);
-                });
-        }
-
-        // Carregar header e footer dinamicamente
-        loadHTML('header', 'header.html');
-        loadHTML('footer', 'footer.html');
-
-        // Função para abrir o pop-up
-        function openPopup(comodo) {
-            const popup = document.getElementById('popup');
-            const popupImg = document.getElementById('popup-img');
-            const popupName = document.getElementById('popup-name');
-            const popupDimensoes = document.getElementById('popup-dimensoes');
-            const popupSensor = document.getElementById('popup-sensor');
-
-            const comodos = {
-                quarto: {
-                    img: 'quarto.jpg',
-                    name: 'Quarto',
-                    dimensoes: '4x5x2.5',
-                    sensor: 'Nenhum',
-                    editable: true
-                },
-                banheiro: {
-                    img: 'banheiro.jpg',
-                    name: 'Banheiro',
-                    dimensoes: '2x3x2.5',
-                    sensor: 'Movimento',
-                    editable: false
-                },
-                sala: {
-                    img: 'sala.jpg',
-                    name: 'Sala',
-                    dimensoes: '5x7x3',
-                    sensor: 'Temperatura',
-                    editable: false
-                },
-                hall: {
-                    img: 'hall.jpg',
-                    name: 'Hall de Entrada',
-                    dimensoes: '3x3x3',
-                    sensor: 'Nenhum',
-                    editable: false
-                },
-                varanda: {
-                    img: 'varanda.jpg',
-                    name: 'Varanda',
-                    dimensoes: '4x5x2.5',
-                    sensor: 'Umidade',
-                    editable: false
-                },
-                cozinha: {
-                    img: 'cozinha.jpg',
-                    name: 'Cozinha',
-                    dimensoes: '4x6x3',
-                    sensor: 'Gás',
-                    editable: false
-                }
-            };
-
-            // Atualiza o conteúdo do pop-up
-            popupImg.src = comodos[comodo].img;
-            popupName.value = comodos[comodo].name;
-            popupDimensoes.textContent = 'Dimensões: ' + comodos[comodo].dimensoes;
-            popupSensor.textContent = 'Sensor: ' + comodos[comodo].sensor;
-            popupName.style.display = comodos[comodo].editable ? 'block' : 'none';
-
-            // Mostrar pop-up
-            popup.classList.add('active');
-        }
-
-        // Função para fechar o pop-up
-        document.getElementById('popup-close-btn').addEventListener('click', function() {
-            document.getElementById('popup').classList.remove('active');
-        });
-
-        // Adicionar eventos de clique para os cômodos pré-cadastrados
-        document.querySelectorAll('.comodo-item').forEach(item => {
-            item.addEventListener('click', function() {
-                openPopup(this.getAttribute('data-comodo'));
-            });
-        });
-
-        // Evento de clique no botão de editar
-        document.getElementById('edit-btn').addEventListener('click', function() {
-            alert('Função de editar ainda não implementada');
-        });
-    </script>
+    <script src="casa.js"></script>
 </body>
 </html>
