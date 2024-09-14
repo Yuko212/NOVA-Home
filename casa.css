@@ -13,39 +13,40 @@ body {
 header {
     width: 100%;
     height: 80px;
-    position: fixed;
-    top: 0;
-    left: 0;
     background-color: #D9B1AD; /* Cor de fundo do header */
     color: #595859; /* Cor do texto do header */
-    padding: 10px;
     display: flex;
     align-items: center;
+    padding: 0 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-header .logo {
-    width: 60px;
-    height: auto;
+footer {
+    background-color: #D9B1AD; /* Cor de fundo do rodapé */
+    color: #595859; /* Cor do texto do rodapé */
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-    margin-left: 20px;
-    font-size: 24px;
-}
-
+/* Estilos da barra lateral */
 nav.side-nav {
     position: fixed;
-    top: 80px;
+    top: 0;
     left: 0;
-    width: 220px; /* Largura da barra lateral */
-    height: calc(100% - 80px);
-    background-color: #D9C1B8; /* Cor de fundo da barra lateral */
+    width: 240px;
+    height: 100%;
+    background-color: #F2DFDF; /* Cor de fundo da barra lateral */
     color: #595859; /* Cor do texto da barra lateral */
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     transition: transform 0.3s ease;
+    transform: translateX(-100%); /* Inicialmente oculta */
 }
 
 nav.side-nav a {
@@ -53,7 +54,7 @@ nav.side-nav a {
     padding: 10px;
     text-decoration: none;
     color: #595859; /* Cor do texto dos links */
-    border-bottom: 1px solid #F2DFDF; /* Linha separadora */
+    border-bottom: 1px solid #D9C1B8; /* Linha separadora */
 }
 
 nav.side-nav a.active {
@@ -68,24 +69,13 @@ nav.side-nav .close-btn {
     text-decoration: none;
     display: block;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 main {
     margin-left: 240px; /* Distância do conteúdo principal da barra lateral */
     margin-top: 100px; /* Distância do conteúdo principal do header */
     padding: 20px;
-}
-
-footer {
-    background-color: #D9B1AD; /* Cor de fundo do rodapé */
-    color: #595859; /* Cor do texto do rodapé */
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos do pop-up */
@@ -111,7 +101,7 @@ footer {
     position: relative;
 }
 
-.close-btn {
+.popup .close-btn {
     position: absolute;
     top: 10px;
     right: 10px;

@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="casa.css">
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Logo" class="logo">
-        <h1>Gerenciar Casa</h1>
-    </header>
+    <div id="header"></div>
 
     <nav id="side-nav" class="side-nav">
         <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
@@ -66,9 +63,7 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 NOVA. Todos os direitos reservados.</p>
-    </footer>
+    <div id="footer"></div>
 
     <!-- Pop-up para editar cômodos -->
     <div id="editPopup" class="popup">
@@ -113,7 +108,7 @@
         </div>
     </div>
 
-    <!-- Funções JavaScript para gerenciar o pop-up -->
+    <!-- Funções JavaScript para gerenciar o pop-up e a barra lateral -->
     <script>
         function toggleSensorDescription() {
             var hasSensors = document.getElementById('has-sensors').value;
@@ -139,7 +134,6 @@
 
         function openEditPopup(comodo) {
             // Aqui você pode preencher o formulário com os dados do cômodo.
-            // Exemplo de preenchimento:
             document.getElementById('comodo-name').value = comodo;
             document.getElementById('comodo-type').value = comodo; // Ajuste conforme necessário
 
@@ -150,8 +144,32 @@
         function closeEditPopup() {
             document.getElementById('editPopup').style.display = 'none';
         }
+
+        document.getElementById('close-btn').addEventListener('click', function() {
+            document.getElementById('side-nav').style.transform = 'translateX(-100%)';
+        });
+
+        function openNav() {
+            document.getElementById('side-nav').style.transform = 'translateX(0)';
+        }
+
+        function closeNav() {
+            document.getElementById('side-nav').style.transform = 'translateX(-100%)';
+        }
     </script>
 
-    <script src="casa.js"></script>
+    <script>
+        function loadHTML(id, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(id).innerHTML = data;
+                })
+                .catch(error => console.error('Erro ao carregar HTML:', error));
+        }
+
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
+    </script>
 </body>
 </html>
