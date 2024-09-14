@@ -70,17 +70,91 @@
         <p>&copy; 2024 NOVA. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Pop-up -->
-    <div id="popup" class="popup">
-        <span class="close-btn" id="popup-close-btn">&times;</span>
-        <div class="popup-content">
-            <img id="popup-img" src="default-profile.jpg" alt="Perfil">
-            <input type="text" id="popup-name" value="Nome" placeholder="Nome">
-            <p id="popup-dimensoes">Dimensões: </p>
-            <p id="popup-sensor">Sensor: </p>
-            <button id="edit-btn">Salvar</button>
-        </div>
+    <!-- Pop-up para editar cômodos -->
+<div id="editPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closeEditPopup()">&times;</span>
+        <h2>Editar Cômodo</h2>
+        <form id="editForm">
+            <div class="form-group">
+                <label for="comodo-name">Nome do Cômodo:</label>
+                <input type="text" id="comodo-name" name="comodo-name" required>
+            </div>
+            <div class="form-group">
+                <label for="comodo-type">Tipo de Cômodo:</label>
+                <select id="comodo-type" name="comodo-type">
+                    <option value="quarto">Quarto</option>
+                    <option value="sala">Sala</option>
+                    <option value="cozinha">Cozinha</option>
+                    <!-- Adicione outros tipos de cômodos conforme necessário -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="has-sensors">Há sensores?</label>
+                <select id="has-sensors" name="has-sensors" onchange="toggleSensorDescription()">
+                    <option value="não">Não</option>
+                    <option value="sim">Sim</option>
+                </select>
+            </div>
+            <div id="sensor-description-container" style="display: none;">
+                <label for="sensor-description">Descrição do Sensor:</label>
+                <input type="text" id="sensor-description" name="sensor-description">
+            </div>
+            <div id="profile-picture-container" style="display: none;">
+                <label for="profile-picture">Foto de Perfil:</label>
+                <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
+            </div>
+            <div id="room-owner-container" style="display: none;">
+                <label for="room-owner">Dono do Quarto:</label>
+                <input type="text" id="room-owner" name="room-owner">
+            </div>
+            <button type="submit" class="btn">Salvar</button>
+        </form>
     </div>
+</div>
+
+<!-- Funções JavaScript para gerenciar o pop-up -->
+<script>
+    function toggleSensorDescription() {
+        var hasSensors = document.getElementById('has-sensors').value;
+        var sensorDescriptionContainer = document.getElementById('sensor-description-container');
+        var profilePictureContainer = document.getElementById('profile-picture-container');
+        var roomOwnerContainer = document.getElementById('room-owner-container');
+
+        if (hasSensors === 'sim') {
+            sensorDescriptionContainer.style.display = 'block';
+        } else {
+            sensorDescriptionContainer.style.display = 'none';
+        }
+
+        var comodoType = document.getElementById('comodo-type').value;
+        if (comodoType === 'quarto') {
+            profilePictureContainer.style.display = 'block';
+            roomOwnerContainer.style.display = 'block';
+        } else {
+            profilePictureContainer.style.display = 'none';
+            roomOwnerContainer.style.display = 'none';
+        }
+    }
+
+    function openEditPopup(comodo) {
+        // Preencher o formulário com os dados do cômodo
+        document.getElementById('comodo-name').value = comodo.name;
+        document.getElementById('comodo-type').value = comodo.type;
+        document.getElementById('has-sensors').value = comodo.hasSensors ? 'sim' : 'não';
+        document.getElementById('sensor-description').value = comodo.sensorDescription || '';
+
+        // Exibir ou ocultar as seções conforme o tipo de cômodo
+        toggleSensorDescription();
+
+        // Mostrar o pop-up
+        document.getElementById('editPopup').classList.add('active');
+    }
+
+    function closeEditPopup() {
+        document.getElementById('editPopup').classList.remove('active');
+    }
+</script>
 
     <script src="casa.js"></script>
 </body>
