@@ -1,18 +1,27 @@
 // Código para sensores.html
 // Funções para abrir e fechar a barra lateral
-function toggleNav() {
+document.addEventListener('DOMContentLoaded', () => {
     const sideNav = document.getElementById('side-nav');
-    if (sideNav.style.width === '250px') {
-        closeNav();
-    } else {
-        openNav();
-    }
-}
+    const menuToggle = document.getElementById('menu-toggle');
+    const closeBtn = document.getElementById('close-btn');
 
-function openNav() {
-    document.getElementById('side-nav').style.width = '250px';
-}
+    menuToggle.addEventListener('click', () => {
+        sideNav.style.width = '240px'; /* Ajuste para abrir a barra lateral */
+    });
 
-function closeNav() {
-    document.getElementById('side-nav').style.width = '0';
+    closeBtn.addEventListener('click', () => {
+        sideNav.style.width = '0'; /* Ajuste para fechar a barra lateral */
+    });
+
+    // Atualizar o valor exibido dos controles
+    const updateRangeValue = (id, value) => {
+        document.getElementById(id + '-value').textContent = value + '%';
+    };
+
+    document.querySelectorAll('input[type="range"]').forEach(input => {
+        input.addEventListener('input', (e) => {
+            updateRangeValue(e.target.id, e.target.value);
+        });
+    });
+});
 }
