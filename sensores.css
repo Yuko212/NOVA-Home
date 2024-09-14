@@ -10,9 +10,10 @@ body {
     height: 100vh;
 }
 
+/* Header */
 header {
     width: 100%;
-    height: 10%;
+    height: 80px; /* Ajuste a altura conforme necessário */
     position: fixed;
     top: 0;
     left: 0;
@@ -24,6 +25,43 @@ header {
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+header img {
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+header h1 {
+    text-align: center;
+    color: #d9b1ad;
+    margin-left: 20px;
+    font-size: 1.5rem;
+}
+
+.menu-toggle {
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    color: #595859;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle:hover {
+    color: #d88b8b;
+}
+
 
 footer {
     width: 100%;
@@ -71,8 +109,6 @@ footer {
     top: 10px;
     right: 20px;
     font-size: 36px;
-    color: #595859;
-    cursor: pointer;
 }
 
 .menu-toggle {
@@ -128,16 +164,7 @@ h2 {
     margin: 5px 0;
 }
 
-.btn {
-    background-color: #d88b8b;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.btn:hover {
-    background-color: #d77c7c;
+.status {
+    font-weight: bold;
+    color: #4CAF50; /* Cor verde para status ativo */
 }

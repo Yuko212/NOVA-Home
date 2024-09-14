@@ -7,13 +7,21 @@
     <link rel="stylesheet" href="sensores.css">
 </head>
 <body>
-    <header id="header">
-        <!-- O conteúdo do header será carregado dinamicamente -->
-    </header>
+        <!-- Header -->
+        <header>
+            <button class="menu-toggle" id="menu-toggle">&equiv;</button>
+            <header>
+                <img src="logoNova.jpg" alt="Logo" class="logo">
+                <h1>NOVA Home</h1>
+                <!-- Botão do menu hamburguer -->
+                <button id="menu-toggle" class="menu-toggle">&#9776;</button>
+            </header>
+        </header>
 
-    <button class="menu-toggle" onclick="toggleNav()">☰</button>
+    <!-- Barra lateral retrátil -->
     <div id="side-nav" class="side-nav">
         <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+        <a href="main.html">Principal</a>
         <a href="perfil.html">Perfil</a>
         <a href="prefer.html">Preferências</a>
         <a href="sensores.html">Sensores</a>
@@ -24,21 +32,46 @@
         <section id="sensores">
             <h2>Sensores</h2>
             <div class="sensor-list">
-                <!-- Lista de sensores -->
+                <!-- Lista de sensores com status -->
+                <div class="sensor-item">
+                    <h3>Sensor de Luminosidade</h3>
+                    <p>Status: <span class="status active">Ativo</span></p>
+                    <p>Valor: 450 lux</p>
+                </div>
                 <div class="sensor-item">
                     <h3>Sensor de Temperatura</h3>
-                    <p>Descrição: Monitora a temperatura ambiente.</p>
-                    <button class="btn">Editar</button>
+                    <p>Status: <span class="status active">Ativo</span></p>
+                    <p>Valor: 22°C</p>
                 </div>
                 <div class="sensor-item">
-                    <h3>Sensor de Umidade</h3>
-                    <p>Descrição: Monitora a umidade do ar.</p>
-                    <button class="btn">Editar</button>
+                    <h3>Sensor de Gás</h3>
+                    <p>Status: <span class="status active">Ativo</span></p>
+                    <p>Valor: 200 ppm</p>
                 </div>
                 <div class="sensor-item">
-                    <h3>Sensor de Movimento</h3>
-                    <p>Descrição: Detecta movimentos na área.</p>
-                    <button class="btn">Editar</button>
+                    <h3>Sensor de Fumaça</h3>
+                    <p>Status: <span class="status active">Ativo</span></p>
+                    <p>Valor: 0% de fumaça</p>
+                </div>
+                <div class="sensor-item">
+                    <h3>Sensor de Presença</h3>
+                    <p>Status: <span class="status active">Ativo</span></p>
+                    <p>Valor: Ocupado</p>
+                </div>
+                <div class="sensor-item">
+                    <h3>Sensor de Poeira</h3>
+                    <p>Status: <span class="status active">Ativo</span></p>
+                    <p>Valor: 15 µg/m³</p>
+                </div>
+                <div class="sensor-item">
+                    <h3>Sensor de Vazão de Água</h3>
+                    <p>Status: <span class="status active">Ativo</span></p>
+                    <p>Valor: 5 L/min</p>
+                </div>
+                <div class="sensor-item">
+                    <h3>Sensor de Tensão Elétrica</h3>
+                    <p>Status: <span class="status active">Ativo</span></p>
+                    <p>Valor: 220 V</p>
                 </div>
             </div>
         </section>
