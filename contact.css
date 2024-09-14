@@ -3,10 +3,6 @@ body {
     background-color: #F2F2F2;
     font-family: 'Georgia', serif;
     color: #595859;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin: 0;
     padding: 0;
 }
@@ -19,7 +15,7 @@ header {
     left: 0;
     background-color: #F2DFDF;
     padding: 10px;
-    z-index: 1000;
+    z-index: 1000; /* Define o z-index para o header */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,44 +45,44 @@ header h1 {
     font-size: 1.5rem;
 }
 
-nav {
+/* Barra de navegação padrão */
+.top-nav {
     background-color: #F2DFDF;
     padding: 15px;
-    border-radius: 10px;
+    text-align: center;
+    margin-top: 70px; /* Adicionado para não sobrepor o header */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    display: flex;
-    justify-content: center;
 }
 
-nav ul {
+.top-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
+    justify-content: center;
 }
 
-nav ul li {
+.top-nav ul li {
     margin: 0 15px;
 }
 
-nav ul li a {
+.top-nav ul li a {
     text-decoration: none;
     color: #D9B1AD;
     font-size: 1.1rem;
     font-family: 'Georgia', serif;
 }
 
-nav ul li a:hover {
+.top-nav ul li a:hover {
     color: #D9C1B8;
 }
 
 main {
-    flex: 1;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     width: 100%;
+    margin-top: 100px; /* Adicionado para ajustar a posição após o header e barra de navegação */
 }
 
 #contact-section {
@@ -180,7 +176,7 @@ footer {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1000;
+    z-index: 2000; /* Aumentado para sobrepor o header */
     top: 0;
     left: 0;
     background-color: #F2DFDF;
@@ -199,25 +195,20 @@ footer {
 }
 
 .side-nav a:hover {
-    background-color: #d88b8b;
-    color: white;
+    color: #d88b8b;
 }
 
 .side-nav .close-btn {
     position: absolute;
     top: 10px;
-    right: 20px;
+    right: 25px;
     font-size: 36px;
 }
 
 .menu-toggle {
-    font-size: 30px;
-    background-color: transparent;
-    border: none;
-    color: #595859;
-    cursor: pointer;
     position: absolute;
-    top: 10px;
+    font-size: 30px;
+    top: 80px; /* Ajustado para ficar logo abaixo do header */
     left: 10px;
     z-index: 1001;
 }
