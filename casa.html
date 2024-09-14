@@ -51,12 +51,12 @@
         <section id="pre-cadastrados">
             <h2>Cômodos Pré-Cadastrados</h2>
             <div class="comodo-container">
-                <div class="comodo-item" data-comodo="quarto">Quarto</div>
-                <div class="comodo-item" data-comodo="banheiro">Banheiro</div>
-                <div class="comodo-item" data-comodo="sala">Sala</div>
-                <div class="comodo-item" data-comodo="hall">Hall de Entrada</div>
-                <div class="comodo-item" data-comodo="varanda">Varanda</div>
-                <div class="comodo-item" data-comodo="cozinha">Cozinha</div>
+                <div class="comodo-item" onclick="openEditPopup('quarto')">Quarto</div>
+                <div class="comodo-item" onclick="openEditPopup('banheiro')">Banheiro</div>
+                <div class="comodo-item" onclick="openEditPopup('sala')">Sala</div>
+                <div class="comodo-item" onclick="openEditPopup('hall')">Hall de Entrada</div>
+                <div class="comodo-item" onclick="openEditPopup('varanda')">Varanda</div>
+                <div class="comodo-item" onclick="openEditPopup('cozinha')">Cozinha</div>
             </div>
         </section>
 
@@ -138,21 +138,17 @@
         }
 
         function openEditPopup(comodo) {
-            // Preencher o formulário com os dados do cômodo
-            document.getElementById('comodo-name').value = comodo.name;
-            document.getElementById('comodo-type').value = comodo.type;
-            document.getElementById('has-sensors').value = comodo.hasSensors ? 'sim' : 'não';
-            document.getElementById('sensor-description').value = comodo.sensorDescription || '';
+            // Aqui você pode preencher o formulário com os dados do cômodo.
+            // Exemplo de preenchimento:
+            document.getElementById('comodo-name').value = comodo;
+            document.getElementById('comodo-type').value = comodo; // Ajuste conforme necessário
 
-            // Exibir ou ocultar as seções conforme o tipo de cômodo
-            toggleSensorDescription();
-
-            // Mostrar o pop-up
-            document.getElementById('editPopup').classList.add('active');
+            // Exibir o pop-up
+            document.getElementById('editPopup').style.display = 'block';
         }
 
         function closeEditPopup() {
-            document.getElementById('editPopup').classList.remove('active');
+            document.getElementById('editPopup').style.display = 'none';
         }
     </script>
 

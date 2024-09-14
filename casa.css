@@ -150,3 +150,24 @@ footer {
 .popup img {
     width: 100%; /* Ajuste a largura da imagem */
 }
+
+/* Estilo para os itens de cômodo */
+.comodo-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.comodo-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.comodo-item:hover {
+    background-color: #e0e0e0;
+    border-color: #ccc;
+}
