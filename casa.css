@@ -12,7 +12,7 @@ body {
 
 header {
     width: 100%;
-    height: 80px;
+    height: 60px; /* Ajuste o tamanho da foto do header */
     background-color: #D9B1AD; /* Cor de fundo do header */
     color: #595859; /* Cor do texto do header */
     display: flex;
@@ -74,7 +74,7 @@ nav.side-nav .close-btn {
 
 main {
     margin-left: 240px; /* Distância do conteúdo principal da barra lateral */
-    margin-top: 100px; /* Distância do conteúdo principal do header */
+    margin-top: 60px; /* Distância do conteúdo principal do header */
     padding: 20px;
 }
 

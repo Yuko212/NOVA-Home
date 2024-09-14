@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="tipo">Tipo de Cômodo:</label>
-                    <select id="tipo" name="tipo" required>
+                    <select id="tipo" name="tipo" onchange="toggleAdditionalFields()" required>
                         <option value="quarto">Quarto</option>
                         <option value="banheiro">Banheiro</option>
                         <option value="sala">Sala</option>
@@ -40,6 +40,16 @@
                     <label for="dimensoes">Dimensões do Cômodo (em metros):</label>
                     <input type="text" id="dimensoes" name="dimensoes" pattern="\d+(\.\d+)?x\d+(\.\d+)?x\d+(\.\d+)?" placeholder="Ex: 5x7x3.5" required>
                     <small>Formato: largura x comprimento x altura</small>
+                </div>
+                <div id="additional-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="profile-picture">Foto de Perfil:</label>
+                        <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="room-owner">Dono do Quarto:</label>
+                        <input type="text" id="room-owner" name="room-owner">
+                    </div>
                 </div>
                 <button type="submit" class="btn">Adicionar Cômodo</button>
             </form>
@@ -95,14 +105,6 @@
                     <label for="sensor-description">Descrição do Sensor:</label>
                     <input type="text" id="sensor-description" name="sensor-description">
                 </div>
-                <div id="profile-picture-container" class="form-group" style="display: none;">
-                    <label for="profile-picture">Foto de Perfil:</label>
-                    <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
-                </div>
-                <div id="room-owner-container" class="form-group" style="display: none;">
-                    <label for="room-owner">Dono do Quarto:</label>
-                    <input type="text" id="room-owner" name="room-owner">
-                </div>
                 <button type="submit" class="btn">Salvar</button>
             </form>
         </div>
@@ -110,25 +112,25 @@
 
     <!-- Funções JavaScript para gerenciar o pop-up e a barra lateral -->
     <script>
+        function toggleAdditionalFields() {
+            var tipo = document.getElementById('tipo').value;
+            var additionalFields = document.getElementById('additional-fields');
+
+            if (tipo === 'quarto') {
+                additionalFields.style.display = 'block';
+            } else {
+                additionalFields.style.display = 'none';
+            }
+        }
+
         function toggleSensorDescription() {
             var hasSensors = document.getElementById('has-sensors').value;
             var sensorDescriptionContainer = document.getElementById('sensor-description-container');
-            var profilePictureContainer = document.getElementById('profile-picture-container');
-            var roomOwnerContainer = document.getElementById('room-owner-container');
 
             if (hasSensors === 'sim') {
                 sensorDescriptionContainer.style.display = 'block';
             } else {
                 sensorDescriptionContainer.style.display = 'none';
-            }
-
-            var comodoType = document.getElementById('comodo-type').value;
-            if (comodoType === 'quarto') {
-                profilePictureContainer.style.display = 'block';
-                roomOwnerContainer.style.display = 'block';
-            } else {
-                profilePictureContainer.style.display = 'none';
-                roomOwnerContainer.style.display = 'none';
             }
         }
 
@@ -156,9 +158,7 @@
         function closeNav() {
             document.getElementById('side-nav').style.transform = 'translateX(-100%)';
         }
-    </script>
 
-    <script>
         function loadHTML(id, url) {
             fetch(url)
                 .then(response => response.text())
