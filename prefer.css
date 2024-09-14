@@ -10,10 +10,10 @@ body {
     height: 100vh;
 }
 
-/* Header e Footer */
+/* Header */
 header {
     width: 100%;
-    height: 60px; /* Defina a altura desejada para o header */
+    height: 60px;
     background-color: #F2DFDF;
     padding: 10px;
     text-align: center;
@@ -22,39 +22,41 @@ header {
     left: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-footer {
-    width: 100%;
-    height: 60px; /* Defina a altura desejada para o footer */
-    background-color: #F2DFDF;
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Main Content */
-main {
-    padding: 20px;
-    margin-top: 60px; /* Distância do conteúdo principal para o header fixo */
-    margin-left: 240px; /* Distância do conteúdo principal para a barra lateral */
-    padding-bottom: 80px; /* Distância do conteúdo principal para o footer fixo */
-}
-
-/* Ajustes para o header e footer */
-header img {
+header .logo {
     max-height: 100%;
     max-width: 100%;
     height: auto;
     width: auto;
-    object-fit: contain;
 }
 
+header h1 {
+    color: #D9B1AD;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.menu-toggle {
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    color: #595859;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle:hover {
+    color: #d88b8b;
+}
+
+/* Footer */
 footer {
+    width: 100%;
+    height: 60px;
     background-color: #F2DFDF;
     padding: 10px;
     text-align: center;
@@ -68,9 +70,9 @@ footer {
 /* Main Content */
 main {
     padding: 20px;
-    margin-top: 60px; /* Ajuste para compensar a altura do header fixo */
-    margin-left: 240px; /* Ajuste para compensar a largura da barra lateral */
-    padding-bottom: 80px; /* Ajuste para compensar a altura do footer fixo */
+    margin-top: 60px; /* Compensar a altura do header */
+    margin-left: 240px; /* Compensar a largura da barra lateral */
+    padding-bottom: 80px; /* Compensar a altura do footer */
 }
 
 h1 {
@@ -109,39 +111,57 @@ span {
     color: #595859;
 }
 
-/* Barra Lateral */
+/* Barra Lateral Retrátil */
 .side-nav {
+    height: 100%;
+    width: 0;
     position: fixed;
+    z-index: 1000;
     top: 0;
     left: 0;
-    width: 240px;
-    height: 100%;
     background-color: #F2DFDF;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    z-index: 999;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px; /* Compensa a altura do header */
 }
 
 .side-nav a {
-    display: block;
-    padding: 10px;
+    padding: 10px 15px;
     text-decoration: none;
+    font-size: 1.2rem;
     color: #595859;
-    border-bottom: 1px solid #D9C1B8;
-    margin-bottom: 10px;
+    display: block;
+    transition: 0.3s;
 }
 
-.side-nav a.active {
-    background-color: #D9B1AD;
-    font-weight: bold;
+.side-nav a:hover {
+    background-color: #d88b8b;
+    color: white;
 }
 
 .side-nav .close-btn {
-    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 36px;
     color: #595859;
     cursor: pointer;
-    margin-bottom: 20px;
+}
+
+.menu-toggle {
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    color: #595859;
+    cursor: pointer;
+    position: absolute;
+    left: 20px; /* Mover o botão para a esquerda */
+    top: 110px; /* Mover o botão abaixo do header */
+    z-index: 1001;
+}
+
+.menu-toggle:hover {
+    color: #d88b8b;
 }
 
 /* Ajustes para dispositivos móveis */
@@ -149,10 +169,11 @@ span {
     main {
         margin-left: 0;
     }
-    
+
     .side-nav {
         width: 100%;
         height: auto;
         position: relative;
+        padding-top: 60px;
     }
 }

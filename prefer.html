@@ -1,74 +1,65 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preferências do Usuário</title>
+    <title>Preferências</title>
     <link rel="stylesheet" href="prefer.css">
-    <script src="prefer.js" defer></script>
 </head>
 <body>
-
-    <!-- Side Navigation Bar -->
-    <nav class="side-nav">
-        <span class="close-btn" onclick="closeNav()">&times;</span>
-        <a href="index.html">Início</a>
-        <a href="prefer.html" class="active">Preferências</a>
-        <a href="sobre.html">Sobre</a>
-    </nav>
-
     <!-- Header -->
-    <header id="header"></header>
+    <header>
+        <button class="menu-toggle" id="menu-toggle">&equiv;</button>
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>Preferências</h1>
+    </header>
+    
+    <!-- Barra lateral retrátil -->
+    <div id="side-nav" class="side-nav">
+        <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="prefer.html">Preferências</a>
+        <a href="sensores.html">Sensores</a>
+        <a href="casa.html">Casa</a>
+    </div>
 
-    <!-- Main Content -->
+    <!-- Conteúdo Principal -->
     <main>
-        <h1>Preferências do Usuário</h1>
+        <h1>Configurações de Preferências</h1>
         <div class="prefer-container">
-            <!-- Preferência de Luz -->
             <div class="preference-item">
                 <label for="light-level">Nível de Luz:</label>
-                <input type="range" id="light-level" min="0" max="100" value="50" onchange="updateLightLevel()">
-                <span id="light-value">50%</span>
+                <input type="range" id="light-level" name="light-level" min="0" max="100" value="50">
+                <span id="light-level-value">50%</span>
             </div>
-
-            <!-- Preferência de Temperatura -->
             <div class="preference-item">
                 <label for="temperature">Temperatura:</label>
-                <input type="range" id="temperature" min="16" max="30" value="22" onchange="updateTemperature()">
-                <span id="temperature-value">22°C</span>
+                <input type="range" id="temperature" name="temperature" min="10" max="30" value="20">
+                <span id="temperature-value">20°C</span>
             </div>
-
-            <!-- Preferência de Volume -->
             <div class="preference-item">
                 <label for="volume">Volume:</label>
-                <input type="range" id="volume" min="0" max="100" value="50" onchange="updateVolume()">
+                <input type="range" id="volume" name="volume" min="0" max="100" value="50">
                 <span id="volume-value">50%</span>
             </div>
-
-            <!-- Preferência de Cortinas -->
             <div class="preference-item">
                 <label for="curtains">Abertura das Cortinas:</label>
-                <input type="range" id="curtains" min="0" max="100" value="75" onchange="updateCurtains()">
-                <span id="curtains-value">75%</span>
+                <input type="range" id="curtains" name="curtains" min="0" max="100" value="50">
+                <span id="curtains-value">50%</span>
             </div>
-
-            <!-- Preferência de Umidificação -->
             <div class="preference-item">
-                <label for="humidification">Umidificação do Ar:</label>
-                <input type="range" id="humidification" min="0" max="100" value="40" onchange="updateHumidification()">
-                <span id="humidification-value">40%</span>
+                <label for="humidity">Umidificação do Ar:</label>
+                <input type="range" id="humidity" name="humidity" min="0" max="100" value="50">
+                <span id="humidity-value">50%</span>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer id="footer"></footer>
+    <footer>
+        <p>© 2024 Sua Empresa. Todos os direitos reservados.</p>
+    </footer>
 
-    <script>
-        // Carregar header e footer
-        loadHTML('header', 'header.html');
-        loadHTML('footer', 'footer.html');
-    </script>
-
+    <script src="prefer.js"></script>
 </body>
 </html>
