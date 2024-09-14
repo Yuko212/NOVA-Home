@@ -1,189 +1,261 @@
-/* Estilos gerais */
+/* Estilos para casa.html */
+
 body {
-    font-family: Arial, sans-serif;
+    background-color: #F2F2F2; /* Cor de fundo padrão */
+    color: #595859; /* Cor do texto padrão */
+    font-family: Arial, sans-serif; /* Fonte padrão */
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-header, footer {
-    background-color: #f4f4f4;
-    padding: 10px;
-    text-align: center;
-}
-
-/* Barra lateral */
-.side-nav {
-    height: 100%;
-    width: 250px;
+header {
+    width: 100%;
+    height: 10%;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #333;
-    color: white;
+    background-color: #F2DFDF;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+header h1 {
+    text-align: center;
+    color: #d9b1ad;
+    margin-left: 20px;
+    font-size: 1.5rem;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 140px;
+    padding-bottom: 60px;
+}
+
+nav {
+    background-color: #F2DFDF;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Exibe os itens da lista em linha */
+}
+
+nav ul li {
+    margin: 0 15px; /* Espaço entre os itens da lista */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #D9B1AD;
+    font-size: 1.1rem;
+    font-family: 'Georgia', serif; /* Fonte ajustada */
+}
+
+nav ul li a:hover {
+    color: #D9C1B8;
+}
+
+#home-status {
+    background-color: #F2DFDF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #F2DFDF;
+    padding: 10px;
+    text-align: center;
+    color: #595859;
+    z-index: 1000;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para a barra lateral retrátil */
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #F2DFDF;
     overflow-x: hidden;
-    transition: 0.3s;
+    transition: 0.5s;
     padding-top: 60px;
 }
 
 .side-nav a {
-    padding: 8px 8px 8px 32px;
+    padding: 10px 15px;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
+    font-size: 1.2rem;
+    color: #595859;
     display: block;
     transition: 0.3s;
 }
 
 .side-nav a:hover {
-    color: #f1f1f1;
+    background-color: #d88b8b;
+    color: white;
 }
 
 .side-nav .close-btn {
     position: absolute;
-    top: 0;
-    right: 25px;
+    top: 10px;
+    right: 20px;
     font-size: 36px;
-    margin-left: 50px;
 }
 
-/* Container */
-.container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-/* Adicionar cômodo */
-#add-comodo {
-    width: 60%;
-}
-
-#add-comodo h1, #add-comodo h2 {
-    margin-top: 0;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.form-group input, .form-group select {
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.btn {
-    padding: 10px 20px;
-    background-color: #007bff;
+.menu-toggle {
+    font-size: 30px;
+    background-color: transparent;
     border: none;
-    border-radius: 5px;
-    color: white;
+    color: #595859;
     cursor: pointer;
+    position: absolute;
+    left: 20px; /* Mover o botão para a esquerda */
+    top: 110px; /* Mover o botão abaixo do header */
+    z-index: 1001;
 }
 
-.btn:hover {
-    background-color: #0056b3;
+.menu-toggle:hover {
+    color: #d88b8b;
 }
 
-/* Cômodos pré-cadastrados */
-#pre-cadastrados {
-    width: 35%;
-    padding: 10px;
-    background-color: #f2dfdf;
-    border-radius: 5px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-left: 20px;
-}
-
-#pre-cadastrados h2 {
-    margin-top: 0;
-}
-
-.comodo-item {
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-}
-
-.comodo-item:hover {
-    opacity: 0.9;
-}
-
-.quarto { background-color: #8e44ad; }
-.banheiro { background-color: #3498db; }
-.sala { background-color: #e67e22; }
-.hall { background-color: #2ecc71; }
-.varanda { background-color: #f39c12; }
-.cozinha { background-color: #c0392b; }
-
-/* Pop-up */
-.popup {
+/* Estilos para o pop-up dos cômodos */
+#popup {
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 600px;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.popup.active {
+#popup.active {
     display: block;
 }
 
-.popup-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#popup-content {
+    background-color: #F2DFDF;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
 }
 
-.popup img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
+#popup-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
-.popup input[type="text"] {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
-    margin-bottom: 10px;
+#popup-name {
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    color: #595859;
+    font-family: 'Georgia', serif;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
 }
 
-.popup button {
-    padding: 10px 20px;
+#popup-dimensoes,
+#popup-sensor {
+    font-size: 1rem;
+    color: #595859;
+    margin-top: 10px;
+}
+
+#popup-close-btn,
+#edit-btn {
     background-color: #e6a6a6;
     border: none;
     border-radius: 10px;
+    color: #595859;
+    padding: 10px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    color: white;
 }
 
-.popup button:hover {
+#popup-close-btn:hover,
+#edit-btn:hover {
     background-color: #d88b8b;
 }
 
-.popup .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
+/* Container dos cômodos */
+.comodo-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.comodo-item {
+    background-color: #F2DFDF;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
     cursor: pointer;
+}
+
+.comodo-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.comodo-item h3 {
+    font-family: 'Georgia', serif;
+    color: #595859;
+    font-size: 1.1rem;
+    margin-top: 10px;
 }
