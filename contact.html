@@ -8,10 +8,23 @@
     <link rel="stylesheet" href="contact.css"> <!-- Link para o CSS específico da contact.html -->
 </head>
 <body>
+    <!-- Barra lateral retrátil -->
+    <div id="side-nav" class="side-nav">
+        <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="preferencias.html">Preferências</a>
+        <a href="sensores.html">Sensores</a>
+        <a href="casa.html">Casa</a>
+    </div>
+
+    <!-- Botão para abrir a barra lateral -->
+    <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+
     <header>
         <img src="logoNova.jpg" alt="Logo" class="logo">
         <h1>NOVA Home</h1>
     </header>
+
     <main>
         <nav>
             <ul>
@@ -20,6 +33,7 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+
         <section id="contact-section">
             <h2>Contact Us</h2>
             <div class="contact-info">
@@ -45,6 +59,7 @@
             </form>
         </section>
     </main>
+
     <footer>
         <p>NOVA Home &copy; 2024</p>
     </footer>
@@ -55,6 +70,16 @@
             alert('Form submitted!'); // Simula o envio com um alerta
             location.reload(); // Recarrega a página
         }
+
+        // Função para abrir a barra lateral
+        document.getElementById("menu-toggle").onclick = function() {
+            document.getElementById("side-nav").style.width = "250px";
+        };
+
+        // Função para fechar a barra lateral
+        document.getElementById("close-btn").onclick = function() {
+            document.getElementById("side-nav").style.width = "0";
+        };
     </script>
 </body>
 </html>
