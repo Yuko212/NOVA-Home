@@ -120,7 +120,7 @@ span {
     color: #595859;
 }
 
-/* Barra Lateral Retrátil */
+/* Estilos para a barra lateral retrátil */
 .side-nav {
     height: 100%;
     width: 0;
@@ -131,7 +131,7 @@ span {
     background-color: #F2DFDF;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 80px; /* Compensa a altura do header */
+    padding-top: 60px;
 }
 
 .side-nav a {
@@ -153,8 +153,6 @@ span {
     top: 10px;
     right: 20px;
     font-size: 36px;
-    color: #595859;
-    cursor: pointer;
 }
 
 .menu-toggle {
@@ -165,7 +163,7 @@ span {
     cursor: pointer;
     position: absolute;
     left: 20px; /* Mover o botão para a esquerda */
-    top: 90px; /* Ajustado para garantir o alinhamento correto abaixo do header */
+    top: 110px; /* Mover o botão abaixo do header */
     z-index: 1001;
 }
 
