@@ -31,162 +31,123 @@ header .logo {
 
 header h1 {
     margin-left: 20px;
-    color: #d9b1ad;
-    font-size: 1.5rem;
+    font-size: 24px;
 }
 
 nav.side-nav {
-    height: 100%;
-    width: 250px;
     position: fixed;
-    top: 80px; /* Ajustar a partir da altura do header */
+    top: 80px; /* Distância do topo */
     left: 0;
-    background-color: #F2DFDF;
-    overflow-x: hidden;
-    transition: 0.3s;
-    padding-top: 60px;
+    width: 200px;
+    height: calc(100% - 80px);
+    background-color: #F2F2F2;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 nav.side-nav a {
-    padding: 15px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: #595859;
     display: block;
-    transition: 0.3s;
+    padding: 10px;
+    text-decoration: none;
+    color: #595859;
+    border-bottom: 1px solid #ddd;
 }
 
-nav.side-nav a:hover, nav.side-nav a.active {
-    background-color: #d88b8b;
-    color: white;
+nav.side-nav a.active {
+    background-color: #e0e0e0;
+    font-weight: bold;
 }
 
 nav.side-nav .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 36px;
-    cursor: pointer;
+    font-size: 24px;
+    color: #595859;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
 }
 
 main {
-    flex: 1;
-    width: 100%;
-    max-width: calc(100% - 250px);
-    margin-left: 250px;
-    margin-top: 100px; /* Distância abaixo do header */
+    margin-left: 220px; /* Distância do conteúdo principal da barra lateral */
+    margin-top: 100px; /* Distância do conteúdo principal do header */
     padding: 20px;
-    box-sizing: border-box;
-}
-
-section {
-    margin-bottom: 40px;
-}
-
-h2 {
-    color: #d9b1ad;
-    margin-top: 0;
-}
-
-form .form-group {
-    margin-bottom: 15px;
-}
-
-form .form-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-form .form-group input, form .form-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button.btn {
-    background-color: #d9b1ad;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-button.btn:hover {
-    background-color: #d88b8b;
 }
 
 footer {
     background-color: #F2DFDF;
-    color: #595859;
-    text-align: center;
     padding: 10px;
-    position: relative;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    margin-top: 20px; /* Distância entre a planta e o footer */
-}
-
-.comodo-container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.comodo-item {
-    background-color: #FFF;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-    cursor: pointer;
-    width: 100px;
-    text-align: center;
-}
-
-.comodo-item:hover {
-    background-color: #f2f2f2;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos do pop-up */
-.popup-content {
-    background-color: #FFF;
-    border-radius: 10px;
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
     padding: 20px;
+    width: 300px;
+    z-index: 1000; /* Garante que o pop-up ficará acima do conteúdo */
+    display: none; /* Oculto por padrão */
+}
+
+.popup.active {
+    display: block; /* Exibe o pop-up quando a classe active é adicionada */
+}
+
+.popup-content {
     position: relative;
-    width: 400px;
-    text-align: center;
 }
 
-.popup-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.popup-content input[type="file"] {
-    display: block;
-    margin: 10px auto;
-}
-
-.popup-content button {
-    background-color: #d9b1ad;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.popup-content button:hover {
-    background-color: #d88b8b;
-}
-
-.popup .close-btn {
+.close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
     font-size: 24px;
     cursor: pointer;
+}
+
+/* Estilos do formulário */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.btn {
+    background-color: #595859;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #474747;
+}
+
+.popup img {
+    width: 100%; /* Ajuste a largura da imagem */
 }
