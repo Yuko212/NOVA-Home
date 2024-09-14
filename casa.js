@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const comodos = {
             quarto: {
-                img: 'profile-picture.jpg', // Substitua pelo caminho correto da foto de perfil
+                img: 'default-profile.jpg', // Trocar pela foto do usuário em 'persona.html'
                 name: 'Quarto',
                 dimensoes: '4x5x2.5',
                 sensor: 'Nenhum',
@@ -42,35 +42,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 name: 'Banheiro',
                 dimensoes: '2x3x2.5',
                 sensor: 'Movimento',
-                editable: false
+                editable: true
             },
             sala: {
                 img: 'sala.jpg',
                 name: 'Sala',
                 dimensoes: '5x7x3',
                 sensor: 'Temperatura',
-                editable: false
+                editable: true
             },
             hall: {
                 img: 'hall.jpg',
                 name: 'Hall de Entrada',
                 dimensoes: '3x3x3',
                 sensor: 'Nenhum',
-                editable: false
+                editable: true
             },
             varanda: {
                 img: 'varanda.jpg',
                 name: 'Varanda',
                 dimensoes: '4x5x2.5',
                 sensor: 'Umidade',
-                editable: false
+                editable: true
             },
             cozinha: {
                 img: 'cozinha.jpg',
                 name: 'Cozinha',
                 dimensoes: '4x6x3',
                 sensor: 'Gás',
-                editable: false
+                editable: true
             }
         };
 
@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
         popupName.value = comodos[comodo].name;
         popupDimensoes.textContent = 'Dimensões: ' + comodos[comodo].dimensoes;
         popupSensor.textContent = 'Sensor: ' + comodos[comodo].sensor;
-        popupName.style.display = comodos[comodo].editable ? 'block' : 'none';
 
         // Mostrar pop-up
         popup.classList.add('active');
