@@ -1,0 +1,143 @@
+/* Estilos Gerais */
+body {
+    background-color: #F2F2F2;
+    color: #595859;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #F2DFDF;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #F2DFDF;
+    padding: 10px;
+    text-align: center;
+    color: #595859;
+    z-index: 1000;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para a barra lateral retrátil */
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #F2DFDF;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-nav a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #595859;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-nav a:hover {
+    background-color: #d88b8b;
+    color: white;
+}
+
+.side-nav .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 36px;
+    color: #595859;
+    cursor: pointer;
+}
+
+.menu-toggle {
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    color: #595859;
+    cursor: pointer;
+    position: absolute;
+    left: 20px; /* Mover o botão para a esquerda */
+    top: 110px; /* Mover o botão abaixo do header */
+    z-index: 1001;
+}
+
+.menu-toggle:hover {
+    color: #d88b8b;
+}
+
+/* Estilos para a lista de sensores */
+main {
+    margin-left: 250px; /* Compensar a largura da barra lateral */
+    padding: 20px;
+    margin-top: 60px; /* Compensar a altura do header */
+    padding-bottom: 80px; /* Compensar a altura do footer */
+}
+
+h2 {
+    color: #D9B1AD;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.sensor-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sensor-item {
+    background-color: #FFFFFF;
+    border: 1px solid #D9C1B8;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sensor-item h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.sensor-item p {
+    margin: 5px 0;
+}
+
+.btn {
+    background-color: #d88b8b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #d77c7c;
+}
